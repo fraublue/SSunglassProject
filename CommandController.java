@@ -5,5 +5,5 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface CommandController {
 
-	public abstract String process(HttpServletRequest request, HttpServletResponse response)throws Throwable;   
+   public abstract String process(HttpServletRequest request, HttpServletResponse response)throws Throwable;   
 }

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -37,6 +36,19 @@
       <script src="js/html5shiv.min.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
+    
+    <!-- Session -->
+<%--     <%
+    	String id = "";
+    	
+    	try{
+    		id = (String)session.getAttribute("user_id");
+    		if(id==null||id.equals("")){
+    			response.sendRedirect("loginForm.jsp")
+    		}
+    	}
+    	
+    %> --%>
         
 </head>
 <body>
@@ -69,12 +81,38 @@
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <ul id="top_links">
                             <li>
+    <!-- login session -->
                                 <div class="dropdown dropdown-access">
-                                    <a href="login.jsp">Sign in</a>
-                                   
+                                    <% if(session.getAttribute("user_id")==null) {%>
+                                    <a href="loginForm.jsp" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign in</a>
+                                    <% } else { %>
+                                    <a href="userboard.jsp" class="dropdown-toggle" data-toggle="dropdown" id="access_link"><%=session.getAttribute("user_id") %> 님</a>
+                                    <%} %>
+                                    <div class="dropdown-menu">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <a href="#" class="bt_facebook"> 개인페이지 </a>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <a href="logOut.jsp" class="bt_paypal"> 로그아웃 </a>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="login-or">
+                                            <hr class="hr-or">
+                                            <span class="span-or">or</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputUsernameEmail" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                        </div>
+                                        <a id="forgot_pw" href="#">Forgot password?</a>
+                                        <input type="submit" name="Sign_in" value="Sign in" id="Sign_in" class="button_drop">
+                                        <input type="submit" name="Sign_up" value="Sign up" id="Sign_up" class="button_drop outline"> -->
+                                    </div>
                                 </div><!-- End Dropdown access -->
                             </li>
-                            <li><a href="wishlist.html" id="wishlist_link">Wishlist</a></li>
                         </ul>
                     </div>
                 </div><!-- End row -->
@@ -98,7 +136,7 @@
                         <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                         <ul>
                             <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Home <i class="icon-down-open-mini"></i></a>
+                                <a href="javascript:void(0);" class="show-submenu">Social <i class="icon-down-open-mini"></i></a>
                                 <ul>
                                     <li><a href="index.html">With Hotels and Tours</a></li>
                                     <li><a href="index_2.html">With Only tours</a></li>
@@ -114,7 +152,7 @@
                                 </ul>
                             </li>
                             <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Tours <i class="icon-down-open-mini"></i></a>
+                                <a href="javascript:void(0);" class="show-submenu">Space <i class="icon-down-open-mini"></i></a>
                                 <ul>
                                     <li><a href="all_tours_list.html">All tours list</a></li>
                                     <li><a href="all_tours_grid.html">All tours grid</a></li>
@@ -135,7 +173,7 @@
                                 </ul>
                             </li>
                              <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Hotels <i class="icon-down-open-mini"></i></a><ul>
+                                <a href="javascript:void(0);" class="show-submenu">Write <i class="icon-down-open-mini"></i></a><ul>
                                     <li><a href="all_hotels_list.html">All hotels list</a></li>
                                     <li><a href="all_hotels_grid.html">All hotels grid</a></li>
                                     <li><a href="single_hotel.html">Single hotel page</a></li>
@@ -145,80 +183,6 @@
                                     <li><a href="payment_hotel.html">Booking hotel</a></li>
                                     <li><a href="confirmation_hotel.html">Confirmation hotel</a></li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Transfers <i class="icon-down-open-mini"></i></a>
-                                <ul>
-                                    <li><a href="all_transfer_list.html">All transfers list</a></li>
-                                    <li><a href="all_transfer_grid.html">All transfers grid</a></li>
-                                    <li><a href="single_transfer.html">Single transfer page</a></li>
-                                    <li><a href="cart_transfer.html">Cart transfers</a></li>
-                                    <li><a href="payment_transfer.html">Booking transfers</a></li>
-                                    <li><a href="confirmation_transfer.html">Confirmation transfers</a></li>
-                                </ul>
-                            </li>
-                              <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Restaurants <i class="icon-down-open-mini"></i></a>
-                                <ul>
-                                    <li><a href="all_restaurants_list.html">All restaurants list</a></li>
-                                    <li><a href="all_restaurants_grid.html">All restaurants grid</a></li>
-                                    <li><a href="single_restaurant.html">Single restaurant page</a></li>
-                                    <li><a href="payment_restaurant.html">Booking restaurant</a></li>
-                                    <li><a href="confirmation_transfer.html">Confirmation transfers</a></li>
-                                </ul>
-                            </li>
-                            <li class="megamenu submenu">
-                                <a href="javascript:void(0);" class="show-submenu-mega">Pages<i class="icon-down-open-mini"></i></a>
-                                <div class="menu-wrapper">
-                                    <div class="col-md-4">
-                                        <h3>Pages</h3>
-                                        <ul>
-                                            <li><a href="about.html">About us</a></li>
-                                           <li><a href="general_page.html">General page</a></li>
-                                            <li><a href="tourist_guide.html">Tourist guide</a></li>
-                                             <li><a href="wishlist.html">Wishlist page</a></li>
-                                             <li><a href="faq.html">Faq</a></li>
-                                             <li><a href="faq_2.html">Faq smooth scroll</a></li>
-                                             <li><a href="pricing_tables.html">Pricing tables</a></li>
-                                             <li><a href="gallery_3_columns.html">Gallery 3 columns</a></li>
-                                            <li><a href="gallery_4_columns.html">Gallery 4 columns</a></li>
-                                            <li><a href="grid_gallery_1.html">Grid gallery</a></li>
-                                            <li><a href="grid_gallery_2.html">Grid gallery with filters</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3>Pages</h3>
-                                        <ul>
-                                            <li><a href="contact_us_1.html">Contact us 1</a></li>
-                                            <li><a href="contact_us_2.html">Contact us 2</a></li>
-                                             <li><a href="blog_right_sidebar.html">Blog</a></li>
-                                            <li><a href="blog.html">Blog left sidebar</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="invoice.html" target="_blank">Invoice</a></li>
-                                            <li><a href="404.html">404 Error page</a></li>
-                                            <li><a href="site_launch/index.html">Site launch / Coming soon</a></li>
-                                            <li><a href="timeline.html">Tour timeline</a></li>
-                                            <li><a href="page_with_map.html"><i class="icon-map"></i>  Full screen map</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3>Elements</h3>
-                                        <ul>
-                                            <li><a href="index.html"><i class="icon-columns"></i> Header transparent</a></li>
-                                            <li><a href="header_plain.html"><i class="icon-columns"></i> Header plain</a></li>
-                                            <li><a href="header_transparent_colored.html"><i class="icon-columns"></i> Header transparent colored</a></li>
-                                            <li><a href="footer_2.html"><i class="icon-columns"></i> Footer with working newsletter</a></li>
-                                            <li><a href="icon_pack_1.html"><i class="icon-inbox-alt"></i> Icon pack 1 (1900)</a></li>
-                                            <li><a href="icon_pack_2.html"><i class="icon-inbox-alt"></i> Icon pack 2 (100)</a></li>
-                                            <li><a href="icon_pack_3.html"><i class="icon-inbox-alt"></i> Icon pack 3 (30)</a></li>
-                                            <li><a href="shortcodes.html"><i class="icon-tools"></i> Shortcodes</a></li>
-                                            <li><a href="newsletter_template/newsletter.html" target="blank"><i class=" icon-mail"></i> Responsive email template</a></li>
-                                            <li><a href="admin.html"><i class="icon-cog-1"></i>  Admin area</a></li>
-                                            <li><a href="general_page.html"><i class="icon-light-up"></i>  Weather Forecast</a></li>                                             
-                                        </ul>
-                                    </div>
-                                </div><!-- End menu-wrapper -->
                             </li>
                         </ul>
                     </div><!-- End main-menu -->
@@ -240,36 +204,6 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="dropdown dropdown-cart">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-basket-1"></i>Cart (0) </a>
-                                <ul class="dropdown-menu" id="cart_items">
-                                    <li>
-                                        <div class="image"><img src="img/thumb_cart_1.jpg" alt=""></div>
-                                        <strong>
-										<a href="#">Louvre museum</a>1x $36.00 </strong>
-                                        <a href="#" class="action"><i class="icon-trash"></i></a>
-                                    </li>
-                                    <li>
-                                        <div class="image"><img src="img/thumb_cart_2.jpg" alt=""></div>
-                                        <strong>
-										<a href="#">Versailles tour</a>2x $36.00 </strong>
-                                        <a href="#" class="action"><i class="icon-trash"></i></a>
-                                    </li>
-                                    <li>
-                                        <div class="image"><img src="img/thumb_cart_3.jpg" alt=""></div>
-                                        <strong>
-										<a href="#">Versailles tour</a>1x $36.00 </strong>
-                                        <a href="#" class="action"><i class="icon-trash"></i></a>
-                                    </li>
-                                    <li>
-                                        <div>Total: <span>$120.00</span></div>
-                                        <a href="cart.html" class="button_drop">Go to cart</a>
-                                        <a href="payment.html" class="button_drop outline">Check out</a>
-                                    </li>
-                                </ul>
-                            </div><!-- End dropdown-cart-->
-                        </li>
                     </ul>
                 </nav>
             </div>
@@ -278,20 +212,13 @@
     
 <section id="search_container">
  	<div id="search">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tours" data-toggle="tab">Tours</a></li>
-                        <li><a href="#hotels" data-toggle="tab">Hotels</a></li>
-                        <li><a href="#transfers" data-toggle="tab">Transfers</a></li>
-                        <li><a href="#restaurants" data-toggle="tab">Restaurants</a></li>
-                    </ul>
                     
                     <div class="tab-content">
                         <div class="tab-pane active" id="tours">
-                        <h3>Search Tours in Paris</h3>
                         	<div class="row">
                             	<div class="col-md-6">
                                 	<div class="form-group">
-                                        <label>Search terms</label>
+                                        <label>Address</label>
                                         <input type="text" class="form-control" id="firstname_booking" name="firstname_booking" placeholder="Type your search terms">
                                     </div>
                                 </div>
@@ -1002,7 +929,7 @@
                             <li><a href="#"><i class="icon-youtube-play"></i></a></li>
                             <li><a href="#"><i class="icon-linkedin"></i></a></li>
                         </ul>
-                        <p>Â© Citytours 2015</p>
+                        <p>© Citytours 2015</p>
                     </div>
                 </div>
             </div><!-- End row -->
