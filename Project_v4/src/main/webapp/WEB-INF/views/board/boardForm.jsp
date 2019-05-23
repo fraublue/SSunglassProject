@@ -1,0 +1,799 @@
+<%-- <%@page import="kr.co.sunglass.model.CommonBoardVO"%>
+<%@page import="kr.co.sunglass.service.CommentView"%>
+<%@page import="kr.co.sunglass.model.CommentVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%> --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- <%
+	//List<CommentView> list = (List<CommentView>)request.getAttribute("list");
+	CommonBoardVO cbvo = new CommonBoardVO();
+	cbvo = (CommonBoardVO) request.getAttribute("cbvo");
+	//int j = (Integer)request.getAttribute("count");
+%> --%>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"> <![endif]-->
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords"
+	content="template, tour template, city tours, city tour, tours tickets, transfers, travel, travel template" />
+<meta name="description"
+	content="Citytours - Premium site template for city tours agencies, transfers and tickets.">
+<meta name="author" content="Ansonika">
+<title>CITY TOURS - City tours and travel site template by
+	Ansonika</title>
+
+
+
+<!-- Favicons-->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" type="image/x-icon"
+	href="img/apple-touch-icon-57x57-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
+	href="img/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
+	href="img/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
+	href="img/apple-touch-icon-144x144-precomposed.png">
+
+<!-- CSS -->
+<link href="/css/base.css" rel="stylesheet">
+
+<!-- CSS -->
+<link href="/css/blog.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
+
+<!-- Google web fonts -->
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Gochi+Hand'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400'
+	rel='stylesheet' type='text/css'>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
+<!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+	<!--[if lte IE 8]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+<![endif]-->
+
+	<div id="preloader">
+		<div class="sk-spinner sk-spinner-wave">
+			<div class="sk-rect1"></div>
+			<div class="sk-rect2"></div>
+			<div class="sk-rect3"></div>
+			<div class="sk-rect4"></div>
+			<div class="sk-rect5"></div>
+		</div>
+	</div>
+	<!-- End Preload -->
+
+	<div class="layer"></div>
+	<!-- Mobile menu overlay mask -->
+
+	<!-- Header================================================== -->
+	<%@include file="../include/header.jsp"%>
+	<section id="search_container">
+		<section class="parallax-window" data-parallax="scroll"
+			data-image-src="/img/bg_blog.jpg" data-natural-width="1400"
+			data-natural-height="470">
+			<div class="parallax-content-1">
+				<div class="animated fadeInDown"></div>
+			</div>
+		</section>
+	</section>
+	<!-- End section -->
+
+
+	<div id="position">
+		<div class="container">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Category</a></li>
+				<li>Page active</li>
+			</ul>
+		</div>
+	</div>
+	<!-- End position -->
+
+	<div class="container margin_60">
+		<div class="row">
+
+			<c:if test="${giver_board != null }">
+				<aside class="col-md-3">
+					<p class="hidden-sm hidden-xs">
+						<a class="btn_map" data-toggle="collapse" href="#collapseMap"
+							aria-expanded="false" aria-controls="collapseMap">View on map</a>
+					</p>
+					<div class="box_style_1 expose">
+						<h3 class="inner">Check Availability</h3>
+						<div class="row">
+							<div class="col-md-6 col-sm-6">
+								<div class="form-group">
+									<label><i class="icon-calendar-7"></i> Check in</label> <input
+										class="date-pick form-control" data-date-format="M d, D"
+										type="text">
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6">
+								<div class="form-group">
+									<label><i class="icon-calendar-7"></i> Check out</label> <input
+										class="date-pick form-control" data-date-format="M d, D"
+										type="text">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-6">
+								<div class="form-group">
+									<label>Adults</label>
+									<div class="numbers-row">
+										<input type="text" value="1" id="adults"
+											class="qty2 form-control" name="quantity">
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6">
+								<div class="form-group">
+									<label>Children</label>
+									<div class="numbers-row">
+										<input type="text" value="0" id="children"
+											class="qty2 form-control" name="quantity">
+									</div>
+								</div>
+							</div>
+						</div>
+						<br> <a class="btn_full" href="cart_hotel.html">Check now</a>
+						<a class="btn_full_outline" href="#"><i class=" icon-heart"></i>
+							Add to whislist</a>
+					</div>
+					<!--/box_style_1 -->
+
+					<div class="box_style_4">
+						<i class="icon_set_1_icon-90"></i>
+						<h4>
+							<span>Book</span> by phone
+						</h4>
+						<a href="tel://004542344599" class="phone">+45 423 445 99</a> <small>Monday
+							to Friday 9.00am - 7.30pm</small>
+					</div>
+
+				</aside>
+			</c:if>
+
+			<c:if test="${giver_board == null }">
+				<aside class="col-md-3">
+					<br> <a class="btn_full" href="cart_hotel.html">Check now</a>
+					<a class="btn_full_outline" href="#"><i class=" icon-heart"></i>
+						Add to whislist</a>
+				</aside>
+			</c:if>
+
+			<div class="col-md-9">
+				<div>
+					<a
+						href="<%=request.getContextPath()%>/searchuser.do?user_id=${common_board.user_id}"
+						id="access_link" class="dropdown-toggle">${common_board.user_id }</a>
+				</div>
+				<div class="box_style_1">
+					<div class="post nopadding">
+						<img
+							src="<%=request.getContextPath()%>/data/${common_board.thumb_img}"
+							alt="" class="img-responsive">
+
+						<div class="post_info clearfix">
+							<div class="post-left">
+								<ul>
+									<li><i class="icon-calendar-empty"></i>On <span>${common_board.reg_date }</span></li>
+
+								</ul>
+							</div>
+							<!-- 	<div class="post-right">
+								<i class="icon-comment"></i><a href="#"></a>Comments
+							</div> -->
+						</div>
+
+						<blockquote class="styled">
+							<p>${common_board.board_content }</p>
+							<small>${common_board.user_id }</small>
+						</blockquote>
+					</div>
+					<!-- end post -->
+
+					<!-- giver page  -->
+					<c:if test="${giver_board != null }">
+
+						<!-- giver -->
+						<div class="row">
+							<div class="col-md-12" id="single_tour_desc">							
+								<div id="single_tour_feat">
+									<ul>
+										<c:if test='${giver_board.amenities1 != null}'>
+											<li><i class="icon_set_1_icon-22"></i>Pet allowed</li>
+										</c:if>
+										
+										<c:if test='${giver_board.amenities1 == null}'>
+											<li><i class="icon_set_1_icon-22" style="color: #d1d1d1"></i>Pet
+												allowed</li>
+										</c:if>
+										<c:if test='${giver_board.amenities2 != null}'>
+											<li><i class="icon_set_1_icon-86"></i>Free Wifi</li>
+										</c:if>
+										<c:if test='${giver_board.amenities2 == null}'>
+											<li><i class="icon_set_1_icon-86" style="color: #d1d1d1"></i>Free
+												Wifi</li>
+										</c:if>
+										<c:if test='${giver_board.amenities3 != null}'>
+											<li><i class="icon_set_1_icon-13"></i>Accessibiliy</li>
+										</c:if>
+										<c:if test='${giver_board.amenities3 == null}'>
+											<li><i class="icon_set_1_icon-13" style="color: #d1d1d1"></i>Accessibiliy</li>
+										</c:if>
+										<c:if test='${giver_board.amenities4 != null}'>
+											<li><i class="icon_set_1_icon-27"></i>Parking</li>
+										</c:if>
+										<c:if test='${giver_board.amenities4 == null}'>
+											<li><i class="icon_set_1_icon-27" style="color:#d1d1d1"></i>Parking</li>											
+										</c:if>
+
+
+									</ul>
+								</div>
+								<p class="visible-sm visible-xs">
+									<a class="btn_map" data-toggle="collapse" href="#collapseMap"
+										aria-expanded="false" aria-controls="collapseMap">View on
+										map</a>
+								</p>
+								<!-- Map button for tablets/mobiles -->
+								<!-- <div id="Img_carousel" class="slider-pro">
+									<div class="sp-slides">
+
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="img/slider_single_tour/1_medium.jpg"
+												data-small="img/slider_single_tour/1_small.jpg"
+												data-medium="img/slider_single_tour/1_medium.jpg"
+												data-large="img/slider_single_tour/1_large.jpg"
+												data-retina="img/slider_single_tour/1_large.jpg">
+										</div>
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="img/slider_single_tour/2_medium.jpg"
+												data-small="img/slider_single_tour/2_small.jpg"
+												data-medium="img/slider_single_tour/2_medium.jpg"
+												data-large="img/slider_single_tour/2_large.jpg"
+												data-retina="img/slider_single_tour/2_large.jpg">
+											<h3 class="sp-layer sp-black sp-padding" data-horizontal="40"
+												data-vertical="40" data-show-transition="left">Lorem
+												ipsum dolor sit amet</h3>
+											<p class="sp-layer sp-white sp-padding" data-horizontal="40"
+												data-vertical="100" data-show-transition="left"
+												data-show-delay="200">consectetur adipisicing elit</p>
+											<p class="sp-layer sp-black sp-padding" data-horizontal="40"
+												data-vertical="160" data-width="350"
+												data-show-transition="left" data-show-delay="400">sed do
+												eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												Ut enim ad minim veniam, quis nostrud exercitation ullamco
+												laboris nisi ut aliquip ex ea commodo consequat.</p>
+										</div>
+
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="/img/slider_single_tour/3_medium.jpg"
+												data-small="/img/slider_single_tour/3_small.jpg"
+												data-medium="/img/slider_single_tour/3_medium.jpg"
+												data-large="/img/slider_single_tour/3_large.jpg"
+												data-retina="/img/slider_single_tour/3_large.jpg">
+											<p class="sp-layer sp-white sp-padding"
+												data-position="centerCenter" data-vertical="-50"
+												data-show-transition="right" data-show-delay="500">Lorem
+												ipsum dolor sit amet</p>
+											<p class="sp-layer sp-black sp-padding"
+												data-position="centerCenter" data-vertical="50"
+												data-show-transition="left" data-show-delay="700">
+												consectetur adipisicing elit</p>
+										</div>
+
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="img/slider_single_tour/4_medium.jpg"
+												data-small="img/slider_single_tour/4_small.jpg"
+												data-medium="img/slider_single_tour/4_medium.jpg"
+												data-large="img/slider_single_tour/4_large.jpg"
+												data-retina="img/slider_single_tour/4_large.jpg">
+											<p class="sp-layer sp-black sp-padding"
+												data-position="bottomLeft" data-vertical="0"
+												data-width="100%" data-show-transition="up">Lorem ipsum
+												dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim
+												ad minim veniam, quis nostrud exercitation ullamco laboris
+												nisi ut aliquip ex ea commodo consequat.</p>
+										</div>
+
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="img/slider_single_tour/5_medium.jpg"
+												data-small="img/slider_single_tour/5_small.jpg"
+												data-medium="img/slider_single_tour/5_medium.jpg"
+												data-large="img/slider_single_tour/5_large.jpg"
+												data-retina="img/slider_single_tour/5_large.jpg">
+											<p class="sp-layer sp-white sp-padding" data-vertical="5%"
+												data-horizontal="5%" data-width="90%"
+												data-show-transition="down" data-show-delay="400">Lorem
+												ipsum dolor sit amet, consectetur adipisicing elit, sed do
+												eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												Ut enim ad minim veniam, quis nostrud exercitation ullamco
+												laboris nisi ut aliquip ex ea commodo consequat.</p>
+										</div>
+
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="img/slider_single_tour/6_medium.jpg"
+												data-small="img/slider_single_tour/6_small.jpg"
+												data-medium="img/slider_single_tour/6_medium.jpg"
+												data-large="img/slider_single_tour/6_large.jpg"
+												data-retina="img/slider_single_tour/6_large.jpg">
+											<p class="sp-layer sp-white sp-padding" data-horizontal="10"
+												data-vertical="10" data-width="300">Lorem ipsum dolor
+												sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim
+												ad minim veniam, quis nostrud exercitation ullamco laboris
+												nisi ut aliquip ex ea commodo consequat.</p>
+										</div>
+
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="img/slider_single_tour/7_medium.jpg"
+												data-small="img/slider_single_tour/7_small.jpg"
+												data-medium="img/slider_single_tour/7_medium.jpg"
+												data-large="img/slider_single_tour/7_large.jpg"
+												data-retina="img/slider_single_tour/7_large.jpg">
+											<p class="sp-layer sp-black sp-padding"
+												data-position="bottomLeft" data-horizontal="5%"
+												data-vertical="5%" data-width="90%"
+												data-show-transition="up" data-show-delay="400">Lorem
+												ipsum dolor sit amet, consectetur adipisicing elit, sed do
+												eiusmod tempor incididunt ut labore et dolore magna
+												aliqua.Ut enim ad minim veniam, quis nostrud exercitation
+												ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+										</div>
+
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="img/slider_single_tour/8_medium.jpg"
+												data-small="img/slider_single_tour/8_small.jpg"
+												data-medium="img/slider_single_tour/8_medium.jpg"
+												data-large="img/slider_single_tour/8_large.jpg"
+												data-retina="img/slider_single_tour/8_large.jpg">
+											<p class="sp-layer sp-black sp-padding" data-horizontal="50"
+												data-vertical="50" data-show-transition="down"
+												data-show-delay="500">Lorem ipsum dolor sit amet</p>
+											<p class="sp-layer sp-white sp-padding" data-horizontal="50"
+												data-vertical="100" data-show-transition="up"
+												data-show-delay="500">consectetur adipisicing elit, sed
+												do eiusmod tempor incididunt ut labore et dolore magna
+												aliqua.</p>
+										</div>
+
+										<div class="sp-slide">
+											<img alt="" class="sp-image"
+												src="../src/css/images/blank.gif"
+												data-src="img/slider_single_tour/9_medium.jpg"
+												data-small="img/slider_single_tour/9_small.jpg"
+												data-medium="img/slider_single_tour/9_medium.jpg"
+												data-large="img/slider_single_tour/9_large.jpg"
+												data-retina="img/slider_single_tour/9_large.jpg">
+										</div>
+									</div>
+									<div class="sp-thumbnails">
+										<img alt="" class="sp-thumbnail"
+											src="img/slider_single_tour/1_medium.jpg"> <img alt=""
+											class="sp-thumbnail"
+											src="img/slider_single_tour/2_medium.jpg"> <img alt=""
+											class="sp-thumbnail"
+											src="img/slider_single_tour/3_medium.jpg"> <img alt=""
+											class="sp-thumbnail"
+											src="img/slider_single_tour/4_medium.jpg"> <img alt=""
+											class="sp-thumbnail"
+											src="img/slider_single_tour/5_medium.jpg"> <img alt=""
+											class="sp-thumbnail"
+											src="img/slider_single_tour/6_medium.jpg"> <img alt=""
+											class="sp-thumbnail"
+											src="img/slider_single_tour/7_medium.jpg"> <img alt=""
+											class="sp-thumbnail"
+											src="img/slider_single_tour/8_medium.jpg"> <img alt=""
+											class="sp-thumbnail"
+											src="img/slider_single_tour/9_medium.jpg">
+									</div>
+								</div>-->
+
+								<hr>
+
+								<div class="row">
+									<div class="col-md-3">
+										<h4>
+											<span>Description</span>
+										</h4>
+									</div>
+									<div class="col-md-9">
+										<p class="line-center">${giver_board.amenities_etc}</p>
+											<!-- End row  -->
+									</div>
+									<!-- End col-md-9  -->
+
+								</div>
+								<hr>
+
+								<div class="row">
+									<div class="col-md-3">
+										<h4><span>사용 가능일 </span></h4>
+									</div>
+									<div class="col-md-9">
+										<div>
+											<p class="line-center">${giver_board.booking_startdate} ~ ${giver_board.booking_enddate}</p>
+										</div>
+										<!-- End row  -->
+									</div>
+									<!-- End col-md-9  -->
+								</div>
+
+								<hr>
+
+								<div class="row">
+									<div class="col-md-3">
+										<h4>
+											<span>최대인원 </span>
+										</h4>
+									</div>
+									<div class="col-md-9">
+										<p class="line-center">${giver_board.people}</p>											<!-- End row  -->
+									</div>
+									<!-- End col-md-9  -->
+
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-md-3"><h4><span>위치정보</span></h4></div>
+									<div class="col-md-9">
+										<p class="selectAddr line-center">${giver_board.addr}</p>
+									</div>
+										<div class="col-md-12 col-sm-12 cst-form-group">										
+											<div id="map" style="width: 100%; height: 380px;margin-top:30px"></div>
+										</div>
+								</div>
+
+								<!--End row -->
+							</div>
+
+							<!--End row -->
+						</div>
+
+						<!-- giver -->
+						<!-- End row  -->
+
+					</c:if>
+
+					<hr>
+
+
+
+				</div>
+				<!-- end box_style_1 -->
+
+				<h4>3 comments</h4>
+		<!-- 		<script src="https://code.jquery.com/jquery-3.4.1.js"
+					integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+					crossorigin="anonymous"></script> -->
+
+				
+				<div id="comments"></div>
+				<!-- End Comments -->
+				<c:if test="${sessionScope.user_id != null }">
+				<h4>Leave a comment</h4>
+				
+				
+					<input class="form-control style_2" id="c_uid" type="hidden"
+						name="user_id" value="${sessionScope.user_id }"> <input
+						class="form-control style_2" id="c_bid" type="hidden"
+						name="board_id" value="${common_board.board_id }">
+					<c:if test="${giver_board == null }">
+						<input class="form-control style_2" id="c_cs" type="hidden"
+							name="comment_star" value="1">
+					</c:if>
+
+					<c:if test="${giver_board != null }">
+						<input class="form-control style_2" id="c_cs" type="hidden"
+							name="comment_star" value="1">
+					</c:if>
+
+
+					
+					<div class="form-group">
+						<textarea name="content" id="c_content"
+							class="form-control style_2" style="height: 150px;"
+							placeholder="Message"></textarea>
+					</div>
+					<div class="form-group">
+						<!-- <input type="reset" class="btn_1" value="Clear form" />  -->
+						
+						<input type="button" class="btn_1" value="Post Comment"
+							id="comment_submit" /> 
+						</c:if>	
+						
+					<c:if test="${sessionScope.user_id == null }">
+					<h4>로그인이 필요합니다 </h4>
+					</c:if>
+				
+			</div>
+			<!-- End col-md-9-->
+
+		</div>
+		<!-- End row-->
+	</div>
+	<!-- End container -->
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-3">
+					<h3>Need help?</h3>
+					<a href="tel://004542344599" id="phone">+45 423 445 99</a> <a
+						href="mailto:help@citytours.com" id="email_footer">help@citytours.com</a>
+				</div>
+				<div class="col-md-3 col-sm-3">
+					<h3>About</h3>
+					<ul>
+						<li><a href="#">About us</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Register</a></li>
+						<li><a href="#">Terms and condition</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-3">
+					<h3>Discover</h3>
+					<ul>
+						<li><a href="#">Community blog</a></li>
+						<li><a href="#">Tour guide</a></li>
+						<li><a href="#">Wishlist</a></li>
+						<li><a href="#">Gallery</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 col-sm-3">
+					<h3>Settings</h3>
+					<div class="styled-select">
+						<select class="form-control" name="lang" id="lang">
+							<option value="English" selected>English</option>
+							<option value="French">French</option>
+							<option value="Spanish">Spanish</option>
+							<option value="Russian">Russian</option>
+						</select>
+					</div>
+					<div class="styled-select">
+						<select class="form-control" name="currency" id="currency">
+							<option value="USD" selected>USD</option>
+							<option value="EUR">EUR</option>
+							<option value="GBP">GBP</option>
+							<option value="RUB">RUB</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<!-- End row -->
+			<div class="row">
+				<div class="col-md-12">
+					<div id="social_footer">
+						<ul>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-google"></i></a></li>
+							<li><a href="#"><i class="icon-instagram"></i></a></li>
+							<li><a href="#"><i class="icon-pinterest"></i></a></li>
+							<li><a href="#"><i class="icon-vimeo"></i></a></li>
+							<li><a href="#"><i class="icon-youtube-play"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+						</ul>
+						<p>© Citytours 2015</p>
+					</div>
+				</div>
+			</div>
+			<!-- End row -->
+		</div>
+		<!-- End container -->
+	</footer>
+	<!-- End footer -->
+
+	<div id="toTop"></div>
+	<!-- Back to top button -->
+
+	<!-- Common scripts -->
+	<script src="/js/jquery-1.11.2.min.js"></script>
+	<script src="/js/common_scripts_min.js"></script>
+	<script src="/js/functions.js"></script>
+
+
+
+
+	<!-- Specific scripts -->
+	<script src="/js/icheck.js"></script>
+	<script>
+		$('input').iCheck({
+			checkboxClass : 'icheckbox_square-grey',
+			radioClass : 'iradio_square-grey'
+		});
+
+		$('.starRev span').click(function() {
+			$(this).parent().children('span').removeClass('on');
+			$(this).addClass('on').prevAll('span').addClass('on');
+			return false;
+		});
+	</script>
+	<!-- Date and time pickers -->
+	<!-- <script src="js/jquery.sliderPro.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function($) {
+			$('#Img_carousel').sliderPro({
+				width : 960,
+				height : 500,
+				fade : true,
+				arrows : true,
+				buttons : false,
+				fullScreen : false,
+				smallSize : 500,
+				startSlide : 0,
+				mediumSize : 1000,
+				largeSize : 3000,
+				thumbnailArrows : true,
+				autoplay : false
+			});
+		});
+	</script> -->
+
+
+	<!-- Date and time pickers -->
+	<script src="/js/bootstrap-datepicker.js"></script>
+	<script>
+		$('input.date-pick').datepicker('setDate', 'today');
+	</script>
+	<!-- Map -->
+<!-- 	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script src="/js/map.js"></script> -->
+	<!-- <script src="/js/infobox.js"></script> -->
+	<!-- Carousel -->
+	<!-- <script src="/js/owl.carousel.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(".carousel").owlCarousel({
+				items : 4,
+				itemsDesktop : [ 1199, 3 ],
+				itemsDesktopSmall : [ 979, 3 ]
+			});
+		});
+	</script> -->
+
+	<!--Review modal validation -->
+	<script src="/assets/validate.js"></script>
+	<script>
+                 $(function() {
+                	 $("#comment_submit").on('click',function(){
+                		 commentInsert(); 
+                	 });
+                	 
+                	 function commentInsert(){
+                		 var cmtdata =  {
+                				 "user_id" : $("#c_uid").val(),
+                				 "board_id" : $("#c_bid").val(),
+                				 "comment_star" : $("#c_cs").val(),
+                				 "content" :$("#c_content").val()
+                		 };
+                		 $.ajax({
+                			 type:"POST",
+                			 url: "insertcomment.do",
+                			 data :cmtdata,
+                			 error : function(err){
+                				 console.log(err);
+                			 },
+                			 success:function(){                				 
+                				 commentList(<%=request.getParameter("board_id")%>);
+                			 }
+                		 })
+                	 };
+                	 
+                	commentList(<%=request.getParameter("board_id")%>);
+                	
+            		function commentList(num) {
+            			$.ajax({
+            				type : "GET",
+            				url : "commentlistboardid.do",
+					data : {
+						board_id : num
+					},
+					error : function(err) {
+						console.log(err);
+					},
+					success : function(data) {
+						console.log(data);
+						$("#comments").html(data);
+					}
+				});
+			}
+
+		})
+	</script> 
+	<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=b71c545210111992d3f4b64ae0245b27&libraries=services"></script>
+	<script>
+	
+	
+	var address = $(".selectAddr").text();
+	
+	loadMap(address);
+	function loadMap(address) {
+		//address = document.getElementById('address').value;
+		var mapContainer = document
+				.getElementById('map'), mapOption = {
+			center : new daum.maps.LatLng(33.450701,
+					126.570667),
+			level : 4
+		};
+		var map = new daum.maps.Map(mapContainer,mapOption);
+		var geocoder = new daum.maps.services.Geocoder();
+		geocoder.addressSearch(address,function(result, status) {
+			if (status === daum.maps.services.Status.OK) {
+				var coords = new daum.maps.LatLng(
+						result[0].y,
+						result[0].x);
+				var marker = new daum.maps.Marker(
+						{
+							map : map,
+							position : coords
+						});
+
+				var infowindow = new daum.maps.InfoWindow(
+						{
+							content : '<div id="removeBox" style="width:150px;text-align:center;padding:6px 0;"></div>'
+						});
+				infowindow.open(map,
+						marker);
+				map.setCenter(coords);
+				 $("#removeBox").ready(function() {
+					var rmvbox = $("#removeBox").parent();
+					rmvbox.parent().remove();
+				}); 
+			}
+		});
+	}
+	function removeBox() {
+		$("#removeBox").ready(function() {
+			var rmvbox = $("#removeBox").parent();
+			rmvbox.parent().remove();
+		});
+	}
+	</script>
+</body>
+</html>

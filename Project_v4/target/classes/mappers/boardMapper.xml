@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.project.BoardMapper">
+
+
+	<select id="takerListAll"
+		resultType="kr.co.project.domain.CommonBoardVO">
+	<![CDATA[
+		SELECT *
+		FROM common_board
+		where user_id IN (
+			select user_id from user where user_type= 0
+		) order by reg_date desc 
+	]]>
+	</select>
+<select id="giverListAll"
+		resultType="kr.co.project.domain.CommonBoardVO">
+	<![CDATA[
+		SELECT *
+		FROM common_board
+		where user_id IN (
+			select user_id from user where user_type= 1
+		) order by reg_date desc 
+	]]>
+	</select>
+	<select id="userTypeListCount" resultType="int">
+		 <![CDATA[
+		 SELECT *
+		FROM common_board
+		where user_id IN (
+			select user_id from user where user_type= #{type}
+		) 
+		 ]]>
+	</select>
+	<select id="favoriteTypeList" resultType="kr.co.project.domain.CommonBoardVO">
+	<![CDATA[
+		select c.board_id as `board_id`, c.board_content as `board_content`,c.like_cnt as `like_cnt`,  c.reg_date as `reg_date`, c.user_id as `user_id`, c.thumb_img as `thumb_img`
+		from common_board as `c`, user as `u`, board_has_favorite as `b`, favorite as `f` 
+		where `c`.user_id = `u`.user_id 
+		and `c`.board_id = `b`.board_id 
+		and `b`.favorite_id = `f`.favorite_id 
+		and `f`.favorite_name = #{favorite_name} 
+		and `u`.user_type='1' 
+		order by reg_date limit #{pageStart}, #{perPageNum}
+	]]>
+	</select>
+	
+	<select id="favoriteListCount"  resultType="int">
+		<![CDATA[
+		select count(*)
+		from common_board as `c`, user as `u`, board_has_favorite as `b`, favorite as `f` 
+		where `c`.user_id = `u`.user_id and `c`.board_id = `b`.board_id and `b`.favorite_id = `f`.favorite_id and `f`.favorite_name = #{favorite_name} and `u`.user_type='1';
+		]]>
+	</select>
+	
+	<select id="userBoardList" resultType="kr.co.project.domain.CommonBoardVO">
+	select *
+	from common_board
+	where user_id = #{user_id}
+	limit #{pageStart} , #{perPageNum}
+	</select>
+	<select id="getWritedBoardID" resultType="int">
+	SELECT board_id FROM common_board where user_id = #{user_id} order by reg_date desc limit 1
+	</select>
+	<insert id="takerBoardWrite">
+	insert into common_board (board_content,user_id,thumb_img) values(#{board_content},#{user_id},#{thumb_img})
+	</insert>
+	
+	<insert id="giverWriteBoard">
+	insert into giver_board (addr,amenities1,amenities2,amenities3,amenities4,amenities_etc,booking_enddate,booking_startdate,people,board_id) 
+	values(#{addr},#{amenities1},#{amenities2},#{amenities3},#{amenities4},#{amenities_etc},#{booking_enddate},#{booking_startdate},#{people},#{board_id})
+	</insert>
+	
+	
+	<!-- 20190521 ts -->
+	
+	<!--  <insert id="create">
+		insert into tbl_board (title, content, writer)
+		values(#{title},#{content}, #{writer})
+	</insert>
+
+	<select id="read" resultType="org.zerock.domain.BoardVO">
+		select
+		bno, title, content, writer, regdate, viewcnt , replycnt
+		from
+		tbl_board
+		where bno = #{bno}
+	</select>
+ -->
+	<select id="listAll" resultType="kr.co.project.domain.CommonBoardVO">
+ <![CDATA[
+select
+	board_id, board_content, like_cnt, reg_date, user_id, thumb_img
+from 
+	sns_prj.`common_board`
+	
+ ]]>
+	</select>
+	
+	<select id="listUser" resultType="kr.co.project.domain.CommonBoardVO">
+ <![CDATA[
+select
+	*
+from 
+	sns_prj.`common_board`
+where 
+	user_id = #{user_id}
+order by board_id desc
+	
+ ]]>
+	</select>
+	
+	<select id="commonboard" resultType="kr.co.project.domain.CommonBoardVO">
+ <![CDATA[
+select
+	*
+from 
+	sns_prj.`common_board`
+where 
+	board_id = #{board_id}
+	
+ ]]>
+	</select>
+	
+	
+	<select id="giverboard" resultType="kr.co.project.domain.GiverBoardVO">
+ <![CDATA[
+select
+	*
+from 
+	sns_prj.`giver_board`
+where 
+	board_id = #{board_id}
+	
+ ]]>
+ 
+	</select>
+	
+	
+	<insert id = "insertcomment" parameterType="kr.co.project.domain.CommentVO">
+	INSERT 
+	INTO `sns_prj`.`comment` ( `user_id`, `content`, `comment_star`, `board_id`) 
+	VALUES ('${user_id}', '${content}', '${comment_star}', '${board_id}');
+	</insert>
+	
+		<select id="commentlistboardid" resultType="kr.co.project.domain.CommentVO">
+ <![CDATA[
+select
+	*
+from 
+	sns_prj.`comment`
+where
+	board_id = #{board_id}
+	
+ ]]>
+	</select>
+</mapper>

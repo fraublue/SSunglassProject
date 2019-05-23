@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* 
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.filebox label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	vertical-align: top;
+} named upload
+.filebox .upload-name {
+	display: inline-block;
+	padding: .5em .75em; label의 패딩값과 일치
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	-webkit-appearance: none; 네이티브 외형 감추기
+	-moz-appearance: none;
+	appearance: none;
+}
+ */
+ 
+ .wishlist::before{
+ 	font-size:29px;
+ }
+ .avatar{
+ 	width:60px;
+ }
+ .avatar img{
+ 	width:100%;
+ }
+ .wishlist {
+
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    width: 30px;
+    height: 40px;
+    z-index: 2;
+    font-size: 23px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.zoomIn{
+	height:320px;
+	margin-bottom:20px;
+}
+
+.listType li{
+	cursor : pointer;	
+}
+.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.starR.on{background-position:0 0;}
+.cst-form-control{
+	display:inline-block;
+	width:49%;
+}
+.cst-form-width{width:99%;}
+.cst-form-group{
+	margin-bottom:6px;
+}
+.cst-form-group-layout{
+	padding:8px;
+	border-top:1px solid #ddd;
+}
+.cst-border{border-bottom: 1px solid #ddd;}
+#map{
+	border:1px solid #ddd;
+}
+
+.line-center{
+	padding:0;
+	margin:0;
+	line-height:40px;
+}
+#search.cst-search{
+	padding:0;
+	margin:18px 0 20px;
+	display:block;
+	width:100%;
+}
+#search.cst-search .nav-tabs{text-align:center;}
+#search.cst-search .nav-tabs >li {float:none; display:inline-block;}
