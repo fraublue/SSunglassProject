@@ -2,6 +2,7 @@ package kr.co.project.presistence;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,6 +18,7 @@ import kr.co.project.domain.SearchCriteria;
 public class GiverBoardDAO {
 	@Inject
 	  private SqlSession session;
+	
 
 	  private static String namespace = "kr.co.project.BoardMapper";
 
@@ -26,5 +28,11 @@ public class GiverBoardDAO {
 	  
 	  public void updateboardgiver(GiverBoardVO gbvo) throws Exception{
 		  session.update(namespace+".updateboardgiver",gbvo);
+	  }
+	  
+	  public void deleteboard(String user_id, int board_id)throws Exception{
+		  GiverBoardVO gbvo = new GiverBoardVO();
+		  gbvo.setBoard_id(board_id);
+		  session.delete(namespace+".deleteboardgiver",gbvo);
 	  }
 }

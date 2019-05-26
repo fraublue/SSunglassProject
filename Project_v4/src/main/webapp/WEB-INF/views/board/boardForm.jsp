@@ -506,12 +506,19 @@
 						<!-- End row  -->
 
 					</c:if>
-					<!--  작성자 본인일 때 글 수정 가능  -->
+					<!--  작성자 본인일 때 글 수정 및 삭제 가능  -->
 					<c:if test="${common_board.user_id eq sessionScope.user_id }">
 						<form action="updateboard.do" method="post" >
 							<input type="hidden" value="${common_board.board_id }" name="board_id">
 							<input type="hidden" value="${common_board.user_id }" name="user_id">
 							<input type="submit" value="글수정" class="btn_1" >
+						</form>
+						<br>
+						<br>
+						<form action="deleteboard" method="post" >
+							<input type="hidden" value="${common_board.board_id }" name="board_id">
+							<input type="hidden" value="${common_board.user_id }" name="user_id">
+							<input type="submit" value="글삭제 " class="btn_1" id="deleteboard" >
 						</form>
 					</c:if>
 
@@ -591,6 +598,9 @@
 	<!-- Specific scripts -->
 	<script src="/js/icheck.js"></script>
 	<script>
+		$('#deleteboard').click(function(){
+			alert("글이 삭제되면 댓글, 좋아요, 북마크 등 전부 삭제됩니다 . ")
+		});
 		$('input').iCheck({
 			checkboxClass : 'icheckbox_square-grey',
 			radioClass : 'iradio_square-grey'

@@ -110,6 +110,11 @@ public class BoardServiceImpl implements BoardService {
 		gdao.updateboardgiver(gbvo);
 		
 	}
+	@Override
+	public void deleteboard(String user_id, int board_id) throws Exception {
+		gdao.deleteboard(user_id,board_id);
+		dao.deleteboard(user_id,board_id);
+	}
 
 //  @Transactional
 //  @Override

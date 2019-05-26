@@ -49,5 +49,9 @@ public interface BoardService {
 	public void updateboardtaker(CommonBoardVO cbvo) throws Exception;
 	public void updateboardgiver(GiverBoardVO gbvo) throws Exception;
 	
+	//글삭제
+	public void deleteboard(String user_id, int board_id) throws Exception;
+	
+	
 
 }

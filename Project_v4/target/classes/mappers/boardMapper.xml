@@ -190,4 +190,20 @@ where
 
 	  ]]>
 	</update>
+	
+	<delete id="deleteboard" parameterType="kr.co.project.domain.CommonBoardVO">
+	<![CDATA[
+		DELETE FROM `sns_prj`.`common_board` 
+		WHERE (`board_id` = #{board_id});
+	]]>
+	</delete>
+	
+	<delete id="deleteboardgiver" parameterType="kr.co.project.domain.GiverBoardVO">
+	<![CDATA[
+		DELETE FROM `sns_prj`.`giver_board` 
+		WHERE (`board_id` = #{board_id});
+	
+	]]>
+	</delete>
+	
 </mapper>

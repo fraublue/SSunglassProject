@@ -329,5 +329,21 @@ public class BoardController {
 	}
 	
 	
+	///글삭제 
+	//댓글 좋아요 북마크 다 삭제되고 나서 글 삭제 
+	@RequestMapping(value = "/deleteboard")
+	public String deleteboard(@RequestParam("user_id")String user_id , @RequestParam("board_id") int board_id) {
+		try {
+			service.deleteboard(user_id,board_id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "test";
+	}
+	
+	
+	
 	
 }
+

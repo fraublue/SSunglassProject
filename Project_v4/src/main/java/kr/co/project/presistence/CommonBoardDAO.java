@@ -2,6 +2,7 @@ package kr.co.project.presistence;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,6 +19,8 @@ import kr.co.project.domain.SearchCriteria;
 public class CommonBoardDAO {
 	@Inject
 	  private SqlSession session;
+	
+	
 
 	  private static String namespace = "kr.co.project.BoardMapper";
 
@@ -82,4 +85,12 @@ public class CommonBoardDAO {
 		public void updateboardtaker(CommonBoardVO cbvo) throws Exception{
 			session.update(namespace+".updateboardtaker",cbvo);
 		}
+		
+		public void deleteboard(String user_id, int board_id) throws Exception{
+			CommonBoardVO cbvo = new CommonBoardVO();
+			cbvo.setUser_id(user_id);
+			cbvo.setBoard_id(board_id);
+			session.delete(namespace+".deleteboard",cbvo);
+		}
+		
 }
