@@ -67,5 +67,6 @@ public class UserServiceImpl implements UserService {
 		return userdao.userTypeCheck(user_id);
 	}
 	
+	
 
 }

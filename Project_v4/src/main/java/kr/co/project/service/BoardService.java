@@ -42,5 +42,12 @@ public interface BoardService {
 	public void insertcomment(CommentVO vo);
 	public List<CommentVO> commentlistboardid(int board_id) throws Exception;
 	//댓글
+	
+	
+	
+	//글수정
+	public void updateboardtaker(CommonBoardVO cbvo) throws Exception;
+	public void updateboardgiver(GiverBoardVO gbvo) throws Exception;
+	
 
 }

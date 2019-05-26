@@ -3,6 +3,7 @@ package kr.co.project.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -264,7 +265,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/commentlistboardid.do")
 	public ModelAndView commentlist(@RequestParam("board_id")int board_id) {
-		logger.info("go to insertcomment");
+		logger.info("go to commentlist");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("commentList");
 		try {
@@ -277,4 +278,56 @@ public class BoardController {
 		
 		return mav;
 	}
+	
+// board update 
+	@RequestMapping(value = "/updateboard.do")
+	public ModelAndView updateboard(@RequestParam("board_id")int board_id, @RequestParam("user_id")String user_id) {
+		logger.info("boardupdate board_id ::: " + board_id);
+		logger.info("boardupdate user_id ::::" + user_id);
+		boolean flag = serviceuser.userTypeCheck(user_id);
+		ModelAndView mav = new ModelAndView();
+		try {
+			mav.setViewName("boardupdate");
+			if (flag) {
+				mav.addObject("common_board", service.commmonboard(board_id));
+				mav.addObject("user_type",flag);
+				mav.addObject("giver_board",service.giverboard(board_id));
+			} else {
+				mav.addObject("common_board", service.commmonboard(board_id));
+				mav.addObject("user_type",flag);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value = "/updateg")
+	public String updateboardgiver(@ModelAttribute CommonBoardVO cbvo, @ModelAttribute GiverBoardVO gbvo) {
+		logger.info("update giver"); 
+		try {
+			service.updateboardtaker(cbvo);
+			service.updateboardgiver(gbvo);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return "main";
+	}
+	@RequestMapping(value = "/update" )
+	public String updateboardtaker(@ModelAttribute CommonBoardVO cbvo, HttpServletRequest request) {
+		logger.info("update taker " + cbvo );
+		try {
+			service.updateboardtaker(cbvo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "main";
+	}
+	
+	
+	
 }

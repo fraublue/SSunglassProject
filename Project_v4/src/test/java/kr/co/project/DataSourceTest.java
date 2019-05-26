@@ -23,16 +23,28 @@ public class DataSourceTest {
 	@Inject
 	private BoardService service;
 	
+//	@Test
+//	public void testConnection() throws Exception {
+//		try {
+//			Connection conn = ds.getConnection();
+//			System.out.println("\n Connection INFO : " + conn + "\n");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	@Test
-	public void testConnection() throws Exception {
+	public void testCommonBoard() {
 		try {
-			Connection conn = ds.getConnection();
-			System.out.println("\n Connection INFO : " + conn + "\n");
-		} catch (Exception e) {
-			e.printStackTrace();
+			CommonBoardVO cbvo = new CommonBoardVO();
+			cbvo.setBoard_content("수정된 내용입니다");
+			cbvo.setBoard_id(18);
+			System.out.println(cbvo);
+			
+			service.updateboardtaker(cbvo);
+		}catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
-	
 	
 
 }

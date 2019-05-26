@@ -311,9 +311,8 @@
 											<td><i class="icon_set_1_icon-13"></i></td>
 											<td>Accessibiliy</td>
 											<td><label class="switch-light switch-ios pull-right">
-											<input type="hidden" name="amenities3">
-													<input type="checkbox" name="amenities3" id="amenti3"
-													value="Accessibiliy"> <span> <span>No</span>
+											<input type="checkbox" name="amenities3" id="amenti3"
+													value="Accessibiliy" checked=""> <span> <span>No</span>
 														<span>Yes</span>
 												</span> <a></a>
 											</label></td>

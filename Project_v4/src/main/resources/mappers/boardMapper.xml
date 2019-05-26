@@ -157,4 +157,37 @@ where
 	
  ]]>
 	</select>
+	
+	
+	
+	<!--boardupdate   -->
+	<update id="updateboardtaker" parameterType="kr.co.project.domain.CommonBoardVO">
+	 <![CDATA[
+	 UPDATE 
+	 	`sns_prj`.`common_board` 
+	 SET 
+	 	`board_content` = #{board_content} 
+	 	WHERE 
+	 	`board_id` = #{board_id}
+	  ]]>
+	</update>
+	
+	
+	<update id="updateboardgiver" parameterType="kr.co.project.domain.GiverBoardVO">
+	 <![CDATA[
+	UPDATE `sns_prj`.`giver_board` 
+	SET `addr` = #{addr}, 
+	`amenities1` = #{amenities1}, 
+	`amenities2` = #{amenities2}, 
+	`amenities3` = #{amenities3}, 
+	`amenities4` = #{amenities4}, 
+	`amenities_etc` = #{amenities_etc}, 
+	`booking_enddate` = #{booking_enddate}, 
+	`booking_startdate` = #{booking_startdate}, 
+	`people` = #{people}
+	WHERE 
+	`board_id` = #{board_id}
+
+	  ]]>
+	</update>
 </mapper>

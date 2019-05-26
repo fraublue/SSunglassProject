@@ -222,13 +222,13 @@
 
 						<!-- giver -->
 						<div class="row">
-							<div class="col-md-12" id="single_tour_desc">							
+							<div class="col-md-12" id="single_tour_desc">
 								<div id="single_tour_feat">
 									<ul>
 										<c:if test='${giver_board.amenities1 != null}'>
 											<li><i class="icon_set_1_icon-22"></i>Pet allowed</li>
 										</c:if>
-										
+
 										<c:if test='${giver_board.amenities1 == null}'>
 											<li><i class="icon_set_1_icon-22" style="color: #d1d1d1"></i>Pet
 												allowed</li>
@@ -250,7 +250,7 @@
 											<li><i class="icon_set_1_icon-27"></i>Parking</li>
 										</c:if>
 										<c:if test='${giver_board.amenities4 == null}'>
-											<li><i class="icon_set_1_icon-27" style="color:#d1d1d1"></i>Parking</li>											
+											<li><i class="icon_set_1_icon-27" style="color: #d1d1d1"></i>Parking</li>
 										</c:if>
 
 
@@ -442,7 +442,7 @@
 									</div>
 									<div class="col-md-9">
 										<p class="line-center">${giver_board.amenities_etc}</p>
-											<!-- End row  -->
+										<!-- End row  -->
 									</div>
 									<!-- End col-md-9  -->
 
@@ -451,11 +451,14 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<h4><span>사용 가능일 </span></h4>
+										<h4>
+											<span>사용 가능일 </span>
+										</h4>
 									</div>
 									<div class="col-md-9">
 										<div>
-											<p class="line-center">${giver_board.booking_startdate} ~ ${giver_board.booking_enddate}</p>
+											<p class="line-center">${giver_board.booking_startdate}~
+												${giver_board.booking_enddate}</p>
 										</div>
 										<!-- End row  -->
 									</div>
@@ -471,20 +474,26 @@
 										</h4>
 									</div>
 									<div class="col-md-9">
-										<p class="line-center">${giver_board.people}</p>											<!-- End row  -->
+										<p class="line-center">${giver_board.people}</p>
+										<!-- End row  -->
 									</div>
 									<!-- End col-md-9  -->
 
 								</div>
 								<hr>
 								<div class="row">
-									<div class="col-md-3"><h4><span>위치정보</span></h4></div>
+									<div class="col-md-3">
+										<h4>
+											<span>위치정보</span>
+										</h4>
+									</div>
 									<div class="col-md-9">
 										<p class="selectAddr line-center">${giver_board.addr}</p>
 									</div>
-										<div class="col-md-12 col-sm-12 cst-form-group">										
-											<div id="map" style="width: 100%; height: 380px;margin-top:30px"></div>
-										</div>
+									<div class="col-md-12 col-sm-12 cst-form-group">
+										<div id="map"
+											style="width: 100%; height: 380px; margin-top: 30px"></div>
+									</div>
 								</div>
 
 								<!--End row -->
@@ -497,29 +506,38 @@
 						<!-- End row  -->
 
 					</c:if>
+					<!--  작성자 본인일 때 글 수정 가능  -->
+					<c:if test="${common_board.user_id eq sessionScope.user_id }">
+						<form action="updateboard.do" method="post" >
+							<input type="hidden" value="${common_board.board_id }" name="board_id">
+							<input type="hidden" value="${common_board.user_id }" name="user_id">
+							<input type="submit" value="글수정" class="btn_1" >
+						</form>
+					</c:if>
 
-					<hr>
+
 
 
 
 				</div>
+
 				<!-- end box_style_1 -->
 
 				<h4>3 comments</h4>
-		<!-- 		<script src="https://code.jquery.com/jquery-3.4.1.js"
+				<!-- 		<script src="https://code.jquery.com/jquery-3.4.1.js"
 					integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 					crossorigin="anonymous"></script> -->
 
-				
+
 				<div id="comments"></div>
 				<!-- End Comments -->
 				<c:if test="${sessionScope.user_id != null }">
-				<h4>Leave a comment</h4>
-				
-				
+					<h4>Leave a comment</h4>
+
+
 					<input class="form-control style_2" id="c_uid" type="hidden"
-						name="user_id" value="${sessionScope.user_id }"> <input
-						class="form-control style_2" id="c_bid" type="hidden"
+						name="user_id" value="${sessionScope.user_id }">
+					<input class="form-control style_2" id="c_bid" type="hidden"
 						name="board_id" value="${common_board.board_id }">
 					<c:if test="${giver_board == null }">
 						<input class="form-control style_2" id="c_cs" type="hidden"
@@ -532,7 +550,7 @@
 					</c:if>
 
 
-					
+
 					<div class="form-group">
 						<textarea name="content" id="c_content"
 							class="form-control style_2" style="height: 150px;"
@@ -540,15 +558,15 @@
 					</div>
 					<div class="form-group">
 						<!-- <input type="reset" class="btn_1" value="Clear form" />  -->
-						
+
 						<input type="button" class="btn_1" value="Post Comment"
-							id="comment_submit" /> 
-						</c:if>	
-						
-					<c:if test="${sessionScope.user_id == null }">
-					<h4>로그인이 필요합니다 </h4>
-					</c:if>
-				
+							id="comment_submit" />
+				</c:if>
+
+				<c:if test="${sessionScope.user_id == null }">
+					<h4>로그인이 필요합니다</h4>
+				</c:if>
+
 			</div>
 			<!-- End col-md-9-->
 
@@ -557,77 +575,7 @@
 	</div>
 	<!-- End container -->
 
-
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-3">
-					<h3>Need help?</h3>
-					<a href="tel://004542344599" id="phone">+45 423 445 99</a> <a
-						href="mailto:help@citytours.com" id="email_footer">help@citytours.com</a>
-				</div>
-				<div class="col-md-3 col-sm-3">
-					<h3>About</h3>
-					<ul>
-						<li><a href="#">About us</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Register</a></li>
-						<li><a href="#">Terms and condition</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 col-sm-3">
-					<h3>Discover</h3>
-					<ul>
-						<li><a href="#">Community blog</a></li>
-						<li><a href="#">Tour guide</a></li>
-						<li><a href="#">Wishlist</a></li>
-						<li><a href="#">Gallery</a></li>
-					</ul>
-				</div>
-				<div class="col-md-2 col-sm-3">
-					<h3>Settings</h3>
-					<div class="styled-select">
-						<select class="form-control" name="lang" id="lang">
-							<option value="English" selected>English</option>
-							<option value="French">French</option>
-							<option value="Spanish">Spanish</option>
-							<option value="Russian">Russian</option>
-						</select>
-					</div>
-					<div class="styled-select">
-						<select class="form-control" name="currency" id="currency">
-							<option value="USD" selected>USD</option>
-							<option value="EUR">EUR</option>
-							<option value="GBP">GBP</option>
-							<option value="RUB">RUB</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<!-- End row -->
-			<div class="row">
-				<div class="col-md-12">
-					<div id="social_footer">
-						<ul>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-google"></i></a></li>
-							<li><a href="#"><i class="icon-instagram"></i></a></li>
-							<li><a href="#"><i class="icon-pinterest"></i></a></li>
-							<li><a href="#"><i class="icon-vimeo"></i></a></li>
-							<li><a href="#"><i class="icon-youtube-play"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-						</ul>
-						<p>© Citytours 2015</p>
-					</div>
-				</div>
-			</div>
-			<!-- End row -->
-		</div>
-		<!-- End container -->
-	</footer>
-	<!-- End footer -->
+	<%@include file="../include/footer.jsp"%>
 
 	<div id="toTop"></div>
 	<!-- Back to top button -->
@@ -682,7 +630,7 @@
 		$('input.date-pick').datepicker('setDate', 'today');
 	</script>
 	<!-- Map -->
-<!-- 	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<!-- 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="/js/map.js"></script> -->
 	<!-- <script src="/js/infobox.js"></script> -->
 	<!-- Carousel -->
@@ -700,37 +648,43 @@
 	<!--Review modal validation -->
 	<script src="/assets/validate.js"></script>
 	<script>
-                 $(function() {
-                	 $("#comment_submit").on('click',function(){
-                		 commentInsert(); 
-                	 });
-                	 
-                	 function commentInsert(){
-                		 var cmtdata =  {
-                				 "user_id" : $("#c_uid").val(),
-                				 "board_id" : $("#c_bid").val(),
-                				 "comment_star" : $("#c_cs").val(),
-                				 "content" :$("#c_content").val()
-                		 };
-                		 $.ajax({
-                			 type:"POST",
-                			 url: "insertcomment.do",
-                			 data :cmtdata,
-                			 error : function(err){
-                				 console.log(err);
-                			 },
-                			 success:function(){                				 
-                				 commentList(<%=request.getParameter("board_id")%>);
-                			 }
-                		 })
-                	 };
-                	 
-                	commentList(<%=request.getParameter("board_id")%>);
-                	
-            		function commentList(num) {
-            			$.ajax({
-            				type : "GET",
-            				url : "commentlistboardid.do",
+		$(function() {
+
+			$("#comment_submit").on('click', function() {
+				commentInsert();
+			});
+
+			function commentInsert() {
+				var cmtdata = {
+					"user_id" : $("#c_uid").val(),
+					"board_id" : $("#c_bid").val(),
+					"comment_star" : $("#c_cs").val(),
+					"content" : $("#c_content").val()
+				};
+				$.ajax({
+					type : "POST",
+					url : "insertcomment.do",
+					data : cmtdata,
+					error : function(err) {
+						console.log(err);
+					},
+					success : function() {
+						commentList(
+	<%=request.getParameter("board_id")%>
+		);
+					}
+				})
+			}
+			;
+
+			commentList(
+	<%=request.getParameter("board_id")%>
+		);
+
+			function commentList(num) {
+				$.ajax({
+					type : "GET",
+					url : "commentlistboardid.do",
 					data : {
 						board_id : num
 					},
@@ -738,62 +692,59 @@
 						console.log(err);
 					},
 					success : function(data) {
-						console.log(data);
+						//console.log(data);
 						$("#comments").html(data);
 					}
 				});
 			}
 
 		})
-	</script> 
-	<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=b71c545210111992d3f4b64ae0245b27&libraries=services"></script>
+	</script>
+	<script type="text/javascript"
+		src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=b71c545210111992d3f4b64ae0245b27&libraries=services"></script>
 	<script>
-	
-	
-	var address = $(".selectAddr").text();
-	
-	loadMap(address);
-	function loadMap(address) {
-		//address = document.getElementById('address').value;
-		var mapContainer = document
-				.getElementById('map'), mapOption = {
-			center : new daum.maps.LatLng(33.450701,
-					126.570667),
-			level : 4
-		};
-		var map = new daum.maps.Map(mapContainer,mapOption);
-		var geocoder = new daum.maps.services.Geocoder();
-		geocoder.addressSearch(address,function(result, status) {
-			if (status === daum.maps.services.Status.OK) {
-				var coords = new daum.maps.LatLng(
-						result[0].y,
-						result[0].x);
-				var marker = new daum.maps.Marker(
-						{
-							map : map,
-							position : coords
-						});
+		var address = $(".selectAddr").text();
 
-				var infowindow = new daum.maps.InfoWindow(
-						{
-							content : '<div id="removeBox" style="width:150px;text-align:center;padding:6px 0;"></div>'
-						});
-				infowindow.open(map,
-						marker);
-				map.setCenter(coords);
-				 $("#removeBox").ready(function() {
-					var rmvbox = $("#removeBox").parent();
-					rmvbox.parent().remove();
-				}); 
-			}
-		});
-	}
-	function removeBox() {
-		$("#removeBox").ready(function() {
-			var rmvbox = $("#removeBox").parent();
-			rmvbox.parent().remove();
-		});
-	}
+		loadMap(address);
+		function loadMap(address) {
+			//address = document.getElementById('address').value;
+			var mapContainer = document.getElementById('map'), mapOption = {
+				center : new daum.maps.LatLng(33.450701, 126.570667),
+				level : 4
+			};
+			var map = new daum.maps.Map(mapContainer, mapOption);
+			var geocoder = new daum.maps.services.Geocoder();
+			geocoder
+					.addressSearch(
+							address,
+							function(result, status) {
+								if (status === daum.maps.services.Status.OK) {
+									var coords = new daum.maps.LatLng(
+											result[0].y, result[0].x);
+									var marker = new daum.maps.Marker({
+										map : map,
+										position : coords
+									});
+
+									var infowindow = new daum.maps.InfoWindow(
+											{
+												content : '<div id="removeBox" style="width:150px;text-align:center;padding:6px 0;"></div>'
+											});
+									infowindow.open(map, marker);
+									map.setCenter(coords);
+									$("#removeBox").ready(function() {
+										var rmvbox = $("#removeBox").parent();
+										rmvbox.parent().remove();
+									});
+								}
+							});
+		}
+		function removeBox() {
+			$("#removeBox").ready(function() {
+				var rmvbox = $("#removeBox").parent();
+				rmvbox.parent().remove();
+			});
+		}
 	</script>
 </body>
 </html>

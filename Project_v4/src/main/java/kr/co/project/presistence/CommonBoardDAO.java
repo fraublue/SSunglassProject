@@ -76,5 +76,10 @@ public class CommonBoardDAO {
 		public List<CommentVO> commentlistboardid(int board_id) throws Exception{
 			return session.selectList(namespace+".commentlistboardid",board_id);
 		};
+		
 	  //////////////////////
+		
+		public void updateboardtaker(CommonBoardVO cbvo) throws Exception{
+			session.update(namespace+".updateboardtaker",cbvo);
+		}
 }

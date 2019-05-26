@@ -23,4 +23,8 @@ public class GiverBoardDAO {
 	  public int giverWriteBoard(GiverBoardVO gvo) throws Exception{
 		  return session.insert(namespace+".giverWriteBoard",gvo);
 	  }
+	  
+	  public void updateboardgiver(GiverBoardVO gbvo) throws Exception{
+		  session.update(namespace+".updateboardgiver",gbvo);
+	  }
 }

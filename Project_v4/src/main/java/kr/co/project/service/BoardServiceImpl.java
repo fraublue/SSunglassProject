@@ -100,6 +100,16 @@ public class BoardServiceImpl implements BoardService {
 	public List<CommentVO> commentlistboardid(int board_id) throws Exception {
 		return dao.commentlistboardid(board_id);
 	}
+	@Override
+	public void updateboardtaker(CommonBoardVO cbvo) throws Exception {
+		dao.updateboardtaker(cbvo);
+		
+	}
+	@Override
+	public void updateboardgiver(GiverBoardVO gbvo) throws Exception {
+		gdao.updateboardgiver(gbvo);
+		
+	}
 
 //  @Transactional
 //  @Override

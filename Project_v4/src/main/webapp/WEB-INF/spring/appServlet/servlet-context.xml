@@ -18,6 +18,10 @@
 	<resources mapping="/data/**" location="/resources/data/" />
 	<resources mapping="/img/**" location="/resources/img/" />
 	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="board/css/**" location="/resources/css/" />
+	<resources mapping="board/data/**" location="/resources/data/" />
+	<resources mapping="board/img/**" location="/resources/img/" />
+	<resources mapping="board/js/**" location="/resources/js/" />
 
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -25,8 +29,10 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+
 	
-	<context:component-scan base-package="kr.co.project" />
+	
+	<context:component-scan base-package="kr.co.project.*" />
 	
 	
 	

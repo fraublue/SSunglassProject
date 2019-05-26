@@ -68,7 +68,7 @@
 				<div id="logo">
 					<a href="/"><img src="/img/logo.png" width="160"
 						height="34" alt="City tours" data-retina="true"
-						class="logo_normal"></a> <a href="main.do"><img
+						class="logo_normal"></a> <a href="<%=request.getContextPath() %>/main.do"><img
 						src="/img/logo_sticky.png" width="160" height="34"
 						alt="City tours" data-retina="true" class="logo_sticky"></a>
 				</div>
