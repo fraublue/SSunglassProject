@@ -93,4 +93,8 @@ public class CommonBoardDAO {
 			session.delete(namespace+".deleteboard",cbvo);
 		}
 		
+		public void deletecomment(int comment_id) throws Exception{
+			session.delete(namespace+".deletecomment",comment_id);
+		}
+		
 }

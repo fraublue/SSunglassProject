@@ -206,4 +206,12 @@ where
 	]]>
 	</delete>
 	
+	<delete id="deletecomment" parameterType="int">
+	<![CDATA[
+		DELETE FROM `sns_prj`.`comment` 
+		WHERE (`comment_id` = #{comment_id});
+	
+	]]>
+	</delete>
+	
 </mapper>

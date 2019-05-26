@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -257,8 +258,6 @@ public class BoardController {
 	public String commentinsert(@ModelAttribute CommentVO vo) {
 		logger.info("go to insertcomment");
 		service.insertcomment(vo);
-		
-		
 		return "commentList";
 	}
 	
@@ -270,6 +269,7 @@ public class BoardController {
 		mav.setViewName("commentList");
 		try {
 			mav.addObject("commentList", service.commentlistboardid(board_id));
+			mav.addObject("board_id",board_id);
 		} catch (Exception e) {
 			
 			e.printStackTrace();
@@ -340,6 +340,20 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		return "test";
+	}
+	
+	
+	@RequestMapping(value = "/commentdelete")
+	
+	public String deletecomment(@RequestParam("comment_id")int comment_id) {
+		logger.info("go to insertcomment");
+		try {
+			service.deletecomment(comment_id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "commentList";
 	}
 	
 	

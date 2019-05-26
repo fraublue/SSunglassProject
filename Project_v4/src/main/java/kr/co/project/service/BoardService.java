@@ -52,6 +52,9 @@ public interface BoardService {
 	//글삭제
 	public void deleteboard(String user_id, int board_id) throws Exception;
 	
+	//댓글삭제
+	public void deletecomment(int comment_id) throws Exception;
+	
 	
 
 }

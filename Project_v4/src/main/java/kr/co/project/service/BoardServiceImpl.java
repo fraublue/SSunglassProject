@@ -115,6 +115,11 @@ public class BoardServiceImpl implements BoardService {
 		gdao.deleteboard(user_id,board_id);
 		dao.deleteboard(user_id,board_id);
 	}
+	@Override
+	public void deletecomment(int comment_id) throws Exception {
+		dao.deletecomment(comment_id);
+		
+	}
 
 //  @Transactional
 //  @Override

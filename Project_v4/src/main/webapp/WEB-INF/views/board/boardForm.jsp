@@ -659,11 +659,33 @@
 	<script src="/assets/validate.js"></script>
 	<script>
 		$(function() {
+			
 
 			$("#comment_submit").on('click', function() {
 				commentInsert();
 			});
-
+			
+			
+			
+			function commentdelete(){
+				var cmtdata = {
+						"comment_id" : $('.comment_id').val()
+				};
+				$.ajax({
+					type : "POST",
+					url : "commentdelete",
+					data : cmtdata,
+					error : function(err){
+						console.log(err);
+					},
+					success : function(){
+						commentList(
+								<%=request.getParameter("board_id")%>
+									);
+					}
+				}
+						)
+			};
 			function commentInsert() {
 				var cmtdata = {
 					"user_id" : $("#c_uid").val(),
