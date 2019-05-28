@@ -49,11 +49,21 @@ public interface BoardService {
 	public void updateboardtaker(CommonBoardVO cbvo) throws Exception;
 	public void updateboardgiver(GiverBoardVO gbvo) throws Exception;
 	
+	
 	//글삭제
 	public void deleteboard(String user_id, int board_id) throws Exception;
+	public void deletegiverboard_boardid(int board_id) throws Exception;
+	public void deletecommonboard_boardid(int board_id) throws Exception;
+	public void deletegiverboard_userid(String user_id) throws Exception; 
+	public void deletecommonboard_userid(String user_id) throws Exception; 
 	
 	//댓글삭제
 	public void deletecomment(int comment_id) throws Exception;
+	public void deletecomment_boardid(int board_id) throws Exception;
+	public void deletecomment_userid(String user_id) throws Exception;
+	
+	
+	
 	
 	
 

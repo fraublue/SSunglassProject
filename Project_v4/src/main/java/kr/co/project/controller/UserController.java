@@ -18,10 +18,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.project.domain.UserVO;
+import kr.co.project.service.BoardService;
 import kr.co.project.service.UserService;
 import kr.co.project.service.UserServiceImpl;
 
@@ -33,6 +35,8 @@ public class UserController {
 	  @Inject
 	  private UserService service;
 	  
+	  @Inject
+	  private BoardService bservice;
 	 
 	  
 	  @RequestMapping(value = "/main.do")
@@ -121,13 +125,51 @@ public class UserController {
 		  service.updateuser(vo);
 		  logger.info("회원정보 수정  " );
 		  String user_id = req.getParameter("user_id");
-		  return "main";
+		  return "forward:/searchuser.do?user_id="+user_id;
 	  }
 	  
 	  @RequestMapping(value = "/deleteuser.do")
 	  //회원탈퇴
-	  public String deleteuser(HttpSession session, String user_id, HttpServletRequest req) {
-		  user_id = req.getParameter("user_id");
+	  public String deleteuser(HttpSession session, @RequestParam("user_id")String user_id) {
+		  boolean a = service.userTypeCheck(user_id);
+		  
+		  try {
+			  if(a) {//giver 이면
+				  logger.info("usertype : giver");
+			  //좋아요, 북마크 삭제 
+			  //댓글 삭제 
+				bservice.deletecomment_userid(user_id);
+				logger.info("댓글삭제 ok");
+			  //채팅 삭제 
+			  //user_has_favorite 삭제
+			  //board_has_favorite 삭제 
+			  //giver_board 삭제 
+				bservice.deletegiverboard_userid(user_id);
+				logger.info("giverboard 삭제 ok ");
+			  //common_board 삭제 
+				bservice.deletecommonboard_userid(user_id);
+				logger.info("commonboard 삭제 ok ");
+				service.deleteuser(user_id, session);
+				logger.info("user삭제 ok ");
+		  }else {//taker 이면 
+			  logger.info("usertype : taker");
+			  //좋아요, 북마크 삭제 
+			  //댓글 삭제 
+			  bservice.deletecomment_userid(user_id);
+			  logger.info("댓글 삭제 ok ");
+			  //채팅 삭제 
+			  //user_has_favorite 삭제
+			  //board_has_favorite 삭제 
+			  //common_board 삭제 
+			  bservice.deletecommonboard_userid(user_id);
+			  logger.info("common_board 삭제 ok ");
+			  service.deleteuser(user_id, session); 
+			  logger.info("user 삭제 ok ");
+		  }
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		  service.deleteuser(user_id,session);
 		  logger.info("회원정보 삭제 " );
 		 

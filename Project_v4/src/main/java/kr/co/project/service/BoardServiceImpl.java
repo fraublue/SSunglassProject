@@ -120,6 +120,36 @@ public class BoardServiceImpl implements BoardService {
 		dao.deletecomment(comment_id);
 		
 	}
+	@Override
+	public void deletecomment_boardid(int board_id) throws Exception {
+		dao.deletecomment_boardid(board_id);
+		
+	}
+	@Override
+	public void deletegiverboard_boardid(int board_id) throws Exception {
+		gdao.deletegiverboard_boardid(board_id);
+		
+	}
+	@Override
+	public void deletecommonboard_boardid(int board_id) throws Exception {
+		dao.deletecommonboard_boardid(board_id);
+		
+	}
+	@Override
+	public void deletecomment_userid(String user_id) throws Exception {
+		dao.deletecomment_userid(user_id);
+		
+	}
+	@Override
+	public void deletegiverboard_userid(String user_id) throws Exception {
+		gdao.deletegiverboard_userid(user_id);
+		
+	}
+	@Override
+	public void deletecommonboard_userid(String user_id) throws Exception {
+		dao.deletecommonboard_userid(user_id);
+		
+	}
 
 //  @Transactional
 //  @Override

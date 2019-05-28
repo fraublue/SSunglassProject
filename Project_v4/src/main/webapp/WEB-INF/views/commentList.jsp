@@ -19,9 +19,9 @@
 								<input type="hidden" value="${board_id}" name="board_id" class="board_id">
 								<span name="user_id" name="user_id">${list.user_id }</span><span>|</span>${list.reg_date } <span>|</span> ${list.comment_star } <span>|</span>
 								<c:if test="${sessionScope.user_id eq list.user_id }">
-								<span><a class = "delete" href="commentdelete?comment_id=${list.comment_id }" >
 								<input type="hidden" value="${list.comment_id }" name="comment_id" class="comment_id">
-								삭제</a></span>
+								<%-- <span onClick="commentdelete(${list.comment_id});return false;" class="btn_delete">삭제</span> --%>
+							 	<span data-cid='${list.comment_id}' class="btn_delete">삭제</span> 
 								</c:if>
 							</div>
 							<p>
@@ -40,3 +40,4 @@
 					alert("댓글 삭제합니다");
 				});
 				</script>
+	

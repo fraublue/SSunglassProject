@@ -65,6 +65,7 @@ public class UserDAOImpl implements UserDAO {
 	public boolean userTypeCheck(String user_id) {
 		int i = session.selectOne(namespace+".userTypeCheck",user_id);
 		return (i == 1) ? true : false;
+		//1이면 (giver이면) true, 0이면 (taker이면 ) false return 
 	}
 
 }

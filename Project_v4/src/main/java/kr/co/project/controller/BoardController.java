@@ -130,7 +130,7 @@ public class BoardController {
 		return mav;
 	}
   
-	@RequestMapping(value = "/boardview.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/boardview.do")
 	public ModelAndView boardview(@RequestParam("board_id") int board_id, @RequestParam("user_id") String user_id)
 			throws Exception {
 		logger.info("boardview board_id ::: " + board_id);
@@ -312,10 +312,11 @@ public class BoardController {
 			
 			e.printStackTrace();
 		}
+		int board_id = gbvo.getBoard_id();
 		
-		return "main";
+		return "forward:/board/boardview.do?board_id="+board_id;
 	}
-	@RequestMapping(value = "/update" )
+	@RequestMapping(value = "/update", method = RequestMethod.POST )
 	public String updateboardtaker(@ModelAttribute CommonBoardVO cbvo, HttpServletRequest request) {
 		logger.info("update taker " + cbvo );
 		try {
@@ -324,8 +325,10 @@ public class BoardController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		int board_id = cbvo.getBoard_id();
+		String user_id = cbvo.getUser_id();
 		
-		return "main";
+		return "forward:/board/boardview.do?board_id="+board_id;
 	}
 	
 	
@@ -334,12 +337,33 @@ public class BoardController {
 	@RequestMapping(value = "/deleteboard")
 	public String deleteboard(@RequestParam("user_id")String user_id , @RequestParam("board_id") int board_id) {
 		try {
-			service.deleteboard(user_id,board_id);
+			logger.info("deleteboard");
+			//user가 giver인지, taker 인지 판단 후에 
+			boolean flag = serviceuser.userTypeCheck(user_id);
+			if(flag) {//giver 이면 
+				//댓글 삭제 
+				service.deletecomment_boardid(board_id);
+				//like, 북마크 삭제(추가) 
+				//board_has_favorite 삭제
+				//giver_board 삭제
+				service.deletegiverboard_boardid(board_id);
+				//common_board 삭제 
+				service.deletecommonboard_boardid(board_id);
+			}else {
+				//댓글 삭제 
+				service.deletecomment_boardid(board_id);
+				//like, 북마크 삭제 (추가)
+				//board_has_favorite 삭제
+				//common_board 삭제 
+				service.deletecommonboard_boardid(board_id);
+			}
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "test";
+		return "main";
 	}
 	
 	

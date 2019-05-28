@@ -97,4 +97,17 @@ public class CommonBoardDAO {
 			session.delete(namespace+".deletecomment",comment_id);
 		}
 		
+		public void deletecomment_boardid(int board_id) throws Exception{
+			session.delete(namespace+".deletecomment_boardid", board_id);
+		}
+		public void deletecommonboard_boardid(int board_id) throws Exception{
+			session.delete(namespace+".deletecommonboard_boardid",board_id);
+		}
+		public void deletecomment_userid(String user_id) throws Exception{
+			session.delete(namespace+".deletecomment_userid",user_id);
+		}
+		public void deletecommonboard_userid(String user_id) throws Exception{
+			session.delete(namespace+".deletecommonboard_userid",user_id);
+		}
+		
 }

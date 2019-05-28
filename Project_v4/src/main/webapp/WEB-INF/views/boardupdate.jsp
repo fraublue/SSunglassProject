@@ -88,7 +88,7 @@
 	<!-- Mobile menu overlay mask -->
 
 	<!-- Header================================================== -->
-	<%@include file="../include/header.jsp"%>
+	<%@include file="include/header.jsp"%>
 
 	<section id="search_container"></section>
 	<div class="container margin_60">
@@ -104,10 +104,10 @@
 
 					<div id="message-contact"></div>
 					<c:if test ="${ sessionScope.user_type == 1 }">
-						<form action="<%=request.getContextPath()%>/board/writeg" method="post">
+						<form action="<%=request.getContextPath()%>/board/updateg" method="post">
 					</c:if>
 					<c:if test ="${ sessionScope.user_type == 0 }"> 
-						<form action="<%=request.getContextPath()%>/board/write" method="post">
+						<form action="<%=request.getContextPath()%>/board/update" method="post">
 					</c:if>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
@@ -127,7 +127,7 @@
 									<h4>Message</h4>
 									<textarea rows="5" id="message_contact" name="board_content"
 										class="form-control" placeholder="Write your message"
-										style="height: 200px;"></textarea>
+										style="height: 200px;">${common_board.board_content}</textarea>
 								</div>
 							</div>
 						</div>
@@ -151,6 +151,7 @@
 									<div class="form-group">
 										<input type="text" id="address"
 											class="cst-form-control form-control" name="addr"
+											value="${giver_board.addr }"
 											placeholder="주소"> <input type="text"
 											id="extraAddress" class="cst-form-control form-control"
 											placeholder="참고항목">
@@ -292,7 +293,7 @@
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"><input
 													type="checkbox" name="amenities1" id="amenti1" value="Pet allowed"
-													checked=""> <span> <span>No</span> <span>Yes</span>
+													<c:if test='${giver_board.amenities1 != null}'> checked=""</c:if>> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -302,7 +303,7 @@
 											<td><label class="switch-light switch-ios pull-right">
 											
 													<input type="checkbox" name="amenities2" id="amenti2"
-													value="Free Wifi" checked=""> <span> <span>No</span>
+													value="Free Wifi" <c:if test='${giver_board.amenities2 != null}'> checked=""</c:if>> <span> <span>No</span>
 														<span>Yes</span>
 												</span> <a></a>
 											</label></td>
@@ -311,8 +312,8 @@
 											<td><i class="icon_set_1_icon-13"></i></td>
 											<td>Accessibiliy</td>
 											<td><label class="switch-light switch-ios pull-right">
-											<input type="checkbox" name="amenities3" id="amenti3"
-													value="Accessibiliy" checked=""> <span> <span>No</span>
+													<input type="checkbox" name="amenities3" id="amenti2"
+													value="Accessibiliy" <c:if test='${giver_board.amenities3 != null}'> checked=""</c:if>> <span> <span>No</span>
 														<span>Yes</span>
 												</span> <a></a>
 											</label></td>
@@ -322,7 +323,7 @@
 											<td>Parking</td>
 											<td><label class="switch-light switch-ios pull-right">												
 													<input type="checkbox" name="amenities4" id="amenti4"
-													value="Parking"> <span> <span>No</span>
+													value="Parking" <c:if test='${giver_board.amenities4 != null}'> checked=""</c:if>> <span> <span>No</span>
 														<span>Yes</span>
 												</span> <a></a>
 											</label></td>
@@ -347,15 +348,15 @@
 								<div class="col-md-12">
 									<div class="form-group cst-form-group-layout cst-form-group">
 										<label><i class="icon-calendar-7"></i> Start Date</label> <input
-											class="date-pick form-control" name="booking_startdate"
-											data-date-format="yyyy-mm-dd" type="text">
+											class="date-pick1 form-control" name="booking_startdate"
+											data-date-format="yyyy-mm-dd" type="text" value="${giver_board.booking_startdate}">
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group cst-form-group-layout cst-form-group">
 										<label><i class="icon-calendar-7"></i> End Date</label>
 										<!-- <input class="date-pick form-control" name="booking_enddate" data-date-format="M d, D" type="text"> -->
-										<input class="date-pick form-control" name="booking_enddate"
+										<input class="date-pick2 form-control" name="booking_enddate" value="${giver_board.booking_enddate}"
 											data-date-format="yyyy-mm-dd" type="text">
 									</div>
 								</div>
@@ -363,7 +364,7 @@
 									<div class="form-group cst-form-group-layout cst-form-group">
 										<label>수용가능 인원</label>
 										<div class="numbers-row">
-											<input type="text" value="1" id="adults"
+											<input type="text" value="${giver_board.people}" id="adults"
 												class="qty2 form-control" name="people">
 											<div class="inc button_inc">+</div>
 											<div class="dec button_inc">-</div>
@@ -375,7 +376,7 @@
 										<label>ETC</label>
 										<textarea rows="5" id="message_contact" name="amenities_etc"
 											class="form-control" placeholder="Write your message"
-											style="height: 53px;"></textarea>
+											style="height: 53px;">${giver_board.amenities_etc}</textarea>
 									</div>
 								</div>
 							</div>
@@ -383,10 +384,10 @@
 						</c:if>
 						<div class="row">
 							<div class="col-md-6">							
-									<c:if test='${sessionScope.user_type == 1 }'><input type="hidden" name="board_id" value="0"></c:if>
+									
 									<input type="hidden" name="user_type" value="${sessionScope.user_type}">						
-								
-								<input type="submit" value="글작성" class="btn_1"
+								<input type="hidden" name="board_id" value="${common_board.board_id }">
+								<input type="submit" value="글수정" class="btn_1"
 									id="submit-contact">
 							</div>
 						</div>
@@ -471,7 +472,10 @@
 	<!-- Common scripts -->
 	<script src="/js/bootstrap-datepicker.js"></script>
 	<script>
-		$('input.date-pick').datepicker('setDate', 'today');
+		var i = $('input.date-pick1').val();
+		$('input.date-pick1').datepicker('setDate', i);
+		var i2 = $('input.date-pick2').val();
+		$('input.date-pick2').datepicker('setDate', i2);
 		$(".checkedCheck").each(function(){
 			var chk = $(this).find("input[type='checkbox']").is(":checked");
 			if(!chk){

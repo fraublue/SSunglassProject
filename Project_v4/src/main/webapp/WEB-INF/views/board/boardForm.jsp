@@ -509,16 +509,17 @@
 					<!--  작성자 본인일 때 글 수정 및 삭제 가능  -->
 					<c:if test="${common_board.user_id eq sessionScope.user_id }">
 						<form action="updateboard.do" method="post" >
-							<input type="hidden" value="${common_board.board_id }" name="board_id">
+							<input type="hidden" value="${common_board.board_id }" id="boardid" name="board_id">
 							<input type="hidden" value="${common_board.user_id }" name="user_id">
 							<input type="submit" value="글수정" class="btn_1" >
 						</form>
 						<br>
 						<br>
 						<form action="deleteboard" method="post" >
-							<input type="hidden" value="${common_board.board_id }" name="board_id">
+							<%-- <input type="hidden" value="${common_board.board_id }" name="board_id">
 							<input type="hidden" value="${common_board.user_id }" name="user_id">
-							<input type="submit" value="글삭제 " class="btn_1" id="deleteboard" >
+							<input type="submit" value="글삭제 " class="btn_1" id="deleteboard" > --%>
+						<span class="deleteboard"><a href="deleteboard?user_id=${common_board.user_id}&board_id=${common_board.board_id}"> 글삭제</a></span>
 						</form>
 					</c:if>
 
@@ -530,7 +531,7 @@
 
 				<!-- end box_style_1 -->
 
-				<h4>3 comments</h4>
+				
 				<!-- 		<script src="https://code.jquery.com/jquery-3.4.1.js"
 					integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 					crossorigin="anonymous"></script> -->
@@ -613,8 +614,18 @@
 		});
 	</script>
 	<!-- Date and time pickers -->
-	<!-- <script src="js/jquery.sliderPro.min.js"></script>
+<script src="js/jquery.sliderPro.min.js"></script>
 	<script type="text/javascript">
+	$(".deleteboard").click(function(){
+		if (confirm("글을 삭제 하시겠습니까?") == true) {
+           return true;
+        } else {
+        	return false;
+        }
+
+
+출처: https://parkdex.tistory.com/15 [PARKDEX]
+	})
 		$(document).ready(function($) {
 			$('#Img_carousel').sliderPro({
 				width : 960,
@@ -631,7 +642,7 @@
 				autoplay : false
 			});
 		});
-	</script> -->
+	</script>
 
 
 	<!-- Date and time pickers -->
@@ -658,18 +669,28 @@
 	<!--Review modal validation -->
 	<script src="/assets/validate.js"></script>
 	<script>
-		$(function() {
-			
+
+	
+	window.onload = function(){
+	$(document).on('click',".btn_delete",function(){
+		console.log(this+" : dsfdasdfd");
+	
+		
+		var thisCmtId= $(this).attr("data-cid");
+		commentdelete(thisCmtId);
+		return false;
+	
+	});
+			commentList(<%=request.getParameter("board_id")%>);
 
 			$("#comment_submit").on('click', function() {
 				commentInsert();
 			});
 			
 			
-			
-			function commentdelete(){
+			function commentdelete(cmt_id){
 				var cmtdata = {
-						"comment_id" : $('.comment_id').val()
+						"comment_id" : cmt_id
 				};
 				$.ajax({
 					type : "POST",
@@ -686,6 +707,8 @@
 				}
 						)
 			};
+			
+			
 			function commentInsert() {
 				var cmtdata = {
 					"user_id" : $("#c_uid").val(),
@@ -701,17 +724,12 @@
 						console.log(err);
 					},
 					success : function() {
-						commentList(
-	<%=request.getParameter("board_id")%>
-		);
+						commentList(<%=request.getParameter("board_id")%>);
 					}
 				})
-			}
-			;
+			};
 
-			commentList(
-	<%=request.getParameter("board_id")%>
-		);
+		
 
 			function commentList(num) {
 				$.ajax({
@@ -730,7 +748,7 @@
 				});
 			}
 
-		})
+		}
 	</script>
 	<script type="text/javascript"
 		src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=b71c545210111992d3f4b64ae0245b27&libraries=services"></script>
@@ -777,6 +795,6 @@
 				rmvbox.parent().remove();
 			});
 		}
-	</script>
+	</script> 
 </body>
 </html>

@@ -332,7 +332,7 @@
 
 
 					<br> <br>
-					<form action="/deleteuser.do" method="post">
+					<form action="deleteuser.do" method="post">
 						<input type="hidden" name="user_id" value="${vo.user_id }">
 						<button type="submit" class="btn_1 green">User Leave</button>
 					</form>

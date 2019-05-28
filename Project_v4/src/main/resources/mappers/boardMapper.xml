@@ -214,4 +214,53 @@ where
 	]]>
 	</delete>
 	
+	<delete id="deletecomment_boardid" parameterType="int">
+	<![CDATA[
+		DELETE FROM `sns_prj`.`comment` 
+		WHERE (`board_id` = #{board_id});
+	
+	]]>
+	</delete>
+	
+	<delete id="deletecomment_userid" parameterType="int">
+	<![CDATA[
+		DELETE FROM `sns_prj`.`comment` 
+		WHERE (`user_id` = #{user_id});
+	
+	]]>
+	</delete>
+	
+	<delete id="deletegiverboard_boardid" parameterType="int">
+	<![CDATA[
+		DELETE FROM `sns_prj`.`giver_board` 
+		WHERE (`board_id` = #{board_id});
+	]]>
+	</delete>
+	
+	<delete id="deletegiverboard_userid" parameterType="int">
+	<![CDATA[
+	delete from `sns_prj`.`giver_board`
+	where `user_id` = (
+		select u.user_id
+		from user u, giver_board g, common_board c
+		where u.user_id = c.user_id
+		and g.board_id = c.board_id);
+	]]>
+	</delete>
+	
+	
+	<delete id="deletecommonboard_boardid" parameterType="int">
+	<![CDATA[
+		DELETE FROM `sns_prj`.`common_board` 
+		WHERE (`board_id` = #{board_id});
+	]]>
+	</delete>
+	
+	<delete id="deletecommonboard_userid" parameterType="int">
+	<![CDATA[
+		DELETE FROM `sns_prj`.`common_board` 
+		WHERE (`user_id` = #{user_id});
+	]]>
+	</delete>
+	
 </mapper>

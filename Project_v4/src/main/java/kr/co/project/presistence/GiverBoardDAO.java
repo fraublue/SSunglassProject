@@ -35,4 +35,12 @@ public class GiverBoardDAO {
 		  gbvo.setBoard_id(board_id);
 		  session.delete(namespace+".deleteboardgiver",gbvo);
 	  }
+	  
+	  public void deletegiverboard_boardid(int board_id) throws Exception{
+		  session.delete(namespace+".deletegiverboard_boardid",board_id);
+	  }
+	  
+	  public void deletegiverboard_userid(String user_id) throws Exception{
+		  session.delete(namespace+".deletegiverboard_userid",user_id);
+	  }
 }
