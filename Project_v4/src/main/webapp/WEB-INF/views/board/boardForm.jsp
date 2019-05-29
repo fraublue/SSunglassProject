@@ -1,23 +1,12 @@
-<%-- <%@page import="kr.co.sunglass.model.CommonBoardVO"%>
-<%@page import="kr.co.sunglass.service.CommentView"%>
-<%@page import="kr.co.sunglass.model.CommentVO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%> --%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%
-	//List<CommentView> list = (List<CommentView>)request.getAttribute("list");
-	CommonBoardVO cbvo = new CommonBoardVO();
-	cbvo = (CommonBoardVO) request.getAttribute("cbvo");
-	//int j = (Integer)request.getAttribute("count");
-%> --%>
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="ie ie8"> <![endif]-->
-<!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->
+
 <html>
-<!--<![endif]-->
+
 <head>
 
 
@@ -194,9 +183,115 @@
 				</div>
 				<div class="box_style_1">
 					<div class="post nopadding">
+					<input type="hidden" value="${common_board.board_id}" class="board_id">
+					<input type="hidden" value="${sessionScope.user_id}" class="user_id">
+						
 						<img
 							src="<%=request.getContextPath()%>/data/${common_board.thumb_img}"
 							alt="" class="img-responsive">
+							<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+							<img id="like" src="img/${like}" width="20px" height="20px">
+		<span id="likecnt">${likecnt}</span>
+
+
+		 <script>
+			$(document).ready(function(){
+				$("#like").on("click",function(){
+					var imgsrc = $(this).attr("src");
+					console.log(imgsrc);
+					if(imgsrc == "img/like1.png"){//1이 비어있는거				
+						$(this).attr("src","img/like2.png");
+						like("insertLike.do",imgsrc);
+						likecnt("selectLikecnt.do");
+						
+					}else{
+						$(this).attr("src","img/like1.png");
+						like("removeLike.do",imgsrc);
+						likecnt("selectLikecnt.do");
+						
+					}
+				})
+				
+				
+				function like(act,src){
+					var board_id = $(".board_id").val();
+					var user_id = $(".user_id").val();
+					console.log(act);
+					var sendData = {'board_id' : board_id, 'user_id' : user_id };
+					$.ajax({
+						url:act,
+						type :'post',
+						data: sendData,
+						success : function(data){
+							likecnt("selectLikecnt.do");
+						}
+					})
+				}	
+				
+			})
+			
+			function likecnt(act){
+				var board_id = $(".board_id").val();
+				var user_id = $(".user_id").val();
+				
+				var sendData = {'board_id' : board_id, 'user_id' : user_id };
+				$.ajax({
+					url:act,
+					type :'post',
+					data: sendData,
+					success : function(data){
+						//console.log("쿼리문 실행해서 값이 있으면 false, 없으면 true 입니다 : " + data);					
+						//changeImg(src);
+						console.log(data);
+						$("#likecnt").text(data);
+						
+					}
+				})
+			}
+
+			</script> 
+			
+			
+		
+			<img id="star" src="img/${star}" width="20px" height="20px" align="right">
+
+		<script>
+			$(document).ready(function(){
+				$("#star").on("click",function(){
+					var imgsrc = $(this).attr("src");
+					console.log(imgsrc);
+					if(imgsrc == "img/star0.png"){//0이 비어있는거				
+						$(this).attr("src","img/star1.png");
+						like("insertmark.nn",imgsrc);
+						//console.log($(this).attr("src"));
+					}else{
+						$(this).attr("src","img/star0.png");
+						like("deletemark.nn",imgsrc);				
+						//console.log($(this).attr("src"));
+					}
+				})
+				
+				
+				function bookmark(act,src){
+					var board_id = $(".board_id").val();
+					var user_id = $(".user_id").val();
+					
+					var sendData = {'board_id' : board_id, 'user_id' : user_id };
+					$.ajax({
+						url:act,
+						type :'post',
+						data: sendData,
+						success : function(data){
+							//console.log("쿼리문 실행해서 값이 있으면 false, 없으면 true 입니다 : " + data);					
+							//changeImg(src);
+							
+						}
+					})
+				}	
+				
+			})
+
+			</script> 
 
 						<div class="post_info clearfix">
 							<div class="post-left">

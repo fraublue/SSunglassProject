@@ -1,5 +1,6 @@
 package kr.co.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,6 +31,7 @@ import kr.co.project.domain.PageMaker;
 import kr.co.project.domain.SearchCriteria;
 import kr.co.project.domain.Test;
 import kr.co.project.service.BoardService;
+import kr.co.project.service.LikeService;
 import kr.co.project.service.UserService;
 
 @Controller
@@ -42,14 +44,38 @@ public class BoardController {
   private BoardService service;
   @Inject
   private UserService serviceuser;
+  @Inject
+  private LikeService likeservice;
   
   @RequestMapping(value = "/list", method = RequestMethod.GET)
-  public void takerlistPage(Model model) throws Exception {
+  public void takerlistPage(Model model, HttpSession session) throws Exception {
 
-    logger.info("");
+    logger.info("listpage");
     
     // model.addAttribute("list", service.listCriteria(cri));
-    model.addAttribute("list", service.giverlistAll());
+   
+   
+  List<CommonBoardVO> list = service.giverlistAll();
+  List<String> like = new ArrayList<String>();
+		  
+  String user_id = (String)session.getAttribute("user_id");
+  // mav.setViewName("list");
+    
+    for(int i=0; i<list.size(); i++) {
+    	int board_id = list.get(i).getBoard_id();
+    	boolean a = likeservice.checkLike(board_id, user_id);
+    	if(a) {
+    		like.add("like1.png");
+		}else {
+			like.add("like2.png");
+		}
+    	
+    }
+   // mav.addObject("list",list);
+   
+   model.addAttribute("list", service.giverlistAll());
+   model.addAttribute("like", like);
+    //
 
 //    PageMaker pageMaker = new PageMaker();
 //    pageMaker.setCri(cri);
@@ -130,11 +156,14 @@ public class BoardController {
 		return mav;
 	}
   
-	@RequestMapping(value = "/boardview.do")
-	public ModelAndView boardview(@RequestParam("board_id") int board_id, @RequestParam("user_id") String user_id)
+
+	@RequestMapping(value = "/boardview.do", method = RequestMethod.GET)
+	public ModelAndView boardview(@RequestParam("board_id") int board_id, @RequestParam("user_id") String user_id, @RequestParam("loginUserId") String loginUserId)
 			throws Exception {
 		logger.info("boardview board_id ::: " + board_id);
 		logger.info("boardview user_id ::::" + user_id);
+		logger.info("boardview session user_id  ::::" + loginUserId);
+		
 		
 		boolean flag = serviceuser.userTypeCheck(user_id);
 		
@@ -144,18 +173,43 @@ public class BoardController {
 			logger.info("boardview taker ::::::::::::::::");
 		}
 		
+		/*
+		 * int board_id = board_id; String user_id = loginUserId;
+		 */
+		//boolean a = markservice.checkExistBookmark(board_id, loginUserId);
+		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+a);
+		boolean b = likeservice.checkLike(board_id, loginUserId);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+b);
+		int c = likeservice.selectLikecnt(board_id);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+c);
+		
 		ModelAndView mav = new ModelAndView();
+		//좋아요 체크 로직 
+		if(b) {
+			mav.addObject("like","like1.png");
+		}else {
+			mav.addObject("like","like2.png");
+		}
+		//좋아요 개수로직
+		mav.addObject("likecnt",c);
+		
 		if (flag) {
 			mav.setViewName("board/boardForm");
 			mav.addObject("common_board", service.commmonboard(board_id));
 			mav.addObject("user_type",flag);
 			mav.addObject("giver_board",service.giverboard(board_id));
+//			if(a) {
+//				mav.addObject("star","star0.png");
+//			}else {
+//				mav.addObject("star","star1.png");
+//			}
 			
 		} else {
 			mav.setViewName("board/boardForm");
 			mav.addObject("common_board", service.commmonboard(board_id));
 			mav.addObject("user_type",flag);
 		}
+		
 		return mav;
 	}
 	
@@ -344,6 +398,7 @@ public class BoardController {
 				//댓글 삭제 
 				service.deletecomment_boardid(board_id);
 				//like, 북마크 삭제(추가) 
+				likeservice.deletelike_boardid(board_id);
 				//board_has_favorite 삭제
 				//giver_board 삭제
 				service.deletegiverboard_boardid(board_id);
@@ -353,6 +408,7 @@ public class BoardController {
 				//댓글 삭제 
 				service.deletecomment_boardid(board_id);
 				//like, 북마크 삭제 (추가)
+				likeservice.deletelike_boardid(board_id);
 				//board_has_favorite 삭제
 				//common_board 삭제 
 				service.deletecommonboard_boardid(board_id);

@@ -5,26 +5,32 @@
 <%-- <c:set var="list" value="${list}" scope="request" /> --%>
 <c:if test="${list !=null}">
 
-	<c:forEach var="bvo" items="${list}">
+	<c:forEach var="bvo" items="${list}" varStatus="status">
 		<div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.1s">
 
 			<div class="tour_container">
-				
-					<div class="img_container">
-				<a href="<%= request.getContextPath()%>/board/boardview.do?board_id=${bvo.board_id}&user_id=${bvo.user_id}">		<img src="/data/${bvo.thumb_img}" class="img-responsive" alt="">
-				</a>
-					</div>
+
+				<div class="img_container">
+					<a
+						href="<%= request.getContextPath()%>/board/boardview.do?board_id=${bvo.board_id}&user_id=${bvo.user_id}&loginUserId=${sessionScope.user_id}">
+						<img src="/data/${bvo.thumb_img}" class="img-responsive" alt="">
+					</a>
+				</div>
 				<div class="tour_title">
 					<h3>
 						<strong>${bvo.user_id}</strong>
+						
 					</h3>
+					<c:if test="${sessionScope.user_id != null }">
+					<c:forEach begin="${status.index}" end="${status.index}" var="lvo"
+							items="${like }">
+						<img class="like" src="img/${lvo}" align="right">
+
+						</c:forEach>
+						<input type="hidden" value="${bvo.board_id}" class="board_id">
+						<input type="hidden" value="${sessionScope.user_id}" class="user_id">
+					</c:if>
 					
-					<div class="wishlist">
-						<a class="tooltip_flip tooltip-effect-1"
-							href="javascript:void(0);"> + <!-- <span class="tooltip-content-flip"></span> -->
-							<%-- <span>${bvo.like_cnt}</span> --%>
-						</a>
-					</div>
 					<!-- End wish list-->
 				</div>
 			</div>
@@ -32,7 +38,6 @@
 		</div>
 		<!-- End col-md-4 -->
 	</c:forEach>
-
 </c:if>
 
 
