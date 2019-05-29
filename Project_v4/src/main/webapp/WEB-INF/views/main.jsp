@@ -458,7 +458,9 @@
 				<li><a href="#">소모임</a></li>
 			</ul>
 		</div>
-		<div class="row" id="listWrap"></div>
+		<div class="row" id="listWrap">
+		
+		</div>
 		<!-- End row -->
 
 		<!-- <p class="text-center nopadding">
