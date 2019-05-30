@@ -31,6 +31,7 @@ import kr.co.project.domain.PageMaker;
 import kr.co.project.domain.SearchCriteria;
 import kr.co.project.domain.Test;
 import kr.co.project.service.BoardService;
+import kr.co.project.service.BookmarkService;
 import kr.co.project.service.LikeService;
 import kr.co.project.service.UserService;
 
@@ -46,6 +47,8 @@ public class BoardController {
   private UserService serviceuser;
   @Inject
   private LikeService likeservice;
+  @Inject
+  private BookmarkService markservice;
   
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   public void takerlistPage(Model model, HttpSession session) throws Exception {
@@ -176,8 +179,8 @@ public class BoardController {
 		/*
 		 * int board_id = board_id; String user_id = loginUserId;
 		 */
-		//boolean a = markservice.checkExistBookmark(board_id, loginUserId);
-		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+a);
+		boolean a = markservice.checkExistBookmark(board_id, loginUserId);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+a);
 		boolean b = likeservice.checkLike(board_id, loginUserId);
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+b);
 		int c = likeservice.selectLikecnt(board_id);
@@ -198,11 +201,11 @@ public class BoardController {
 			mav.addObject("common_board", service.commmonboard(board_id));
 			mav.addObject("user_type",flag);
 			mav.addObject("giver_board",service.giverboard(board_id));
-//			if(a) {
-//				mav.addObject("star","star0.png");
-//			}else {
-//				mav.addObject("star","star1.png");
-//			}
+			if(a) {
+				mav.addObject("star","star0.png");
+			}else {
+				mav.addObject("star","star1.png");
+			}
 			
 		} else {
 			mav.setViewName("board/boardForm");

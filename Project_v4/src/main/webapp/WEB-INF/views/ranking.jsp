@@ -69,13 +69,12 @@
 				error : function(err) {
 					console.log(err);
 				},
-				success : function(data) {					
+				success : function(data) {
 					$("#listWrap").append(data);
 				}
 			});
 		}
-		
-		
+
 	})
 </script>
 
@@ -135,19 +134,15 @@
 		<div id="tabs" class="tabs">
 			<nav>
 				<ul>
-					<li><a href="#section-4" class="icon-profile"><span>Profile</span></a></li>
+					<li><a href="#section-1" class="icon-profile"><span>Profile</span></a></li>
+					<li><a href="#section-2"><img src="img/star1.png"
+							width="20px" height="20px"><span>Bookmark</span></a></li>
 				</ul>
 			</nav>
+
 			<div class="content">
-				<!-- 
-			<section id="section-3"> 
-			
--->
 
-				<hr>
-
-
-				<section id="section-4" class="content-current">
+				<section id="section-1">
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
 							<h4>
@@ -178,12 +173,12 @@
 							<!--	</p>-->
 						</div>
 					</div>
-				
+
 
 					<!-- End row -->
 					<div>
 						<h4>
-							<span >${vo.user_id}</span>'S post
+							<span>${vo.user_id}</span>'S post
 						</h4>
 						<div id="listWrap" class="row"></div>
 					</div>
@@ -241,116 +236,127 @@
 						</div>
 						<!-- End row -->
 
-						<!--
-			</section>
-				 End section 3 
-				 
--->
+
+
+
+						<form action="/update.do" method="post"
+							onsubmit="return validate();">
+							<div class="row">
+								<div class="col-md-12">
+									<h4>Edit profile</h4>
+								</div>
+								<input type="hidden" id="user_id" name="user_id"
+									value="${vo.user_id}">
+
+								<div class="col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>name</label> <input class="form-control"
+											name="user_name" id="user_name" type="text"
+											value="${vo.user_name}">
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>PHONE NUMBER</label> <input class="form-control"
+											name="tel" id="tel" type="text" value="${vo.tel}">
+									</div>
+								</div>
+							</div>
+							<!-- End row -->
+
+							<div class="row">
+								<div class="col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>PASSWORD</label> <input class="form-control"
+											name="u_password" id="password" type="password"
+											value="${vo.u_password}" placeholder="바꿀 비밀번호 혹은 기존 비밀번호 입력"
+											id="pw">
+
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-6">
+									<div class="form-group">
+										<label>Email<small></small></label> <input
+											class="form-control" name="email" id="email" type="text"
+											value="${vo.email}">
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="btn_1 green">Update Profile</button>
+						</form>
+						<!-- End row -->
+
+						<hr>
+
+
+						<hr>
+
+						<!-- Hidden on mobiles -->
+						<div class="hidden-xs">
+							<!-- Drop Zone -->
+							<h5>Or drag and drop files below</h5>
+							<div class="upload-drop-zone" id="drop-zone">Just drag and
+								drop files here</div>
+							<!-- Progress Bar -->
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="60"
+									aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+									<span class="sr-only">60% Complete</span>
+								</div>
+							</div>
+							<!-- Upload Finished -->
+							<div class="js-upload-finished">
+								<h5>Processed files</h5>
+								<div class="list-group">
+									<a href="#" class="list-group-item list-group-item-success"><span
+										class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+									<input type="hidden" name="thumb_nail"
+										value="<%-- <%=vo.getThumb_nail()%> --%>">
+								</div>
+							</div>
+							<!-- End Hidden on mobiles -->
+
+							<hr>
+
+
+
+							<!-- End section 4 -->
+
+							<div></div>
+
+
+							<br> <br>
+							<form action="/deleteuser.do" method="post">
+								<input type="hidden" name="user_id" value="${vo.user_id }">
+								<button type="submit" class="btn_1 green">User Leave</button>
+							</form>
+
+						</div>
+						<br>
+						<br>
+					</c:if>
 				</section>
 
-				<form action="/update.do" method="post" onsubmit="return validate();">
+				<section id="section-2">
 					<div class="row">
-						<div class="col-md-12">
-							<h4>Edit profile</h4>
-						</div>
-						<input type="hidden" id="user_id" name="user_id"
-							value="${vo.user_id}">
 
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label>name</label> <input class="form-control" name="user_name"
-									id="user_name" type="text" value="${vo.user_name}">
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label>PHONE NUMBER</label> <input class="form-control"
-									name="tel" id="tel" type="text" value="${vo.tel}">
-							</div>
-						</div>
+						<div name="bookmark" id="bookmarklist"></div>
+
 					</div>
 					<!-- End row -->
 
-					<div class="row">
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label>PASSWORD</label> <input class="form-control"
-									name="u_password" id="password" type="password"
-									value="${vo.u_password}" placeholder="바꿀 비밀번호 혹은 기존 비밀번호 입력"
-									id="pw">
-
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label>Email<small></small></label> <input class="form-control"
-									name="email" id="email" type="text" value="${vo.email}">
-							</div>
-						</div>
-					</div>
-					<button type="submit" class="btn_1 green">Update Profile</button>
-				</form>
-				<!-- End row -->
-
-				<hr>
-
-
-				<hr>
-
-				<!-- Hidden on mobiles -->
-				<div class="hidden-xs">
-					<!-- Drop Zone -->
-					<h5>Or drag and drop files below</h5>
-					<div class="upload-drop-zone" id="drop-zone">Just drag and
-						drop files here</div>
-					<!-- Progress Bar -->
-					<div class="progress">
-						<div class="progress-bar" role="progressbar" aria-valuenow="60"
-							aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-							<span class="sr-only">60% Complete</span>
-						</div>
-					</div>
-					<!-- Upload Finished -->
-					<div class="js-upload-finished">
-						<h5>Processed files</h5>
-						<div class="list-group">
-							<a href="#" class="list-group-item list-group-item-success"><span
-								class="badge alert-success pull-right">Success</span>image-01.jpg</a>
-							<input type="hidden" name="thumb_nail"
-								value="<%-- <%=vo.getThumb_nail()%> --%>">
-						</div>
-					</div>
-					<!-- End Hidden on mobiles -->
-
-					<hr>
-
-
-
-					<!-- End section 4 -->
-
-					<div></div>
-
-
-					<br> <br>
-					<form action="deleteuser.do" method="post">
-						<input type="hidden" name="user_id" value="${vo.user_id }">
-						<button type="submit" class="btn_1 green">User Leave</button>
-					</form>
-
-				</div>
-				<br> <br>
-				</c:if>
-
-				<!-- End content -->
-
-
+				</section>
+				<!-- End section 2 -->
 
 			</div>
-			<!-- End tabs -->
+			<!-- End content -->
+
 		</div>
-		<!-- end container -->
+		<!-- End tabs -->
 
 	</div>
+	<!-- end container -->
+
 	<%@include file="include/footer.jsp"%>
 
 
@@ -373,39 +379,85 @@
 			$(this).parent().parent().parent().fadeOut('slow', function(c) {
 			});
 		});
-		
-		
-	
-	
+
 		function validate() {
-			
-			
-			if($("#password").val() == ""){
+
+			if ($("#password").val() == "") {
 				alert("비밀번호를 입력하세요 ! ");
 				return false;
 			}
-			if($("#email").val() == ""){
+			if ($("#email").val() == "") {
 				alert("이메일을 입력해주세요");
 				return false;
 			}
-			if($("#user_name").val() == ""){
+			if ($("#user_name").val() == "") {
 				alert("이름을 입력하세요 ! ");
 				return false;
 			}
-			if($("#tel").val() == ""){
+			if ($("#tel").val() == "") {
 				alert("전화번호를 입력하세요 ! ");
 				return false;
 			}
-			if(!/^[a-zA-Z0-9]{4,12}$/.test($("#password").val())){
+			if (!/^[a-zA-Z0-9]{4,12}$/.test($("#password").val())) {
 				alert("패스워드는 4~12자의 영문 대소문자와 숫자로만 입력");
 				return false;
 			}
-				
-				
+
 			alert("정보수정이 완료되었습니다.");
-			
+
+		}
+	</script>
+	<script src="js/tabs.js"></script>
+	<script>
+		new CBPFWTabs(document.getElementById('tabs'));
+	</script>
+	<script>
+	
+	$(document).on('click',"#section-2",function(){
+		bookmarkList(aa);
+	})
+		<%-- $(function() {
+			function bookmarkList(user_id) {
+				var user_id = ${sessionScope.user_id};
+				
+				$.ajax({
+					type : "GET",
+					url : "<%=request.getContextPath()%>/bookmarklist.nn",
+					data : {
+						"user_id" : user_id,
+
+					},
+					error : function(err) {
+						console.log(err);
+					},
+					success : function(data) {
+						$("#bookmarklist").html(data);
+					}
+				});
+			}
+		}) --%>
+	$(function() {
+		var user_id = $(".uid").text()
+		//var user_id = ${vo.user_id}+"";
+		bookmarkList(user_id);
+		
+		function bookmarkList(user_id) {
+			$.ajax({
+				type : "GET",
+				url : "<%=request.getContextPath()%>/bookmarklist.nn",
+				data : {
+					"user_id" : user_id
+				},
+				error : function(err) {
+					console.log(err);
+				},
+				success : function(data) {
+					$("#bookmarklist").append(data);
+				}
+			});
 		}
 
+	})
 	</script>
 </body>
 </html>

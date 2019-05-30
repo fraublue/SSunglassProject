@@ -15,8 +15,8 @@ import kr.co.project.domain.Criteria;
 import kr.co.project.domain.FavoriteType;
 import kr.co.project.domain.GiverBoardVO;
 import kr.co.project.domain.SearchCriteria;
-import kr.co.project.presistence.CommonBoardDAO;
-import kr.co.project.presistence.GiverBoardDAO;
+import kr.co.project.persistence.CommonBoardDAO;
+import kr.co.project.persistence.GiverBoardDAO;
 
 @Service
 public class BoardServiceImpl implements BoardService {

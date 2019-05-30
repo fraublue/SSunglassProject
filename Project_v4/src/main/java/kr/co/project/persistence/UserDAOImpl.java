@@ -1,4 +1,4 @@
-package kr.co.project.presistence;
+package kr.co.project.persistence;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;

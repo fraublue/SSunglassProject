@@ -262,11 +262,11 @@
 					console.log(imgsrc);
 					if(imgsrc == "img/star0.png"){//0이 비어있는거				
 						$(this).attr("src","img/star1.png");
-						like("insertmark.nn",imgsrc);
+						bookmark("insertmark.nn",imgsrc);
 						//console.log($(this).attr("src"));
 					}else{
 						$(this).attr("src","img/star0.png");
-						like("deletemark.nn",imgsrc);				
+						bookmark("deletemark.nn",imgsrc);				
 						//console.log($(this).attr("src"));
 					}
 				})

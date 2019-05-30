@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.project.domain.LikeVO;
-import kr.co.project.presistence.LikeDAO;
+import kr.co.project.persistence.LikeDAO;
 
 
 @Service

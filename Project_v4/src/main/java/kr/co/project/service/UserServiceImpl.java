@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.project.domain.UserVO;
-import kr.co.project.presistence.UserDAO;
+import kr.co.project.persistence.UserDAO;
 
 @Service
 public class UserServiceImpl implements UserService {
