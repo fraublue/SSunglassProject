@@ -109,26 +109,28 @@ public class BoardController {
 	  return "board/list";
   }
   @RequestMapping(value="/write", method = RequestMethod.POST)
-  public String writeBoard(@RequestParam("user_id") String user_id,@RequestParam("board_content") String board_content,@RequestParam("user_type") int type, HttpSession session) throws Exception{
+  public @ResponseBody int writeBoard(@RequestParam("user_id") String user_id,@RequestParam("board_content") String board_content,@RequestParam("user_type") int type, HttpSession session) throws Exception{
 	  CommonBoardVO vo = new CommonBoardVO();	  
 	  vo.setUser_id(user_id);
 	  vo.setBoard_content(board_content);
 	  vo.setThumb_img("");
+	  int board_id = 0;
 	  //int type = Integer.parseInt((String)session.getAttribute("user_type"));
 	  
 	  if(type == 0) {
 		  service.takerWriteBoard(vo);
+		  board_id = service.getWritedBoardID(user_id);
 	  }
-	  return "redirect:/";
+	  return board_id;
   }
   @RequestMapping(value="/writeg", method = RequestMethod.POST)
-  public String giverwriteBoard(@RequestParam("user_id") String user_id, @RequestParam("board_content") String board_content, @RequestParam("user_type") int type,/*@ModelAttribute("gvo") */GiverBoardVO gvo, HttpSession session) throws Exception{
+  public @ResponseBody int giverwriteBoard(@RequestParam("user_id") String user_id, @RequestParam("board_content") String board_content, @RequestParam("user_type") int type,/*@ModelAttribute("gvo") */GiverBoardVO gvo, HttpSession session) throws Exception{
 	  logger.info("asdfasdfsd");
 	  CommonBoardVO vo = new CommonBoardVO();
 	  vo.setUser_id(user_id);
 	  vo.setBoard_content(board_content);
 	  vo.setThumb_img("");
-	  
+	  int board_id = 0;
 	  //int type = Integer.parseInt((String)session.getAttribute("user_type"));
 	
 	  logger.info(type+"");
@@ -136,11 +138,12 @@ public class BoardController {
 		  logger.info("????");
 		  service.takerWriteBoard(vo);
 		  logger.info(vo.toString());
-		  gvo.setBoard_id(service.getWritedBoardID(user_id));
+		  board_id =service.getWritedBoardID(user_id);
+		  gvo.setBoard_id(board_id);
 		  logger.info(gvo.toString());
 		  service.giverWriteBoard(gvo);
 	  }
-	  return "redirect:/";
+	  return board_id;
   }
   @RequestMapping(value="/writePage", method = RequestMethod.GET)
   public String writeBoardPage() throws Exception{

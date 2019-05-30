@@ -263,4 +263,9 @@ where
 	]]>
 	</delete>
 	
+	<update id="updateBoardThumbImg">
+		update common_board set thumb_img =#{thumb_img}
+		where board_id = #{board_id}
+	</update>
+	
 </mapper>

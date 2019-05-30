@@ -168,11 +168,11 @@
 			</c:if>
 
 			<c:if test="${giver_board == null }">
-				<aside class="col-md-3">
+				<!-- <aside class="col-md-3">
 					<br> <a class="btn_full" href="cart_hotel.html">Check now</a>
 					<a class="btn_full_outline" href="#"><i class=" icon-heart"></i>
 						Add to whislist</a>
-				</aside>
+				</aside> -->
 			</c:if>
 
 			<div class="col-md-9">
@@ -185,13 +185,14 @@
 					<div class="post nopadding">
 					<input type="hidden" value="${common_board.board_id}" class="board_id">
 					<input type="hidden" value="${sessionScope.user_id}" class="user_id">
-						
+					<c:if test="${sessionScope.user_id != null }">	
 						<img
-							src="<%=request.getContextPath()%>/data/${common_board.thumb_img}"
+							src="<%=request.getContextPath()%>/upload/${common_board.thumb_img}"
 							alt="" class="img-responsive">
 							<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 							<img id="like" src="img/${like}" width="20px" height="20px">
 		<span id="likecnt">${likecnt}</span>
+		</c:if>
 
 
 		 <script>
@@ -251,9 +252,10 @@
 
 			</script> 
 			
-			
+		<c:if test="${sessionScope.user_id != null }">	
 		<c:if test="${giver_board != null }">
 			<img id="star" src="img/${star}" width="20px" height="20px" align="right">
+		</c:if>
 		</c:if>
 
 		<script>
@@ -665,6 +667,7 @@
 
 						<input type="button" class="btn_1" value="Post Comment"
 							id="comment_submit" />
+					</div>
 				</c:if>
 
 				<c:if test="${sessionScope.user_id == null }">
@@ -720,7 +723,7 @@
         }
 
 
-출처: https://parkdex.tistory.com/15 [PARKDEX]
+
 	})
 		$(document).ready(function($) {
 			$('#Img_carousel').sliderPro({
@@ -781,6 +784,7 @@
 
 			$("#comment_submit").on('click', function() {
 				commentInsert();
+				$("#c_content").val() = "";
 			});
 			
 			

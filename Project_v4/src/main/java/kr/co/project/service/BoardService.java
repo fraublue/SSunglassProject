@@ -63,6 +63,8 @@ public interface BoardService {
 	public void deletecomment_userid(String user_id) throws Exception;
 	
 	
+	public int updateBoardThumbImg(CommonBoardVO vo) throws Exception;
+	
 	
 	
 	

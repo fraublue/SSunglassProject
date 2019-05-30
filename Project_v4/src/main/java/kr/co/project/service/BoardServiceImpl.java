@@ -150,6 +150,11 @@ public class BoardServiceImpl implements BoardService {
 		dao.deletecommonboard_userid(user_id);
 		
 	}
+	@Override
+	public int updateBoardThumbImg(CommonBoardVO vo) throws Exception {
+	
+		return dao.updateBoardThumbImg(vo);
+	}
 
 //  @Transactional
 //  @Override

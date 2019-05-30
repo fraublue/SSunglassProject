@@ -109,5 +109,8 @@ public class CommonBoardDAO {
 		public void deletecommonboard_userid(String user_id) throws Exception{
 			session.delete(namespace+".deletecommonboard_userid",user_id);
 		}
+		public int updateBoardThumbImg(CommonBoardVO vo) throws Exception{
+			  return session.update(namespace+".updateBoardThumbImg", vo);
+		  }
 		
 }
