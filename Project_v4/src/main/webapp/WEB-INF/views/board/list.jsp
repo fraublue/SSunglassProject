@@ -13,7 +13,12 @@
 				<div class="img_container">
 					<a
 						href="<%= request.getContextPath()%>/board/boardview.do?board_id=${bvo.board_id}&user_id=${bvo.user_id}&loginUserId=${sessionScope.user_id}">
-						<img src="/upload/${bvo.thumb_img}" class="img-responsive" alt="">
+						<c:if test="${bvo.thumb_img != null }">
+							<img src="/upload/${bvo.thumb_img}" class="img-responsive" alt="">
+						</c:if>
+						<c:if test="${bvo.thumb_img == null }">
+							<img src="/data/no-image.png" class="img-responsive" alt="">
+						</c:if>
 					</a>
 				</div>
 				<div class="tour_title">

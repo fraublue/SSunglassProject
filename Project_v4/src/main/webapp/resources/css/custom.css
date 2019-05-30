@@ -117,3 +117,5 @@
 #search.cst-search .nav-tabs{text-align:center;}
 #search.cst-search .nav-tabs >li {float:none; display:inline-block;}
 .img_container{width:100%;/*height:270px;*/height:219px;}
+#search_container.fix-height{height:760px;}
+
