@@ -104,10 +104,10 @@
 
 					<div id="message-contact"></div>
 					<c:if test ="${ sessionScope.user_type == 1 }">
-						<form action="<%=request.getContextPath()%>/board/updateg" method="post">
+						<form action="<%=request.getContextPath()%>/board/updateg" method="get">
 					</c:if>
 					<c:if test ="${ sessionScope.user_type == 0 }"> 
-						<form action="<%=request.getContextPath()%>/board/update" method="post">
+						<form action="<%=request.getContextPath()%>/board/update" method="get">
 					</c:if>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
@@ -387,8 +387,7 @@
 									
 									<input type="hidden" name="user_type" value="${sessionScope.user_type}">						
 								<input type="hidden" name="board_id" value="${common_board.board_id }">
-								<input type="submit" value="글수정" class="btn_1"
-									id="submit-contact">
+								<input type="submit" value="글수정" class="btn_1" id="submit-contact">
 							</div>
 						</div>
 					</form>

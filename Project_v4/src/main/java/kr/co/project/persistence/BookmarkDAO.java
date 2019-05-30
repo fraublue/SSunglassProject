@@ -13,4 +13,6 @@ public interface BookmarkDAO {
 	public boolean checkExistBookmark(int board_id, String user_id);
 	
 	public List<CommonBoardVO> bookmarkList(String user_id);
+	
+	public void deletemark_boardid(int board_id);
 }

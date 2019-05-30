@@ -347,11 +347,11 @@ public class BoardController {
 			mav.setViewName("boardupdate");
 			if (flag) {
 				mav.addObject("common_board", service.commmonboard(board_id));
-				mav.addObject("user_type",flag);
+//				mav.addObject("user_type",flag);
 				mav.addObject("giver_board",service.giverboard(board_id));
 			} else {
 				mav.addObject("common_board", service.commmonboard(board_id));
-				mav.addObject("user_type",flag);
+//				mav.addObject("user_type",flag);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -359,9 +359,12 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/updateg")
+	@RequestMapping(value = "/updateg" , method = RequestMethod.GET)
 	public String updateboardgiver(@ModelAttribute CommonBoardVO cbvo, @ModelAttribute GiverBoardVO gbvo) {
 		logger.info("update giver"); 
+		logger.info(""+cbvo); 
+		logger.info(""+gbvo); 
+		
 		try {
 			service.updateboardtaker(cbvo);
 			service.updateboardgiver(gbvo);
@@ -370,10 +373,10 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		int board_id = gbvo.getBoard_id();
-		
-		return "forward:/board/boardview.do?board_id="+board_id;
+		String user_id = cbvo.getUser_id();
+		return "forward:/board/boardview.do?board_id="+board_id+"&loginUserId="+user_id;
 	}
-	@RequestMapping(value = "/update", method = RequestMethod.POST )
+	@RequestMapping(value = "/update", method = RequestMethod.GET )
 	public String updateboardtaker(@ModelAttribute CommonBoardVO cbvo, HttpServletRequest request) {
 		logger.info("update taker " + cbvo );
 		try {
@@ -385,7 +388,7 @@ public class BoardController {
 		int board_id = cbvo.getBoard_id();
 		String user_id = cbvo.getUser_id();
 		
-		return "forward:/board/boardview.do?board_id="+board_id;
+		return "forward:/board/boardview.do?board_id="+board_id+"&loginUserId="+user_id;
 	}
 	
 	
@@ -402,6 +405,7 @@ public class BoardController {
 				service.deletecomment_boardid(board_id);
 				//like, 북마크 삭제(추가) 
 				likeservice.deletelike_boardid(board_id);
+				markservice.deletemark_boardid(board_id);
 				//board_has_favorite 삭제
 				//giver_board 삭제
 				service.deletegiverboard_boardid(board_id);
@@ -412,6 +416,7 @@ public class BoardController {
 				service.deletecomment_boardid(board_id);
 				//like, 북마크 삭제 (추가)
 				likeservice.deletelike_boardid(board_id);
+				markservice.deletemark_boardid(board_id);
 				//board_has_favorite 삭제
 				//common_board 삭제 
 				service.deletecommonboard_boardid(board_id);

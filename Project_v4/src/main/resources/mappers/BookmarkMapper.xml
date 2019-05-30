@@ -18,6 +18,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and board_id = #{board_id}
 	</delete>
 	
+	<delete id="deletemark_boardid" parameterType="int">
+		delete
+		from sns_prj.`bookmark`
+		where board_id = #{board_id}
+	</delete>
+	
 	<select id="checkExistBookmark" resultType="String">
   <![CDATA[
   	select

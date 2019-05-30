@@ -60,4 +60,11 @@ public class BookmarkDAOImpl implements BookmarkDAO {
 		Criteria cri= new Criteria();	
 		return session.selectList(namespace+".bookmarkList", user_id);
 	}
+
+
+	@Override
+	public void deletemark_boardid(int board_id) {
+		session.delete(namespace+".deletemark_boardid",board_id);
+		
+	}
 }

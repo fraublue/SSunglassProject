@@ -40,4 +40,10 @@ public class BookmarkServiceImpl implements BookmarkService {
 		
 	}
 
+	@Override
+	public void deletemark_boardid(int board_id) {
+		dao.deletemark_boardid(board_id);
+		
+	}
+
 }

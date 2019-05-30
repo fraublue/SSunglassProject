@@ -252,8 +252,9 @@
 			</script> 
 			
 			
-		
+		<c:if test="${giver_board != null }">
 			<img id="star" src="img/${star}" width="20px" height="20px" align="right">
+		</c:if>
 
 		<script>
 			$(document).ready(function(){
