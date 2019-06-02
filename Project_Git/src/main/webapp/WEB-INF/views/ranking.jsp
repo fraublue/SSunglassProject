@@ -81,6 +81,11 @@
 </head>
 <body>
 ${fav}
+<c:forEach items="${fav}" var="fa">
+	<c:if test="${fa eq 1}">
+	${fa }
+	</c:if>
+</c:forEach>
 	<!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
@@ -197,7 +202,13 @@ ${fav}
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"> <input
 													type="checkbox" name="option_1" id="option_1" 
-													value="1" checked=""> <span> <span>No</span> <span>Yes</span>
+													value="1" 
+													<c:forEach items="${fav}" var="fa">
+														<c:if test="${fa eq 1}">
+														checked=""
+														</c:if>
+													</c:forEach>
+													> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -206,7 +217,13 @@ ${fav}
 											<td>FLEA MARKET</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_2" id="option_2"
-													value="2" checked=""> <span> <span>No</span> <span>Yes</span>
+													value="2" 
+													<c:forEach items="${fav}" var="fa">
+														<c:if test="${fa eq 2}">
+														checked=""
+														</c:if>
+													</c:forEach>
+													> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -215,7 +232,13 @@ ${fav}
 											<td>EXHIBITION</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_3" id="option_3"
-													value="3" checked=""> <span> <span>No</span> <span>Yes</span>
+													value="3" 
+													<c:forEach items="${fav}" var="fa">
+														<c:if test="${fa eq 3}">
+														checked=""
+														</c:if>
+													</c:forEach>
+													> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -224,7 +247,13 @@ ${fav}
 											<td>POP - UP STORE</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_4" id="option_4"
-													value="4" checked=""> <span> <span>No</span> <span>Yes</span>
+													value="4" 
+													<c:forEach items="${fav}" var="fa">
+														<c:if test="${fa eq 4}">
+														checked=""
+														</c:if>
+													</c:forEach>
+													> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -233,8 +262,7 @@ ${fav}
 									</tbody>
 									
 								</table>
-								<button type="submit" class="btn_1 green">Update
-									notifications settings</button>
+								
 								
 							</div>
 							<!--  -->
@@ -250,7 +278,13 @@ ${fav}
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"> <input
 													type="checkbox" name="option_5" id="option_5" checked
-													value="5" checked=""> <span> <span>No</span> <span>Yes</span>
+													value="5" 
+													<c:forEach items="${fav}" var="fa">
+														<c:if test="${fa eq 5}">
+														checked=""
+														</c:if>
+													</c:forEach> 
+													> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -259,7 +293,13 @@ ${fav}
 											<td>STUDY</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_6" id="option_6"
-													value="6" checked=""> <span> <span>No</span> <span>Yes</span>
+													value="6"
+													<c:forEach items="${fav}" var="fa">
+														<c:if test="${fa eq 6}">
+														checked=""
+														</c:if>
+													</c:forEach> 
+													> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -268,7 +308,13 @@ ${fav}
 											<td>SMALL GROUP </td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_7" id="option_7"
-													value="7" checked=""> <span> <span>No</span> <span>Yes</span>
+													value="7"
+													<c:forEach items="${fav}" var="fa">
+														<c:if test="${fa eq 7}">
+														checked=""
+														</c:if>
+													</c:forEach> 
+													> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -277,7 +323,13 @@ ${fav}
 											<td>SMALL WEDDING </td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_8" id="option_8"
-													value="8" checked=""> <span> <span>No</span> <span>Yes</span>
+													value="8"
+													<c:forEach items="${fav}" var="fa">
+														<c:if test="${fa eq 8}">
+														checked=""
+														</c:if>
+													</c:forEach> 
+													> <span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
