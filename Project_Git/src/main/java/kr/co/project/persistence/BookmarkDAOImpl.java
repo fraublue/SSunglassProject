@@ -67,4 +67,10 @@ public class BookmarkDAOImpl implements BookmarkDAO {
 		session.delete(namespace+".deletemark_boardid",board_id);
 		
 	}
+
+
+	@Override
+	public void deletemark_userid(String user_id) {
+		session.delete(namespace+".deletemark_userid", user_id);		
+	}
 }

@@ -15,4 +15,6 @@ public interface BookmarkDAO {
 	public List<CommonBoardVO> bookmarkList(String user_id);
 	
 	public void deletemark_boardid(int board_id);
+	
+	public void deletemark_userid(String user_id);
 }

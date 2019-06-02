@@ -46,4 +46,9 @@ public class BookmarkServiceImpl implements BookmarkService {
 		
 	}
 
+	@Override
+	public void deletemark_userid(String user_id) {
+		dao.deletemark_userid(user_id);		
+	}
+
 }
