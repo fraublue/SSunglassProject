@@ -172,15 +172,22 @@ public class UserController {
 		  boolean a = service.userTypeCheck(user_id);
 		  
 		  try {
-			  if(a) {//giver 이면
+			  if(a == true) {//giver 이면
 				  logger.info("usertype : giver");
 			  //좋아요, 북마크 삭제 
+				  lservice.deletelike_userid(user_id);
+				  logger.info("좋아요 삭제 ok");
+				  mservice.deletemark_userid(user_id);
+				  logger.info("북마크 삭제 ok");
 			  //댓글 삭제 
 				bservice.deletecomment_userid(user_id);
 				logger.info("댓글삭제 ok");
 			  //채팅 삭제 
 			  //user_has_favorite 삭제
 			  //board_has_favorite 삭제 
+			  //content_img 삭제
+				bservice.deletecontentimg(user_id);
+				logger.info("이미지삭제 ok");
 			  //giver_board 삭제 
 				bservice.deletegiverboard_userid(user_id);
 				logger.info("giverboard 삭제 ok ");
@@ -192,12 +199,19 @@ public class UserController {
 		  }else {//taker 이면 
 			  logger.info("usertype : taker");
 			  //좋아요, 북마크 삭제 
+			  lservice.deletelike_userid(user_id);
+			  logger.info("좋아요 삭제 ok");
+			  mservice.deletemark_userid(user_id);
+			  logger.info("북마크 삭제 ok");
 			  //댓글 삭제 
 			  bservice.deletecomment_userid(user_id);
 			  logger.info("댓글 삭제 ok ");
 			  //채팅 삭제 
 			  //user_has_favorite 삭제
 			  //board_has_favorite 삭제 
+			  //content_img 삭제
+			  bservice.deletecontentimg(user_id);
+			  logger.info("이미지삭제 ok");
 			  //common_board 삭제 
 			  bservice.deletecommonboard_userid(user_id);
 			  logger.info("common_board 삭제 ok ");
@@ -208,8 +222,8 @@ public class UserController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		  service.deleteuser(user_id,session);
-		  logger.info("회원정보 삭제 " );
+//		  service.deleteuser(user_id,session);
+//		  logger.info("회원정보 삭제 " );
 		 
 		  return "main";
 	  }

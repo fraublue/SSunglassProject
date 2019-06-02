@@ -26,6 +26,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>	
 	</delete>
 	
+	<delete id="deletelike_userid" parameterType="string">
+	<![CDATA[
+		delete
+		from sns_prj.`like`
+		where user_id = #{user_id}
+		]]>	
+	</delete>
+	
 	<select id="checkLike" resultType="string" >
   <![CDATA[
   	select

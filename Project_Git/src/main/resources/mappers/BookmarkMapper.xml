@@ -24,6 +24,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where board_id = #{board_id}
 	</delete>
 	
+	<delete id="deletemark_userid" parameterType="String">
+	<![CDATA[
+		delete
+		from sns_prj.`bookmark`
+		where user_id = #{user_id}
+		]]>
+	</delete>
+	
 	<select id="checkExistBookmark" resultType="String">
   <![CDATA[
   	select

@@ -191,6 +191,7 @@ where
 	  ]]>
 	</update>
 	
+	<!-- delete -->
 	<delete id="deleteboard" parameterType="kr.co.project.domain.CommonBoardVO">
 	<![CDATA[
 		DELETE FROM `sns_prj`.`common_board` 
@@ -222,7 +223,7 @@ where
 	]]>
 	</delete>
 	
-	<delete id="deletecomment_userid" parameterType="int">
+	<delete id="deletecomment_userid" parameterType="string">
 	<![CDATA[
 		DELETE FROM `sns_prj`.`comment` 
 		WHERE (`user_id` = #{user_id});
@@ -237,17 +238,19 @@ where
 	]]>
 	</delete>
 	
-	<delete id="deletegiverboard_userid" parameterType="int">
+	<delete id="deletecontentimg" parameterType="string">
 	<![CDATA[
-	delete from `sns_prj`.`giver_board`
-	where `user_id` = (
-		select u.user_id
-		from user u, giver_board g, common_board c
-		where u.user_id = c.user_id
-		and g.board_id = c.board_id);
+	delete from sns_prj.content_img
+	where board_id = (select board_id from common_board where user_id = #{user_id});
 	]]>
 	</delete>
 	
+	<delete id="deletegiverboard_userid" parameterType="string">
+	<![CDATA[
+	delete from sns_prj.giver_board
+	where board_id = (select board_id from common_board where user_id = #{user_id});
+	]]>
+	</delete>
 	
 	<delete id="deletecommonboard_boardid" parameterType="int">
 	<![CDATA[
@@ -256,11 +259,9 @@ where
 	]]>
 	</delete>
 	
-	<delete id="deletecommonboard_userid" parameterType="int">
-	<![CDATA[
+	<delete id="deletecommonboard_userid" parameterType="string">
 		DELETE FROM `sns_prj`.`common_board` 
 		WHERE (`user_id` = #{user_id});
-	]]>
 	</delete>
 	
 	<update id="updateBoardThumbImg">
