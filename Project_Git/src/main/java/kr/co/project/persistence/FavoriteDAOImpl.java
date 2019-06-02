@@ -33,4 +33,9 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 		return session.selectList(namespace+".selectfavo_user",user_id);
 		}
 
+	@Override
+	public void deletefavorite_userid(String user_id) throws Exception {
+		session.delete(namespace+".deletefavo_userid", user_id);
+	}
+
 }

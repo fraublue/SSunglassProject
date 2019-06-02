@@ -27,4 +27,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		user_id = #{user_id}
 	order by favorite_id asc
 	</select>
+	
+	<delete id="deletefavo_userid" parameterType="string">
+	<![CDATA[
+		delete
+		from sns_prj.`user_has_favorite`
+		where user_id = #{user_id}
+		]]>	
+	</delete>
 </mapper>

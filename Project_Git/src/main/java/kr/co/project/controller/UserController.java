@@ -184,6 +184,8 @@ public class UserController {
 				logger.info("댓글삭제 ok");
 			  //채팅 삭제 
 			  //user_has_favorite 삭제
+				fservice.deletefavorite_userid(user_id);
+				logger.info("favorite삭제 ok");
 			  //board_has_favorite 삭제 
 			  //content_img 삭제
 				bservice.deletecontentimg(user_id);
@@ -208,6 +210,8 @@ public class UserController {
 			  logger.info("댓글 삭제 ok ");
 			  //채팅 삭제 
 			  //user_has_favorite 삭제
+				fservice.deletefavorite_userid(user_id);
+				logger.info("favorite삭제 ok");
 			  //board_has_favorite 삭제 
 			  //content_img 삭제
 			  bservice.deletecontentimg(user_id);

@@ -32,4 +32,10 @@ public class FavoriteServiceImpl implements FavoriteService {
 		
 	}
 
+	@Override
+	public void deletefavorite_userid(String user_id) throws Exception {
+		fao.deletefavorite_userid(user_id);
+	}
+
+
 }
