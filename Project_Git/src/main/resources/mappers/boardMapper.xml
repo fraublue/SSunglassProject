@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM common_board
 		where user_id IN (
 			select user_id from user where user_type= 0
-		) order by reg_date desc 
+		)  order by like_cnt desc, reg_date desc
 	]]>
 	</select>
 <select id="giverListAll"
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM common_board
 		where user_id IN (
 			select user_id from user where user_type= 1
-		) order by reg_date desc
+		)  order by like_cnt desc, reg_date desc
 	]]>
 	</select>
 	<select id="userTypeListCount" resultType="int">
@@ -268,5 +268,9 @@ where
 		update common_board set thumb_img =#{thumb_img}
 		where board_id = #{board_id}
 	</update>
+	
+	<select id ="addrlist" resultType="String">
+      select addr from giver_board g left join common_board c on g.board_id = c.board_id order by like_cnt desc, reg_date desc; 
+   </select>
 	
 </mapper>
