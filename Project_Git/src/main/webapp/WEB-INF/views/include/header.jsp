@@ -108,8 +108,8 @@
 					<a href="#" class="open_close" id="close_in"><i
 						class="icon_set_1_icon-77"></i></a>
 					<ul>
-						<li class="submenu"><a href="javascript:void(0);" style="padding-left:15px; padding-top:1px;"
-							class="show-submenu">Social <!-- <i class="icon-down-open-mini"></i> --></a>
+						<li class="submenu"><a href="board/social.do" style="padding-left:15px; padding-top:1px;"
+                     class="show-submenu">Social <!-- <i class="icon-down-open-mini"></i></a>
 							<!-- <ul>
 									<li><a href="index.html">With Hotels and Tours</a></li>
 									<li><a href="index_2.html">With Only tours</a></li>

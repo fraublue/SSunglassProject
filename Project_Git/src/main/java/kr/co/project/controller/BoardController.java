@@ -226,6 +226,12 @@ public class BoardController {
      return mav;
   }
   
+  @RequestMapping(value = "/social.do")
+  public String social() throws Exception {
+     
+     return "social";
+  }
+  
 	
 	/////////////////////////
 	
