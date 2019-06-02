@@ -109,20 +109,8 @@
 						class="icon_set_1_icon-77"></i></a>
 					<ul>
 						<li class="submenu"><a href="board/social.do" style="padding-left:15px; padding-top:1px;"
-                     class="show-submenu">Social <!-- <i class="icon-down-open-mini"></i></a>
-							<!-- <ul>
-									<li><a href="index.html">With Hotels and Tours</a></li>
-									<li><a href="index_2.html">With Only tours</a></li>
-									<li><a href="index_3.html">Single image</a></li>
-									<li><a href="index_4.html">Header video</a></li>
-									<li><a href="index_7.html">With search panel</a></li>
-									<li><a href="index_5.html">With map</a></li>
-									<li><a href="index_6.html">With search bar</a></li>
-									<li><a href="index_8.html">Search bar + Video</a></li>
-									<li><a href="index_9.html">With Text Rotator</a></li>
-									<li><a href="index_10.html">With Cookie Bar (EU law)</a></li>
-									<li><a href="index_11.html">Popup Advertising</a></li>
-								</ul> --></li>
+                     class="show-submenu">Social</a></li>
+                     
 						<li class="submenu"><a href="javascript:void(0);" style="padding-left:30px; padding-top:1px;"
 							class="show-submenu">Space <!-- <i class="icon-down-open-mini"></i> --></a>
 							<!-- <ul>
