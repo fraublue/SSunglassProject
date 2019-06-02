@@ -204,7 +204,7 @@ ${fav}
 													type="checkbox" name="option_1" id="option_1" 
 													value="1" 
 													<c:forEach items="${fav}" var="fa">
-														<c:if test="${fa eq 1}">
+														<c:if test="${fa == 1}">
 														checked=""
 														</c:if>
 													</c:forEach>
@@ -219,7 +219,7 @@ ${fav}
 													<input type="checkbox" name="option_2" id="option_2"
 													value="2" 
 													<c:forEach items="${fav}" var="fa">
-														<c:if test="${fa eq 2}">
+														<c:if test="${fa == 2}">
 														checked=""
 														</c:if>
 													</c:forEach>
@@ -234,7 +234,7 @@ ${fav}
 													<input type="checkbox" name="option_3" id="option_3"
 													value="3" 
 													<c:forEach items="${fav}" var="fa">
-														<c:if test="${fa eq 3}">
+														<c:if test="${fa == 3}">
 														checked=""
 														</c:if>
 													</c:forEach>
@@ -249,7 +249,7 @@ ${fav}
 													<input type="checkbox" name="option_4" id="option_4"
 													value="4" 
 													<c:forEach items="${fav}" var="fa">
-														<c:if test="${fa eq 4}">
+														<c:if test="${fa == 4}">
 														checked=""
 														</c:if>
 													</c:forEach>
@@ -280,7 +280,7 @@ ${fav}
 													type="checkbox" name="option_5" id="option_5" checked
 													value="5" 
 													<c:forEach items="${fav}" var="fa">
-														<c:if test="${fa eq 5}">
+														<c:if test="${fa == 5}">
 														checked=""
 														</c:if>
 													</c:forEach> 
@@ -295,7 +295,7 @@ ${fav}
 													<input type="checkbox" name="option_6" id="option_6"
 													value="6"
 													<c:forEach items="${fav}" var="fa">
-														<c:if test="${fa eq 6}">
+														<c:if test="${fa == 6}">
 														checked=""
 														</c:if>
 													</c:forEach> 
@@ -310,7 +310,7 @@ ${fav}
 													<input type="checkbox" name="option_7" id="option_7"
 													value="7"
 													<c:forEach items="${fav}" var="fa">
-														<c:if test="${fa eq 7}">
+														<c:if test="${fa == 7}">
 														checked=""
 														</c:if>
 													</c:forEach> 
@@ -325,7 +325,7 @@ ${fav}
 													<input type="checkbox" name="option_8" id="option_8"
 													value="8"
 													<c:forEach items="${fav}" var="fa">
-														<c:if test="${fa eq 8}">
+														<c:if test="${fa == 8}">
 														checked=""
 														</c:if>
 													</c:forEach> 
