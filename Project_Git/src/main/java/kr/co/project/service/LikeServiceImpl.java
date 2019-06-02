@@ -49,4 +49,9 @@ public class LikeServiceImpl implements LikeService {
 		
 	}
 
+	@Override
+	public void deletelike_userid(String user_id) {
+		likedao.deletelike_userid(user_id);		
+	}
+
 }

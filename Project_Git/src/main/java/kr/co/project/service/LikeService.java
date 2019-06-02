@@ -12,4 +12,5 @@ public interface LikeService {
 	public void updateLikecnt(int board_id);
 	public int selectLikecnt(int board_id);
 	public void deletelike_boardid(int board_id);
+	public void deletelike_userid(String user_id);
 }

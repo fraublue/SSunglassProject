@@ -55,5 +55,10 @@ public class LikeDAOImpl implements LikeDAO {
 		session.delete(namespace+".deletelike_boardid",board_id);
 		
 	}
+
+	@Override
+	public void deletelike_userid(String user_id) {
+		session.delete(namespace+".deletelike_userid",user_id);
+	}
 	
 }
