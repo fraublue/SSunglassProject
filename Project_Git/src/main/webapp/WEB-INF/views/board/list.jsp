@@ -23,9 +23,13 @@
 				</div>
 				<div class="tour_title">
 					<h3>
-						<strong>${bvo.user_id}</strong>
-						
+						<strong>${bvo.user_id}</strong>						
 					</h3>
+					<c:forEach begin="${status.index}" end="${status.index}" var="ad"
+							items="${addr}">
+						${ad}
+					</c:forEach>
+						
 					<c:if test="${sessionScope.user_id != null }">
 					<c:forEach begin="${status.index}" end="${status.index}" var="lvo"
 							items="${like }">

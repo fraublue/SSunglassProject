@@ -65,7 +65,8 @@ public interface BoardService {
 	
 	public int updateBoardThumbImg(CommonBoardVO vo) throws Exception;
 	
-	
+	//글 주소 뽑아오기
+	public List<String> addrlist() throws Exception;
 	
 	
 

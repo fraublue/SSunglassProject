@@ -43,4 +43,9 @@ public class GiverBoardDAO {
 	  public void deletegiverboard_userid(String user_id) throws Exception{
 		  session.delete(namespace+".deletegiverboard_userid",user_id);
 	  }
+	  
+	  public List<String> addrlist() throws Exception{
+		  System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>list가지러 giverboard옴");
+		  return session.selectList(namespace+".addrlist");
+	  }
 }

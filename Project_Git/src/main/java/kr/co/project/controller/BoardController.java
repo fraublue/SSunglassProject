@@ -63,7 +63,8 @@ public class BoardController {
    
   List<CommonBoardVO> list = service.giverlistAll();
   List<String> like = new ArrayList<String>();
-		  
+  List<String> addr =service.addrlist();
+  
   String user_id = (String)session.getAttribute("user_id");
   // mav.setViewName("list");
     
@@ -81,6 +82,7 @@ public class BoardController {
    
    model.addAttribute("list", service.giverlistAll());
    model.addAttribute("like", like);
+   model.addAttribute("addr", addr);
     //
 
 //    PageMaker pageMaker = new PageMaker();
