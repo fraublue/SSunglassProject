@@ -277,7 +277,7 @@ ${fav}
 											<td style="width: 60%">New Citytours Tours</td>
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"> <input
-													type="checkbox" name="option_5" id="option_5" checked
+													type="checkbox" name="option_5" id="option_5" 
 													value="5" 
 													<c:forEach items="${fav}" var="fa">
 														<c:if test="${fa == 5}">
