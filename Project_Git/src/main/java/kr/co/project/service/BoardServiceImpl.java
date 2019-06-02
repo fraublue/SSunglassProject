@@ -161,6 +161,10 @@ public class BoardServiceImpl implements BoardService {
 		
 		return gdao.addrlist();
 	}
+	@Override
+	public void deletecontentimg(String user_id) throws Exception {
+		dao.deletecontentimg(user_id);
+	}
 
 //  @Transactional
 //  @Override

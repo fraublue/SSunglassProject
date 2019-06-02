@@ -112,5 +112,8 @@ public class CommonBoardDAO {
 		public int updateBoardThumbImg(CommonBoardVO vo) throws Exception{
 			  return session.update(namespace+".updateBoardThumbImg", vo);
 		  }
+		public void deletecontentimg(String user_id)throws Exception{
+			session.delete(namespace+".deletecontentimg",user_id);
+		}
 		
 }

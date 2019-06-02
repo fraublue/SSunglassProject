@@ -68,6 +68,9 @@ public interface BoardService {
 	//글 주소 뽑아오기
 	public List<String> addrlist() throws Exception;
 	
+	//이미지 삭제
+	public void deletecontentimg(String user_id) throws Exception;
+	
 	
 
 }
