@@ -25,7 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.project.domain.UserHasFavoriteVO;
 import kr.co.project.domain.UserVO;
 import kr.co.project.service.BoardService;
+import kr.co.project.service.BookmarkService;
 import kr.co.project.service.FavoriteService;
+import kr.co.project.service.LikeService;
 import kr.co.project.service.UserService;
 import kr.co.project.service.UserServiceImpl;
 
@@ -36,13 +38,14 @@ public class UserController {
 	  
 	  @Inject
 	  private UserService service;
-	  
 	  @Inject
 	  private BoardService bservice;
-	  
 	  @Inject
 	  private FavoriteService fservice;
-	
+	  @Inject
+	  private LikeService lservice;
+	  @Inject
+	  private BookmarkService mservice;	
 	 
 	  
 	  @RequestMapping(value = "/main.do")
