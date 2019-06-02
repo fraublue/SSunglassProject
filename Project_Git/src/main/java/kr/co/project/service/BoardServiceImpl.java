@@ -155,6 +155,12 @@ public class BoardServiceImpl implements BoardService {
 	
 		return dao.updateBoardThumbImg(vo);
 	}
+	
+	@Override
+	public List<String> addrlist() throws Exception {
+		
+		return gdao.addrlist();
+	}
 
 //  @Transactional
 //  @Override
