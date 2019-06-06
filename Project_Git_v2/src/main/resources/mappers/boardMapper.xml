@@ -7,13 +7,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="takerListAll"
-		resultType="kr.co.project.domain.CommonBoardVO">
+		resultType="kr.co.project.domain.CommonBoardVO" parameterType="kr.co.project.domain.Criteria">
 	<![CDATA[
 		SELECT *
 		FROM common_board
 		where user_id IN (
 			select user_id from user where user_type= 0
 		)  order by like_cnt desc, reg_date desc
+		LIMIT #{startPage},#{perPageNum}
 	]]>
 	</select>
 <select id="giverListAll"

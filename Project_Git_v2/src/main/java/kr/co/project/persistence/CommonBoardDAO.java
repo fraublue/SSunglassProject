@@ -27,9 +27,9 @@ public class CommonBoardDAO {
 
 	  private static String namespace = "kr.co.project.BoardMapper";
 
-	  public List<CommonBoardVO> takerListAll() throws Exception {
+	  public List<CommonBoardVO> takerListAll(Criteria cri) throws Exception {
 
-	    return session.selectList(namespace + ".takerListAll");
+	    return session.selectList(namespace + ".takerListAll",cri);
 	  }
 	  public List<CommonBoardVO> giverListAll() throws Exception {
 		  return session.selectList(namespace+".giverListAll");

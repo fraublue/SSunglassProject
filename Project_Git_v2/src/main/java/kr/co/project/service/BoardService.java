@@ -14,7 +14,7 @@ import kr.co.project.domain.PageMaker;
 
 public interface BoardService {
 
-	public List<CommonBoardVO> takerlistAll() throws Exception;
+	public List<CommonBoardVO> takerlistAll(Criteria cri) throws Exception;
 	
 	public List<CommonBoardVO> giverlistAll() throws Exception;
 

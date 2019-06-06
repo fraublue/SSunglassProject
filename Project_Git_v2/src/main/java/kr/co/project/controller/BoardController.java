@@ -60,7 +60,7 @@ public class BoardController {
 	private FavoriteService fservice;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void takerlistPage(Model model, HttpSession session, @RequestParam("page") int page) throws Exception {
+	public void giverlistPage(Model model, HttpSession session, @RequestParam("page") int page) throws Exception {
 
 		logger.info("listpage");
 
@@ -103,13 +103,15 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/tlist", method = RequestMethod.GET)
-	public String takerlistPage(Model model, HttpSession session) throws Exception {
+	public String takerlistPage(Model model, HttpSession session, @RequestParam("page") int page) throws Exception {
 
 		logger.info("takerlistpage");
+		Criteria cri = new Criteria();
+		cri.setPage(page);
 
 // model.addAttribute("list", service.listCriteria(cri));
 
-		List<CommonBoardVO> list = service.takerlistAll();
+		List<CommonBoardVO> list = service.takerlistAll(cri);
 		List<String> like = new ArrayList<String>();
 
 		String user_id = (String) session.getAttribute("user_id");
@@ -127,7 +129,7 @@ public class BoardController {
 		}
 // mav.addObject("list",list);
 
-		model.addAttribute("list", service.takerlistAll());
+		model.addAttribute("list", list);
 		model.addAttribute("like", like);
 		return "board/list";
 	}

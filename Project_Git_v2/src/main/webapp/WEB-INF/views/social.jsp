@@ -52,61 +52,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
    crossorigin="anonymous"></script>
-<script>
-   $(function() {
-      addList(1);
-      function addList(currentPage) {
-         $.ajax({
-            type : "GET",
-            url : "<%=request.getContextPath()%>/board/list",
-            data : {
-               page : currentPage,
-               perPageNum : 9
-            },
-            error : function(err) {
-               console.log(err);
-            },
-            success : function(data) {               
-               $("#listWrap").append(data);
-            }
-         });
-      }
-      //favoriteList(1,"상가");
-      function favoriteList(currentPage,fname) {
-         $.ajax({
-            type : "GET",
-            url : "<%=request.getContextPath()%>/board/flist",
-            data : {
-               favorite_name : fname,
-               page : currentPage,
-               perPageNum : 9
-            },
-            error : function(err) {
-               console.log(err);
-            },
-            success : function(data) {
-               $("#listWrap").html(data);
-            }
-         });
-      }
-      
-      $(".listType > li").on("click",function(){
-          var type = $(this).text();          
-          if(type == "GIVER"){
-             addlist(1);
-          }else{
-             favoriteList(1,type);
-          }
-          
-          $(this).siblings().removeClass("active");
-          $(this).addClass("active");
-          return false;
-      })
-            
-      
-      
-   })
-</script>
+
 </head>
 <body>
 
@@ -143,6 +89,11 @@
       <div class="row" id="takerlist">
       
       </div>
+      <p class="text-center nopadding">
+			<button class="btn_1 btn_moreView" style="color: white">
+				<i class="icon-up-hand"></i>SHOW MORE
+			</button>
+			</p>
       <!-- End row -->
 
       <!-- <p class="text-center nopadding">
@@ -153,14 +104,15 @@
    <!-- End container -->
    <script>
    $(function() {
-		addList(1);
+	   var page = 1;
+		addList(page);
 		function addList(currentPage) {
 			$.ajax({
 				type : "GET",
 				url : "<%=request.getContextPath()%>/board/tlist",
 				data : {
 					page : currentPage,
-					perPageNum : 9
+					
 				},
 				error : function(err) {
 					console.log(err);
@@ -170,6 +122,16 @@
 				}
 			});
 		}
+		
+		 $(".btn_moreView").click(function(){
+ 			console.log("view");
+ 			++page;
+ 			console.log(page);
+ 			addList(page);
+ 			return false;
+ 		})
+ 		
+ 		
    })
       $(function(){
          $(document).on("click",'.like',function(){
@@ -188,22 +150,11 @@
                like("board/removeLike.do",imgsrc,board_id);
                      
             }
+            
+           
          })
                
-         function like(act,src,board_id){
-            
-            var user_id = $(".user_id").val();
-            console.log(act);
-            var sendData = {'board_id' : board_id, 'user_id' : user_id };
-            $.ajax({
-               url:act,
-               type :'post',
-               data: sendData,
-               success : function(data){
-                  //likecnt("board/selectLikecnt.do");
-               }
-            })
-         }   
+         
                   
       })
    </script>

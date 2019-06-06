@@ -30,8 +30,8 @@ public class BoardServiceImpl implements BoardService {
 	private GiverBoardDAO gdao;
 
 	@Override
-	public List<CommonBoardVO> takerlistAll() throws Exception {
-		return dao.takerListAll();
+	public List<CommonBoardVO> takerlistAll(Criteria cri) throws Exception {
+		return dao.takerListAll(cri);
 	}
 	@Override
 	public List<CommonBoardVO> giverlistAll() throws Exception{
