@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,8 +30,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.project.domain.CommonBoardVO;
 import kr.co.project.domain.ContentImgVO;
 import kr.co.project.domain.UploadDTO;
+import kr.co.project.domain.UserVO;
 import kr.co.project.service.BoardService;
 import kr.co.project.service.UploadService;
+import kr.co.project.service.UserService;
 
 
 
@@ -48,6 +51,9 @@ public class UploadController {
 
 	@Inject
 	private BoardService bservice;
+	
+	@Inject
+	private UserService uservice;
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public @ResponseBody int imageWrite(@RequestParam("files") MultipartFile[] multi, @RequestParam("board_id") int board_id,
@@ -77,5 +83,33 @@ public class UploadController {
 	
 		return 1;
 	}
+	
+	@RequestMapping(value = "/uploaduser", method = RequestMethod.POST)
+	public String userimgupload(@RequestParam("files") MultipartFile file, @RequestParam("user_id")String user_id) throws Exception{
+		logger.info("파일이름 : " + file.getOriginalFilename());
+		logger.info("파일 크기 : " + file.getSize());
+		logger.info("content type : " + file.getContentType());
+		logger.info("user_id : " + user_id );
+		
+		//기존 파일 삭제 ( DB + 파일 ) 
+		String filename = uservice.getthumb(user_id);
+		//uservice.deletethumb(user_id);
+		File fileuplo = new File(uploadPath,filename);
+		fileuplo.delete();
+		
+		
+		
+		//새로운 파일 업로드 		
+		String savedname = file.getOriginalFilename();
+		File target = new File(uploadPath,savedname);
+		FileCopyUtils.copy(file.getBytes(), target);
+		uservice.updatethumb(savedname,user_id);
+		
+		return "forward:/searchuser.do?user_id="+user_id;
+	}
+	
+	
+	
+	
 
 }

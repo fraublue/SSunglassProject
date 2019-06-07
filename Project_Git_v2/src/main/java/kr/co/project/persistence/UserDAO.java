@@ -14,6 +14,8 @@ public interface UserDAO {
 	public void updateuser(UserVO vo);
 	public void deleteuser(String user_id);
 	public boolean userTypeCheck(String user_id);
+	public void updatethumb(String savedname, String user_id);
+	public String getthumb(String user_id);
 	
 }
 

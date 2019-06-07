@@ -80,7 +80,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where user_id = #{user_id}
 	</delete>
 
+<update id="updatethumb" parameterType="hashmap">
+UPDATE `sns_prj`.`user` 
+SET `thumb_nail` = #{savedname}
+WHERE (`user_id` = #{user_id})
 
+</update>
+
+
+<select id="getthumb" resultType="string" parameterType="string">
+select thumb_nail
+from sns_prj.`user`
+where user_id = #{user_id}
+</select>
 
 
 

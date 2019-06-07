@@ -66,6 +66,17 @@ public class UserServiceImpl implements UserService {
 	public boolean userTypeCheck(String user_id) {
 		return userdao.userTypeCheck(user_id);
 	}
+	@Override
+	public void updatethumb(String savedname, String user_id) {
+		userdao.updatethumb(savedname, user_id);
+		
+	}
+	@Override
+	public String getthumb(String user_id) {
+		return userdao.getthumb(user_id);
+	}
+	
+	
 	
 	
 

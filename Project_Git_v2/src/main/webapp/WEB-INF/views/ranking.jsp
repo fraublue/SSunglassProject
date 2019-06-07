@@ -119,10 +119,12 @@
 			<div class="parallax-content-1">
 				<div class="animated fadeInDown">
 					<c:if test="${sessionScope.user_id eq vo.user_id}">
-						<h1>Hello <span class="idid">${sessionScope.user_id }</span>!</h1>
+						<h1>
+							Hello <span class="idid">${sessionScope.user_id }</span>!
+						</h1>
 					</c:if>
 					<c:if test="${sessionScope.user_id ne vo.user_id}">
-						<h1>${vo.user_id}'s Profile</h1>
+						<h1>${vo.user_id}'sProfile</h1>
 					</c:if>
 				</div>
 			</div>
@@ -179,7 +181,7 @@
 						</div>
 
 						<div class="col-md-6 col-sm-6">
-							<img src="/data/${vo.thumb_nail}" alt=""
+							<img src="/uploads/${vo.thumb_nail}" alt=""
 								class="img-responsive styled profile_pic">
 							<!--	</p>-->
 						</div>
@@ -192,17 +194,17 @@
 							<span>${vo.user_id}</span>'s POST
 						</h4>
 						<div id="listWrap" class="row"></div>
-						
+
 					</div>
 					<button class="btn_1 btn_moreView" style="color: white">
-							<i class="icon-up-hand"></i>SHOW MORE
-						</button>
+						<i class="icon-up-hand"></i>SHOW MORE
+					</button>
 					<c:if test="${sessionScope.user_id eq vo.user_id}">
 						<div class="divider"></div>
 						<br>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
-								
+
 								<table class="table table-striped options_cart">
 									<tbody>
 										<tr>
@@ -211,14 +213,13 @@
 											<td style="width: 60%">COMMERCIAL</td>
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"> <input
-													type="checkbox" name="option_1" id="option_1" 
-													value="1" 
+													type="checkbox" name="option_1" id="option_1" value="1"
 													<c:forEach items="${fav}" var="fa">
 														<c:if test="${fa == 1}">
 														checked=""
 														</c:if>
-													</c:forEach>
-													> <span> <span>No</span> <span>Yes</span>
+													</c:forEach>>
+													<span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -227,13 +228,13 @@
 											<td>FLEA MARKET</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_2" id="option_2"
-													value="2" 
+													value="2"
 													<c:forEach items="${fav}" var="fa">
 														<c:if test="${fa == 2}">
 														checked=""
 														</c:if>
-													</c:forEach>
-													> <span> <span>No</span> <span>Yes</span>
+													</c:forEach>>
+													<span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -242,13 +243,13 @@
 											<td>EXHIBITION</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_3" id="option_3"
-													value="3" 
+													value="3"
 													<c:forEach items="${fav}" var="fa">
 														<c:if test="${fa == 3}">
 														checked=""
 														</c:if>
-													</c:forEach>
-													> <span> <span>No</span> <span>Yes</span>
+													</c:forEach>>
+													<span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -257,28 +258,28 @@
 											<td>POP - UP STORE</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_4" id="option_4"
-													value="4" 
+													value="4"
 													<c:forEach items="${fav}" var="fa">
 														<c:if test="${fa == 4}">
 														checked=""
 														</c:if>
-													</c:forEach>
-													> <span> <span>No</span> <span>Yes</span>
+													</c:forEach>>
+													<span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
-										
-										
+
+
 									</tbody>
-									
+
 								</table>
-								
-								
+
+
 							</div>
 							<!--  -->
-							
+
 							<div class="col-md-6 col-sm-6">
-								
+
 								<table class="table table-striped options_cart">
 									<tbody>
 										<tr>
@@ -287,14 +288,13 @@
 											<td style="width: 60%">New Citytours Tours</td>
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"> <input
-													type="checkbox" name="option_5" id="option_5" 
-													value="5" 
+													type="checkbox" name="option_5" id="option_5" value="5"
 													<c:forEach items="${fav}" var="fa">
 														<c:if test="${fa == 5}">
 														checked=""
 														</c:if>
-													</c:forEach> 
-													> <span> <span>No</span> <span>Yes</span>
+													</c:forEach>>
+													<span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
@@ -308,14 +308,14 @@
 														<c:if test="${fa == 6}">
 														checked=""
 														</c:if>
-													</c:forEach> 
-													> <span> <span>No</span> <span>Yes</span>
+													</c:forEach>>
+													<span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
 										<tr>
 											<td><i class="icon_set_1_icon-26"></i></td>
-											<td>SMALL GROUP </td>
+											<td>SMALL GROUP</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_7" id="option_7"
 													value="7"
@@ -323,14 +323,14 @@
 														<c:if test="${fa == 7}">
 														checked=""
 														</c:if>
-													</c:forEach> 
-													> <span> <span>No</span> <span>Yes</span>
+													</c:forEach>>
+													<span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
 										<tr>
 											<td><i class="icon_set_1_icon-81"></i></td>
-											<td>SMALL WEDDING </td>
+											<td>SMALL WEDDING</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_8" id="option_8"
 													value="8"
@@ -338,18 +338,18 @@
 														<c:if test="${fa == 8}">
 														checked=""
 														</c:if>
-													</c:forEach> 
-													> <span> <span>No</span> <span>Yes</span>
+													</c:forEach>>
+													<span> <span>No</span> <span>Yes</span>
 												</span> <a></a>
 											</label></td>
 										</tr>
-										
-										
+
+
 									</tbody>
-								
+
 								</table>
-								
-								
+
+
 							</div>
 							<script>
 						$(document).ready(function() {
@@ -469,14 +469,14 @@
 
 						})
 					</script>
-							
-							
+
+
 							<!--  -->
-							
-						</div> 
+
+						</div>
 						<!-- End row -->
 						<br>
-<hr>
+						<hr>
 
 
 
@@ -527,41 +527,26 @@
 							<button type="submit" class="btn_1 green">Update Profile</button>
 						</form>
 						<!-- End row -->
-
-						<hr>
-
-
+						<br>
 						<br>
 						<!-- Hidden on mobiles -->
 						<div class="hidden-xs">
-							<!-- Drop Zone -->
-							<h5>Or drag and drop files below</h5>
-							<div class="upload-drop-zone" id="drop-zone">Just drag and
-								drop files here</div>
-							<!-- Progress Bar -->
-							<div class="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="60"
-									aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-									<span class="sr-only">60% Complete</span>
-								</div>
-							</div>
-							<!-- Upload Finished -->
-							<br>
-							<div class="js-upload-finished">
-								<h5>Processed files</h5>
-								<div class="list-group">
-									<a href="#" class="list-group-item list-group-item-success"><span
-										class="badge alert-success pull-right">Success</span>image-01.jpg</a>
-									<input type="hidden" name="thumb_nail"
-										value="<%-- <%=vo.getThumb_nail()%> --%>">
-								</div>
-							</div>
+
 							<!-- End Hidden on mobiles -->
 
 							<hr>
+							<form action="/uploaduser" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="user_id" value="${vo.user_id }">
+							<h4>UPDATE YOUR IMAGE</h4>
+							<div class="row">
+								<input type="file" id="file0" name="files" >
+								<br>
+								<button type="submit" class="btn_1 green" id="js-upload-submit">Upload file</button>
+							</div>
+							</form>
 
-
-
+							<hr>
+							
 							<!-- End section 4 -->
 
 							<div></div>
@@ -577,20 +562,20 @@
 						<br>
 						<br>
 					</c:if>
-					
+
 				</section>
 
 				<section id="section-2">
 					<div class="row">
 
 						<div name="bookmark" id="bookmarklist"></div>
-						
+
 
 					</div>
 					<!-- End row -->
 					<button class="btn_1 btn_moreView2" style="color: white">
-							<i class="icon-up-hand"></i>SHOW MORE
-						</button>
+						<i class="icon-up-hand"></i>SHOW MORE
+					</button>
 
 				</section>
 				<!-- End section 2 -->
@@ -715,6 +700,9 @@
 		})
 
 	})
+	
+        
+        
 	</script>
 </body>
 </html>
