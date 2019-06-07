@@ -73,8 +73,8 @@
 			});
 		}
 		
-		//seol
-		var user_id = $(".form-control" ).val();//input박스에 class이름이 form-control의 value값을 user_id에 저장
+		//seol//input박스에 class이름이 form-control의 value값을 user_id에 저장
+		
 		function tsearch(currentPage,user_id){
 			 $.ajax({
 					type : "GET",
@@ -94,10 +94,10 @@
 			}
 			
 			$(".btn-default").click(function(){
+				var user_id = $(".form-control" ).val();
 				tsearch(1,user_id);
 			})
-		
-		
+			
 		//favoriteList(1,"상가");
 		function favoriteList(currentPage,fname,predi) {
 			$.ajax({

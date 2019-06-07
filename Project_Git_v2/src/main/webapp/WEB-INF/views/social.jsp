@@ -131,28 +131,29 @@
  			return false;
  		})
  		
-		var user_id = $(".form-control" ).val();//input박스에 class이름이 form-control의 value값을 user_id에 저장
-		function tsearch(currentPage,user_id){
-			 $.ajax({
-					type : "GET",
-					url : "/board/tsearch",
-					data : {
-						user_id : user_id,
-						page : currentPage
-					},
-					error : function(err){
-						console.log(err);
-					},
-					success : function(data){
-						$("#takerlist").html(data);
-					}
-				});
-			}
-			
-		$(".btn-default").click(function(){
-			tsearch(1,user_id);
-		})
-			
+ 		//seol //input박스에 class이름이 form-control의 value값을 user_id에 저장
+		//var user_id = $(".form-control" ).val();
+			function tsearch(currentPage,user_id){
+				 $.ajax({
+						type : "GET",
+						url : "/board/tsearch",
+						data : {
+							user_id : user_id,
+							page : currentPage
+						},
+						error : function(err){
+							console.log(err);
+						},
+						success : function(data){
+							$("#takerlist").html(data);
+						}
+					});
+				}
+				
+			$(".btn-default").click(function(){
+				var user_id = $(".form-control" ).val();
+				tsearch(1,user_id);
+			})
  		
    })
       $(function(){
