@@ -100,12 +100,21 @@ public class UploadController {
 		
 		
 		//새로운 파일 업로드 		
-		String savedname = file.getOriginalFilename();
-		File target = new File(uploadPath,savedname);
-		FileCopyUtils.copy(file.getBytes(), target);
+		String savedname =uploadFile(file.getOriginalFilename(), file.getBytes());
+//		File target = new File(uploadPath,savedname);
+//		FileCopyUtils.copy(file.getBytes(), target);
 		uservice.updatethumb(savedname,user_id);
 		
 		return "forward:/searchuser.do?user_id="+user_id;
+	}
+	
+	private String uploadFile(String originalname,byte[] fileData) throws Exception{
+		UUID uuid = UUID.randomUUID();
+		
+		String savedName = uuid.toString()+"_"+originalname;
+		File target = new File(uploadPath,savedName);
+		FileCopyUtils.copy(fileData, target);
+		return savedName;
 	}
 	
 	
