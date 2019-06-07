@@ -17,7 +17,7 @@
 				<div class="commentlist">
 					<ol>
 						<li>
-						<div class="avatar"><a href="#"><img src="<%=request.getContextPath() %>/data/aa.png" alt=""></a></div><!-- png or jpg -->
+						<div class="avatar"><a href="#"><img src="/uploads/${thumb_nail}" alt=""></a></div><!-- png or jpg -->
 						<div class="comment_right clearfix fix-width">
 							<div class="comment_info">
 								<input type="hidden" value="${board_id}" name="board_id" class="board_id">

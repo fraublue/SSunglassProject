@@ -439,6 +439,7 @@ public class BoardController {
 		try {
 			mav.addObject("commentList", service.commentlistboardid(board_id));
 			mav.addObject("board_id", board_id);
+			mav.addObject("thumb_nail", service.selectcommentthumb(board_id));
 		} catch (Exception e) {
 
 			e.printStackTrace();

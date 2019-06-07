@@ -61,4 +61,7 @@ public class GiverBoardDAO {
 	  public String getaddr(int board_id) throws Exception{
 		  return session.selectOne(namespace+".getaddr",board_id);
 	  }
+	  public List<String> selectcommentthumb(int board_id) throws Exception{
+		  return session.selectList(namespace+".selectcommentthumb",board_id);
+	  }
 }

@@ -193,6 +193,10 @@ public class BoardServiceImpl implements BoardService {
 	public String getaddr(int board_id) throws Exception {
 		return gdao.getaddr(board_id);
 	}
+	@Override
+	public List<String> selectcommentthumb(int board_id) throws Exception {
+		return gdao.selectcommentthumb(board_id);
+	}
 
 	//
 //  @Override

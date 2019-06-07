@@ -181,6 +181,23 @@ where
  ]]>
 	</select>
 	
+	<select id ="selectcommentthumb" resultType = "string" parameterType="int">
+	select 
+		thumb_nail 
+	from 
+		sns_prj.user 
+	where 
+		user_id in 
+		(
+			select
+				user_id
+			from 
+				sns_prj.`comment`
+			where
+				board_id = #{board_id}
+	    )
+	</select>
+	
 	
 	
 	<!--boardupdate   -->

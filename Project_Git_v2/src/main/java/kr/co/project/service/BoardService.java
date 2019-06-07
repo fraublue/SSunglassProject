@@ -79,6 +79,7 @@ public interface BoardService {
 	
 	public List<CommonBoardVO> selectgiverList(Criteria cri) throws Exception;
 	
+	public List<String> selectcommentthumb(int board_id) throws Exception;
 	
 
 }

@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import kr.co.project.domain.CommonBoardVO;
 import kr.co.project.domain.ContentImgVO;
 import kr.co.project.domain.UploadDTO;
@@ -80,7 +79,6 @@ public class UploadController {
 			logger.info("commonboardvo" + cbvo);
 			bservice.updateBoardThumbImg(cbvo);
 		}
-	
 		return 1;
 	}
 	
@@ -97,8 +95,6 @@ public class UploadController {
 		File fileuplo = new File(uploadPath,filename);
 		fileuplo.delete();
 		
-		
-		
 		//새로운 파일 업로드 		
 		String savedname =uploadFile(file.getOriginalFilename(), file.getBytes());
 //		File target = new File(uploadPath,savedname);
@@ -110,7 +106,6 @@ public class UploadController {
 	
 	private String uploadFile(String originalname,byte[] fileData) throws Exception{
 		UUID uuid = UUID.randomUUID();
-		
 		String savedName = uuid.toString()+"_"+originalname;
 		File target = new File(uploadPath,savedName);
 		FileCopyUtils.copy(fileData, target);
