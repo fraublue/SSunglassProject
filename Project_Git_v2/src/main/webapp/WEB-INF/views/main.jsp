@@ -506,10 +506,10 @@
 		<div class="row" id="listWrap"></div>
 		<p class="text-center nopadding">
 			<button class="btn_1 btn_moreView" style="color: white">
-				<i class="icon-up-hand"></i>SHOW MORE
+				<i class="icon-up-hand">&nbsp;</i>SHOW MORE
 			</button>
 			<button class="btn_1 btn_moreView2" style="color: white">
-				<i class="icon-up-hand"></i>SHOW MORE
+				<i class="icon-up-hand">&nbsp;</i>SHOW MORE
 			</button>
 		</p>
 		<!-- End row -->
