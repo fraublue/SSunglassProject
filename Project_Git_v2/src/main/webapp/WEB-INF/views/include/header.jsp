@@ -167,7 +167,8 @@
 								<form>
 									<div class="input-group">
 										<input type="text" class="form-control"
-											placeholder="Search..."> <span
+											placeholder="Search...">
+											> <span
 											class="input-group-btn">
 											<button class="btn btn-default" type="button"
 												style="margin-left: 0;">

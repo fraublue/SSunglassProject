@@ -197,6 +197,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<String> selectcommentthumb(int board_id) throws Exception {
 		return gdao.selectcommentthumb(board_id);
 	}
+	//20190607 seol
+	@Override
+	public List<CommonBoardVO> tsearch(String user_id, Criteria cri) throws Exception {
+		return dao.tsearch(user_id,cri);
+	}
 
 	//
 //  @Override

@@ -55,6 +55,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 	</select>
 	
+	<select id="tsearch" parameterType="hashmap" resultType="kr.co.project.domain.CommonBoardVO">
+	<![CDATA[
+		select *
+		from common_board
+		where user_id in (
+			select user_id from user where user_type= 0 and user_id = #{user_id}
+		)  
+		order by like_cnt desc, reg_date desc
+		limit #{pageStart},#{perPageNum}
+	]]>
+	</select>
+	
 	<select id="favoriteTypeList" resultType="kr.co.project.domain.CommonBoardVO" parameterType="kr.co.project.domain.FavoriteType">
 	<![CDATA[
 		select c.board_id as `board_id`, c.board_content as `board_content`,c.like_cnt as `like_cnt`,  c.reg_date as `reg_date`, c.user_id as `user_id`, c.thumb_img as `thumb_img`

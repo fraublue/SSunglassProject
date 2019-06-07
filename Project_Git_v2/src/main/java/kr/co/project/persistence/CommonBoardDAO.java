@@ -122,5 +122,12 @@ public class CommonBoardDAO {
 		public void deletecontentimg(String user_id)throws Exception{
 			session.delete(namespace+".deletecontentimg",user_id);
 		}
-		
+		//20190607 seol
+		  public List<CommonBoardVO> tsearch(String user_id,Criteria cri) throws Exception {
+			  Map<String, Object> map = new HashMap<String, Object>();
+			  map.put("user_id",user_id);
+			  map.put("pageStart", cri.getStartpage());
+			  map.put("perPageNum", cri.getPerPageNum());
+				return session.selectList(namespace+".tsearch",map);
+			}
 }

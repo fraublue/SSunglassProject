@@ -73,6 +73,30 @@
 			});
 		}
 		
+		//seol
+		var user_id = $(".form-control" ).val();//input박스에 class이름이 form-control의 value값을 user_id에 저장
+		function tsearch(currentPage,user_id){
+			 $.ajax({
+					type : "GET",
+					url : "/board/tsearch",
+					data : {
+						user_id : user_id,
+						page : currentPage
+					},
+					error : function(err){
+						console.log(err);
+					},
+					success : function(data){
+						//$("listWrap").html(data);
+						addData(html,data,"listWrap");
+					}
+				});
+			}
+			
+			$(".btn-default").click(function(){
+				tsearch(1,user_id);
+			})
+		
 		
 		//favoriteList(1,"상가");
 		function favoriteList(currentPage,fname,predi) {
@@ -93,6 +117,7 @@
 				}
 			});
 		}
+		
 		var type = "";
 		var pageNum = 1;
 		 $(".btn_moreView").show();
