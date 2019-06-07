@@ -17,7 +17,9 @@
 				<div class="commentlist">
 					<ol>
 						<li>
-						<div class="avatar"><a href="#"><img src="/uploads/${thumb_nail}" alt=""></a></div><!-- png or jpg -->
+						<c:forEach items="${thumb_nail }" var="vv" begin="${status.index}" end="${status.index}">
+                  			<div class="avatar"><a href="#"><img src="/uploads/${vv}" alt=""></a></div><!-- png or jpg -->
+                  		</c:forEach>
 						<div class="comment_right clearfix fix-width">
 							<div class="comment_info">
 								<input type="hidden" value="${board_id}" name="board_id" class="board_id">
