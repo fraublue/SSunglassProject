@@ -153,11 +153,6 @@
 			tsearch(1,user_id);
 		})
 			
-		$(".btn-default").keypress(function(e){
-			if(e.keyCode == 13)
-			tsearch(1,user_id);
-		});
-			
  		
    })
       $(function(){
