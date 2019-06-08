@@ -600,10 +600,31 @@
       function frmSubmit(){
          var type = document.writeForm.user_type.value;
          if(type==1){
-            var gboardData = {
-               user_type:type,
-                  
-              }
+        	 var gboardData = {
+                     user_type:type,
+                        addr: $("#address").val(),
+                        board_id: 0,
+                        user_id: $("#user_id").val(),
+                        board_content: $("#message_contact").val(),
+                        amenities1: $("#amenti1").is(":checked") ? $("#amenti1").val() : null,
+                        amenities2: $("#amenti2").is(":checked") ? $("#amenti2").val() : null,
+                        amenities3: $("#amenti3").is(":checked") ? $("#amenti3").val() : null,
+                        amenities4: $("#amenti4").is(":checked") ? $("#amenti4").val() : null,
+                              
+                        favorite_id1: $("#option_1").is(":checked") ? $("#option_1").val() : 0,
+                        favorite_id2: $("#option_2").is(":checked") ? $("#option_2").val() : 0,
+                        favorite_id3: $("#option_3").is(":checked") ? $("#option_3").val() : 0,
+                        favorite_id4: $("#option_4").is(":checked") ? $("#option_4").val() : 0,
+                        favorite_id5: $("#option_5").is(":checked") ? $("#option_5").val() : 0,
+                        favorite_id6: $("#option_6").is(":checked") ? $("#option_6").val() : 0,
+                        favorite_id7: $("#option_7").is(":checked") ? $("#option_7").val() : 0,
+                        favorite_id8: $("#option_8").is(":checked") ? $("#option_8").val() : 0,
+                       
+                        booking_startdate: $("input[name='booking_startdate']").val(),
+                        booking_enddate: $("input[name='booking_enddate']").val(),
+                        amenities_etc: $("#amenities_etc").val(),
+                        people : $("#people").val()
+                    }
             $.ajax({
                url:"/board/writeg",
                type:"post",
