@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select *
 		from common_board
 		where user_id in (
-			select user_id from user where user_type= 0 and user_id = #{user_id}
+			select user_id from user where user_id = #{user_id}
 		)  
 		order by like_cnt desc, reg_date desc
 		limit #{pageStart},#{perPageNum}
