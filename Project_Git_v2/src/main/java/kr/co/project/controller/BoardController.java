@@ -474,6 +474,8 @@ public class BoardController {
 		logger.info("boardupdate user_id ::::" + user_id);
 		boolean flag = serviceuser.userTypeCheck(user_id);
 		ModelAndView mav = new ModelAndView();
+		List<String> photo = new ArrayList<String>();
+		
 		try {
 			mav.setViewName("boardupdate");
 			if (flag) {
@@ -481,9 +483,11 @@ public class BoardController {
 //				mav.addObject("user_type",flag);
 				mav.addObject("giver_board", service.giverboard(board_id));
 				mav.addObject("fav", fservice.searchfavorite_boardid(board_id));
+				mav.addObject("img",upservice.getimgboardid(board_id));
 			} else {
 				mav.addObject("common_board", service.commmonboard(board_id));
 //				mav.addObject("user_type",flag);
+				mav.addObject("img",upservice.getimgboardid(board_id));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

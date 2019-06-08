@@ -131,6 +131,16 @@
 								</div>
 							</div>
 						</div>
+						
+						<div class="post_info clearfix">
+						<div class="post-left board_view">
+							<ul>
+								<c:forEach var="vo" items="${img}">
+									<li><img src="<%=request.getContextPath()%>/uploads/${vo}"></li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
 					<!--  GiverWritePage -->
 					<c:if test ="${ sessionScope.user_type == 1 }">
 						<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

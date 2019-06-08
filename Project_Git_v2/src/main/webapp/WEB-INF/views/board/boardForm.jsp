@@ -210,9 +210,6 @@
 								</c:forEach>
 							</ul>
 						</div>
-						<!--    <div class="post-right">
-                        <i class="icon-comment"></i><a href="#"></a>Comments
-                     </div> -->
 					</div>
 					<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 					<c:if test="${sessionScope.user_id != null }">
