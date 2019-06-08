@@ -166,12 +166,9 @@
 							<div class="dropdown-menu">
 								<form>
 									<div class="input-group">
-										<input type="text" class="form-control"
-											placeholder="Search...">
-											> <span
-											class="input-group-btn">
-											<button class="btn btn-default" type="button"
-												style="margin-left: 0;">
+										<input type="text" class="form-control" placeholder="Search...">
+											 <span class="input-group-btn">
+											<button class="btn btn-default" type="button" style="margin-left: 0;">
 												<i class="icon-search"></i>
 											</button>
 										</span>
