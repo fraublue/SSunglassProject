@@ -120,6 +120,7 @@ public class BoardController {
 		for (int i = 0; i < list.size(); i++) {
 			int board_id = list.get(i).getBoard_id();
 			boolean a = likeservice.checkLike(board_id, user_id);
+			
 			if (a) {
 				like.add("like1.png");
 			} else {
@@ -136,11 +137,29 @@ public class BoardController {
 
 	@RequestMapping(value = "/flist", method = RequestMethod.GET)
 	public String favoritelistpage(@ModelAttribute("ftype") FavoriteType ftype, Model model,
-			@RequestParam("page") int page) throws Exception {
+			@RequestParam("page") int page, HttpSession session) throws Exception {
 
 		// logger.info(service.favoriteTypeList(ftype).toString());
 		ftype.setPage(page);
-		model.addAttribute("list", service.favoriteTypeList(ftype));
+		List<CommonBoardVO> list = service.favoriteTypeList(ftype);
+		List<String> like = new ArrayList<String>();
+		model.addAttribute("list", list);
+		String user_id = (String)session.getAttribute("user_id");
+		List<String> addr = new ArrayList<String>();
+		
+		for (int i = 0; i < list.size(); i++) {
+			int board_id = list.get(i).getBoard_id();
+			boolean a = likeservice.checkLike(board_id, user_id);
+			addr.add(service.getaddr(board_id));
+			if (a) {
+				like.add("like1.png");
+			} else {
+				like.add("like2.png");
+			}
+
+		}
+		model.addAttribute("like", like);
+		model.addAttribute("addr", addr);
 
 //	  PageMaker pageMaker = new PageMaker();
 //	  Criteria cri = new Criteria();

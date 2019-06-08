@@ -626,7 +626,7 @@
 							<div class="row">
 								<div class="col-md-3">
 									<h4>
-										<span>People</span>
+										<span>GUESTS</span>
 									</h4>
 								</div>
 								<div class="col-md-9">

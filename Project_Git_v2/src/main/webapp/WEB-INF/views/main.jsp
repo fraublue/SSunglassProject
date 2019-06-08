@@ -264,7 +264,7 @@
 						</div>
 						<div class="col-md-2 col-sm-3 col-xs-6">
 							<div class="form-group">
-								<label>Adults</label>
+								<label>GUESTS</label>
 								<div class="numbers-row">
 									<input type="text" value="1" id="adults"
 										class="qty2 form-control" name="adults">
