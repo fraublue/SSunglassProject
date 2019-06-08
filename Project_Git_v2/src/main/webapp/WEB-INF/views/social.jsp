@@ -150,10 +150,21 @@
 					});
 				}
 				
-			$(".btn-default").click(function(){
+		/* 	$(".btn-default").click(function(){
 				var user_id = $(".form-control" ).val();
 				tsearch(1,user_id);
-			})
+			}) */
+			$("#keyword").on('keydown', function(e){
+                if(e.keyCode ==13){
+                   var user_id = $(this).val();
+                   tsearch(1, user_id);
+                }
+                
+             })
+             $("#searchbtn").on('click',function(){
+                var user_id = $("#keyword").val();
+                tsearch(1,user_id);
+             })
  		
    })
       $(function(){
