@@ -135,9 +135,12 @@
 						<div class="post_info clearfix">
 						<div class="post-left board_view">
 							<ul>
-								<c:forEach var="vo" items="${img}">
+								<%-- <c:forEach var="vo" items="${img}">
 									<li><img src="<%=request.getContextPath()%>/uploads/${vo}"></li>
-								</c:forEach>
+								</c:forEach> --%>
+								<div id="imglistWrap">
+								
+								</div>
 							</ul>
 						</div>
 					</div>
@@ -668,6 +671,29 @@
 	<script src="/js/common_scripts_min.js"></script>
 	<script src="/js/functions.js"></script>
 		<script>
+		
+		$(function() {
+			
+			addImg();
+			function addImg() {
+				var board_id = $("#board_id").val();
+				$.ajax({
+					type : "GET",
+					url : "<%=request.getContextPath()%>/board/imglist.do",
+					data : {
+						board_id : board_id
+					},
+					error : function(err) {
+						console.log(err);
+					},
+					success : function(data) {
+						//addData(predi,data,"listWrap");
+						$("#imglistWrap").append(data);
+					}
+				});
+			}
+		})
+			
 						$(document).ready(function() {
 							$("#option_1").on("click", function() {
 								var favorite_id = $("#option_1").val();

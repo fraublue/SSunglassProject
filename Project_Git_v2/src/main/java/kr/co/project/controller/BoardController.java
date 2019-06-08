@@ -483,16 +483,23 @@ public class BoardController {
 //				mav.addObject("user_type",flag);
 				mav.addObject("giver_board", service.giverboard(board_id));
 				mav.addObject("fav", fservice.searchfavorite_boardid(board_id));
-				mav.addObject("img",upservice.getimgboardid(board_id));
+				/* mav.addObject("img",upservice.getimgboardid(board_id)); */
 			} else {
 				mav.addObject("common_board", service.commmonboard(board_id));
 //				mav.addObject("user_type",flag);
-				mav.addObject("img",upservice.getimgboardid(board_id));
+				/* mav.addObject("img",upservice.getimgboardid(board_id)); */
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
+	}
+	
+	@RequestMapping(value= "/imglist.do", method = RequestMethod.GET)
+	public String imglist(@RequestParam("board_id")int board_id, Model model)throws Exception{
+		model.addAttribute("img", upservice.getimgboardid(board_id));
+		model.addAttribute("board_id",board_id);
+		return "board/ImgList";
 	}
 
 	@RequestMapping(value = "/updateg", method = RequestMethod.GET)
