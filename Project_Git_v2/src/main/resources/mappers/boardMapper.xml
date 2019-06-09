@@ -194,21 +194,12 @@ where
 	</select>
 	
 	<select id ="selectcommentthumb" resultType = "string" parameterType="int">
-	select 
-		thumb_nail 
-	from 
-		sns_prj.user 
-	where 
-		user_id in 
-		
-		(
-			select
-				user_id
-			from 
-				sns_prj.`comment`
-			where
-				board_id = #{board_id}
-	    )
+	select
+	thumb_nail
+    from common_board c, comment m, user u 
+    where c.board_id = m.board_id
+    and m.user_id = u.user_id
+    and c.board_id = #{board_id}
 	</select>
 	
 	
