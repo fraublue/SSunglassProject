@@ -134,6 +134,7 @@
 						
 						<div class="post_info clearfix">
 						<div class="post-left board_view">
+						<h4>YOUR IMAGES </h4>
 						<hr/>
 							<ul>
 								<%-- <c:forEach var="vo" items="${img}">
@@ -148,12 +149,46 @@
 						</div>
 						<hr/>
 					</div>
-					<div class="row">
-					<form name="fileForm" action="requestupload2" method="post" enctype="multipart/form-data">
-						<input multiple="multiple" type="file" name="file" /> 
+					<!-- <div class="row">
+					
+						<input type="file" id="file0" class="" name="files" multiple>
 						<input type="submit" value="전송" />
-						</form>
+					
+					</div> -->
+					
+					<!-- imageUpload start -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<!-- <h4>image</h4> -->
+								<div>
+									<h4>Click & Drag your Image</h4>
+									<div class="dropzone upload-drop-zone">
+										<div class="imgs_wrap">
+											<ul class="row">
+											</ul>
+										</div>
+										<div class="box_icon_wrap">
+											<svg class="box__icon" xmlns="http://www.w3.org/2000/svg"
+												width="50" height="43" viewBox="0 0 50 43">
+												<path
+													d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path></svg>
+											<label class="labl"><strong>Choose a file</strong><span
+												class="box__dragndrop"> or drag it here</span>.</label>
+										</div>
+									</div>
+									<input type="file" id="file0" class="hidden" name="files"
+										multiple>
+
+								</div>
+								<button class="btn_1 green" value="uploadimage" id="uploadima">UPLOAD IMAGES</button>
+
+							</div>
+						</div>
 					</div>
+
+
+					<!-- imageUpload end -->
 					<!--  GiverWritePage -->
 					<c:if test ="${ sessionScope.user_type == 1 }">
 						<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -683,11 +718,18 @@
 		<script>
 		 window.onload = function() {
 			 addImg();
+			 
 			$(document).on('click', ".imgdel", function() {
 				var filename = $(this).attr("data-cid");
 				console.log(this + " : dsfdasdfd");
 				console.log(filename);
 				deleteimg(filename);
+				return false;
+			});
+			$(document).on('click', "#uploadima", function() {
+				var board_id = $("#board_id").val();
+				uploadFile(board_id);
+				delete fileList;
 				return false;
 			});
 			
@@ -747,6 +789,219 @@
 					}
 				});
 			}
+			
+			 var fileIndex = 0;
+		        // 등록할 전체 파일 사이즈
+		        var totalFileSize = 0;
+		        // 파일 리스트
+		        var fileList = new Array();
+		        // 파일 사이즈 리스트
+		        var fileSizeList = new Array();
+		        // 등록 가능한 파일 사이즈 MB
+		        var uploadSize = 50;
+		        // 등록 가능한 총 파일 사이즈 MB
+		        var maxUploadSize = 500;
+		        $(function () {
+		            fileDrop();
+		            // var ci = 0;
+		            $(".dropzone").on("click", function (e) {
+		                e.preventDefault();
+		                $("#file0").click();
+		            });
+		            $("input[type='file']").on('change', function (e) {
+		                //selectFile(e.target.files);
+		                //console.log(e.target.files);
+		                $(".box_icon_wrap").css('display','none');
+		                 setTimeout(function () {
+		                    selectFile(e.target.files);
+		                },10)  
+		            });
+
+		        });
+		        function fileDrop() {
+		            var dropzone = $(".dropzone");
+		            dropzone.on('change', function (e) {
+		                console.log("changed : " + e);
+		            })
+		            dropzone.on('dragenter', function (e) {
+		                e.stopPropagation();
+		                e.preventDefault();
+		                // 드롭다운 영역 css
+		                dropzone.css('background-color', '#E3F2FC');
+		            });
+		            dropzone.on('dragleave', function (e) {
+		                e.stopPropagation();
+		                e.preventDefault();
+		                // 드롭다운 영역 css
+		                dropzone.css('background-color', '#FFFFFF');
+		            });
+		            dropzone.on('dragover', function (e) {
+		                e.stopPropagation();
+		                e.preventDefault();
+		                // 드롭다운 영역 css
+		                dropzone.css('background-color', '#E3F2FC');
+		            });
+
+		            dropzone.on('drop', function (e) {
+		                e.preventDefault();
+		                // 드롭다운 영역 css
+		                dropzone.css('background-color', '#FFFFFF');
+		                $(".box_icon_wrap").css('display','none');
+		                var files = e.originalEvent.dataTransfer.files;
+		                //selectFile
+		                selectFile(files);
+		            });
+		        }
+		        function selectFile(files) {
+		            if (files != null) {
+		                if (files.length < 1) {
+		                    alert("폴더 업로드 불가");
+		                    return;
+		                }
+		                //selectFile(files);
+		                //handleImgsFilesSelect(e);
+
+		                // 다중
+		                for (var i = 0; i < files.length; i++) {
+		                    // 파일 이름
+		                    var fileName = files[i].name;
+		                    var fileNameArr = fileName.split("\.");
+		                    // 확장자
+		                    var ext = fileNameArr[fileNameArr.length - 1];
+		                    // 파일 사이즈(단위 :MB)
+		                    var fileSize = files[i].size / 1024 / 1024;
+		                    if ($.inArray(ext, ['exe', 'bat', 'sh', 'java', 'jsp', 'html', 'js', 'css', 'xml']) >= 0) {
+		                        // 확장자 체크
+		                        alert("등록 불가 확장자");
+		                        break;
+		                    } else if (fileSize > uploadSize) {
+		                        // 파일 사이즈 체크
+		                        alert("용량 초과\n업로드 가능 용량 : " + uploadSize + " MB");
+		                        break;
+		                    } else {
+		                        // 전체 파일 사이즈
+		                        totalFileSize += fileSize;
+		                        // 파일 배열에 넣기
+		                        fileList[fileIndex] = files[i];
+		                        // 파일 사이즈 배열에 넣기
+		                        fileSizeList[fileIndex] = fileSize;                        
+		                        var reader = new FileReader();
+		                        var temp = fileList[fileIndex];
+		                      
+		                        reader.onloadend = (function (temp) {
+		                           return function(){
+		                        	   img_html = '<li class="thumb_list col-md-3 col-lg-3 col-sm-3 thumb_img_' + fileIndex + '"><img class="prvImg" src="' + this.result + '"></li>';
+		                               $(".imgs_wrap>ul").append(img_html);
+		                               setTimeout(function(){
+		                                  $(".thumb_list .prvImg").each(function(){
+		                                     var listW = $(".thumb_list").width();
+		                                      $(".thumb_list").height(listW);
+		                                     var imgW = $(this).width();
+		                                     var imgH = $(this).height();
+		                                     console.log(imgW);
+		                                     console.log(imgH);
+		                                     if(imgW < imgH){                                 
+		                                        $(this).addClass("bigHeight");
+		                                        var imgH = $(this).height();
+		                                        $(this).css({"margin-top":-imgH/2});
+		                                     }else if(imgW > imgH){
+		                                        
+		                                        $(this).addClass("bigWidth");
+		                                        var imgW = $(this).width();
+		                                        $(this).css({"margin-left":-imgW/2});
+		                                        
+		                                     }else{
+		                                        $(this).css({"width":"100%","height":"auto"});
+		                                     }                           
+		                                  });                        
+		                              },20);                     
+		                           };
+		                        })(temp); 
+		                        reader.readAsDataURL(temp);
+		                        //console.log(img_html);
+		                      
+		                        // // 파일 번호 증가
+		                        fileIndex++;
+		                    }
+		                }
+		                console.log(fileList);
+		                // 기존 이미지리스트삭제
+		                //$(".imgs_wrap>ul").children().remove();
+		               // imageThumbView(fileList);
+		            } else {
+		                alert("ERROR");
+		            }
+		        }
+		    
+		      
+		      /* function deleteFile(fIndex) {
+		            console.log("del call");
+		            console.log(fileList[fIndex] + " : " + fileSizeList[fIndex]);
+		            // 전체 파일 사이즈 수정
+		            totalFileSize -= fileSizeList[fIndex];
+
+		            // 파일 배열에서 삭제
+		            delete fileList[fIndex];
+
+		            // 파일 사이즈 배열 삭제
+		            delete fileSizeList[fIndex];
+
+		            // 업로드 파일 테이블 목록에서 삭제                
+		            $("#fileli_" + fIndex).remove();
+		            $(".thumbIdx_" + fIndex).remove();
+		        }  */
+		        
+		        // 파일 등록
+		        function uploadFile(board_id) {
+		            // 등록할 파일 리스트
+		            var uploadFileList = Object.keys(fileList);
+		            // 파일이 있는지 체크
+		            if (uploadFileList.length == 0) {
+		                // 파일등록 경고창
+		                alert("등록한 이미지 파일이 없습니다.");
+		                return ;
+		            }
+
+		            // 용량을 500MB를 넘을 경우 업로드 불가
+		            if (totalFileSize > maxUploadSize) {
+		                // 파일 사이즈 초과 경고창
+		                alert("총 용량 초과\n총 업로드 가능 용량 : " + maxUploadSize + " MB");
+		                return;
+		            }
+
+		            //if (confirm("등록 하시겠습니까?")) {
+		                // 등록할 파일 리스트를 formData로 데이터 입력
+		                var form = $('#boardWriteForm');
+		                //var userid= $("#user_id").val();
+		                //var formData = new FormData(form);
+		                var formData = new FormData();
+		                for (var i = 0; i < uploadFileList.length; i++) {
+		                   console.log(fileList[uploadFileList[i]]);
+		                    formData.append('files', fileList[uploadFileList[i]]);
+		                }
+		                //formData.append("user_id",userid);
+		                formData.append("board_id",board_id);
+		                console.log(formData.getAll("files"));
+		                console.log(formData.get("user_id"));
+		                $.ajax({
+		                    url: "/uploadboard",
+		                    data: formData,
+		                    type: 'POST',
+		                    enctype: 'multipart/form-data',
+		                    processData: false,
+		                    contentType: false,
+		                    dataType: 'json',
+		                    cache: false,
+		                    success: function (result) {
+		                       console.log(result);
+		                       htmlImg();
+		                       /* window.location.href = "/main.do"; */
+		                    }
+		                });
+		            //}
+		        }
+		        
+		        
 			
 			
 		 }
