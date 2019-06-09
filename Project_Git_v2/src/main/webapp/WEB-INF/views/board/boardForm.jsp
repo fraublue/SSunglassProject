@@ -202,6 +202,7 @@
 					<%-- <img
 							src="<%=request.getContextPath()%>/upload/${common_board.thumb_img}"
 							alt="" class="img-responsive"> --%>
+							
 					<div class="post_info clearfix">
 						<div class="post-left board_view">
 							<ul>
@@ -211,6 +212,7 @@
 							</ul>
 						</div>
 					</div>
+					
 					<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 					<c:if test="${sessionScope.user_id != null }">
 
@@ -330,7 +332,6 @@
 						<div class="post-left">
 							<ul>
 								<li><i class="icon-calendar-empty"></i>On <span>${common_board.reg_date }</span></li>
-
 							</ul>
 						</div>
 						<!-- 	<div class="post-right">

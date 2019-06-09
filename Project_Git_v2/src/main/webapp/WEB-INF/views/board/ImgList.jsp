@@ -12,8 +12,7 @@
 
 				<div class="img_container">
 					<input type="hidden" value="${board_id }" name="board_id" id="board_id">
-					<input type="hidden" value="${vo}" name="thumb_nail" id="thumb_nail">
-						<li><img src="<%=request.getContextPath()%>/uploads/${vo}"></li>
+						<li data-cid="${vo}" class="imgdel"><img src="<%=request.getContextPath()%>/uploads/${vo}"></li>
 				</div>
 				<%-- <div class="tour_title">
 					<h3>

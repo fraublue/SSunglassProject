@@ -17,4 +17,5 @@ public interface UserService {
 
 	public void updatethumb(String savedname, String user_id);
 	public String getthumb(String user_id);
+	
 }

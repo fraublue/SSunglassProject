@@ -35,4 +35,18 @@ public class UploadServiceImpl implements UploadService{
 	public void deleteupload_boardid(int board_id) throws Exception {
 		dao.deleteupload_boardid(board_id);		
 	}
+
+	@Override
+	public int deleteimg(int board_id, String filename) throws Exception {
+		
+		return dao.deleteimg(board_id,filename);
+	}
+
+	@Override
+	public void updatefile(ContentImgVO cvo) throws Exception {
+		dao.updatefile(cvo);
+		
+	}
+
+	
 }

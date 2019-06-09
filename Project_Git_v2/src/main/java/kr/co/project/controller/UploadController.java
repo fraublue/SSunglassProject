@@ -53,6 +53,7 @@ public class UploadController {
 	
 	@Inject
 	private UserService uservice;
+	
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public @ResponseBody int imageWrite(@RequestParam("files") MultipartFile[] multi, @RequestParam("board_id") int board_id,
@@ -104,12 +105,48 @@ public class UploadController {
 		return "forward:/searchuser.do?user_id="+user_id;
 	}
 	
+	@RequestMapping(value = "/uploadboard", method = RequestMethod.POST)
+	public @ResponseBody int boardimg(@RequestParam("files") MultipartFile[] file, @RequestParam("board_id")int board_id) throws Exception{
+		//새로운 파일 업로드
+		ContentImgVO cvo = new ContentImgVO();
+		for(MultipartFile mf : file) {
+			String savedname =uploadFile(mf.getOriginalFilename(), mf.getBytes());
+			cvo.setImg_name(savedname);
+			cvo.setBoard_id(board_id);
+			cvo.setOriginal_name(mf.getOriginalFilename());
+			cvo.setTime(System.currentTimeMillis());
+			service.updatefile(cvo);
+		}
+		return 1;
+	}
+	
 	private String uploadFile(String originalname,byte[] fileData) throws Exception{
 		UUID uuid = UUID.randomUUID();
 		String savedName = uuid.toString()+"_"+originalname;
 		File target = new File(uploadPath,savedName);
 		FileCopyUtils.copy(fileData, target);
 		return savedName;
+	}
+	
+	@RequestMapping(value = "/deleteimg", method = RequestMethod.GET)
+	public @ResponseBody int delete(@RequestParam("board_id")int board_id , @RequestParam("filename")String filename) {
+		logger.info("board_id : " + board_id + "filename : " + filename );
+		File file = new File(uploadPath, filename);
+		boolean a = file.delete();
+		try {
+		if(a) {
+			logger.info("파일삭제성공");
+				service.deleteimg(board_id,filename);
+			logger.info("DB삭제성공");
+			
+		}else {
+			logger.info("삭제실패");
+		}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 1;
 	}
 	
 	
