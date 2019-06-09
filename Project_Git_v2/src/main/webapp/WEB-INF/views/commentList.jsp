@@ -13,12 +13,13 @@
 	
 
 
-<c:forEach items="${commentList}" var="list">
+<c:forEach items="${commentList}" var="list" varStatus="status">
 				<div class="commentlist">
 					<ol>
 						<li>
-						<c:forEach items="${thumb_nail }" var="vv" begin="${status.index}" end="${status.index}">
+						<c:forEach items="${thumb_nail}" var="vv" begin="${status.index}" end="${status.index}">
                   			<div class="avatar"><a href="#"><img src="/uploads/${vv}" alt=""></a></div><!-- png or jpg -->
+                  			
                   		</c:forEach>
 						<div class="comment_right clearfix fix-width">
 							<div class="comment_info">
