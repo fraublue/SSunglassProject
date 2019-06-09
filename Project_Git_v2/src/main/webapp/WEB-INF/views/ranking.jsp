@@ -285,7 +285,7 @@
 										<tr>
 											<td style="width: 10%"><i class="icon_set_1_icon-33"></i>
 											</td>
-											<td style="width: 60%">New Citytours Tours</td>
+											<td style="width: 60%">PHOTO</td>
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"> <input
 													type="checkbox" name="option_5" id="option_5" value="5"
@@ -535,14 +535,12 @@
 							<!-- End Hidden on mobiles -->
 
 							<hr>
+							<h4>UPLOAD YOUR PROFILE</h4>
 							<form action="/uploaduser" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="user_id" value="${vo.user_id }">
-							<h4>UPDATE YOUR IMAGE</h4>
-							<div class="row">
-								<input type="file" id="file0" name="files" >
-								<br>
+							<input type="file" id="file0" class="file" name="files" >
 								<button type="submit" class="btn_1 green" id="js-upload-submit">Upload file</button>
-							</div>
+								<br>
 							</form>
 
 							<hr>
@@ -645,6 +643,7 @@
 	</script>
 	<script>
 	
+	
 	$(document).on('click',"#section-2",function(){
 		bookmarkList(aa);
 	})
@@ -669,6 +668,7 @@
 			}
 		}) --%>
 	$(function() {
+		
 		var stpage = 1;
 		var user_id = $(".uid").text()
 		//var user_id = ${vo.user_id}+"";
@@ -698,11 +698,10 @@
 			bookmarkList(user_id, stpage);
 			return false;
 		})
+		
 
 	})
-	
-        
-        
 	</script>
+	
 </body>
 </html>

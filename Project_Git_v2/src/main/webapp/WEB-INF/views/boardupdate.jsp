@@ -441,6 +441,7 @@
 						</div>
 						</c:if>
 						<!--  -->
+						<c:if test ="${ sessionScope.user_type == 1 }">
 						<h4>FAVORITE</h4>
 							<div class="col-md-6 col-sm-6">
 
@@ -516,8 +517,6 @@
 									</tbody>
 
 								</table>
-
-
 							</div>
 							
 
@@ -528,7 +527,7 @@
 										<tr>
 											<td style="width: 10%"><i class="icon_set_1_icon-33"></i>
 											</td>
-											<td style="width: 60%">New Citytours Tours</td>
+											<td style="width: 60%">PHOTO</td>
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"> <input
 													type="checkbox" name="option_5" id="option_5" value="5"
@@ -598,6 +597,7 @@
 
 
 							</div>
+							</c:if>
 						<!--  -->
 						<div class="row">
 							<div class="col-md-6">							
@@ -767,6 +767,7 @@
 					},
 					success : function(data) {
 						//addData(predi,data,"listWrap");
+						
 						$("#imglistWrap").append(data);
 					}
 				});
@@ -784,7 +785,7 @@
 						console.log(err);
 					},
 					success : function(data) {
-						//addData(predi,data,"listWrap");
+						
 						$("#imglistWrap").html(data);
 					}
 				});

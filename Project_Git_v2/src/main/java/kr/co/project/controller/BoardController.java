@@ -1,9 +1,11 @@
 package kr.co.project.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -58,6 +60,9 @@ public class BoardController {
 	private UploadService upservice;
 	@Inject
 	private FavoriteService fservice;
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void giverlistPage(Model model, HttpSession session, @RequestParam("page") int page) throws Exception {
@@ -541,6 +546,8 @@ public class BoardController {
 	public String deleteboard(@RequestParam("user_id") String user_id, @RequestParam("board_id") int board_id) {
 		try {
 			logger.info("deleteboard");
+			List<String> imglist = new ArrayList<String>();
+			imglist = upservice.getimgboardid(board_id);
 			// user媛� giver�씤吏�, taker �씤吏� �뙋�떒 �썑�뿉
 			boolean flag = serviceuser.userTypeCheck(user_id);
 			if (flag) {// giver �씠硫�
@@ -551,6 +558,16 @@ public class BoardController {
 				markservice.deletemark_boardid(board_id);
 				// content_img �궘�젣
 				upservice.deleteupload_boardid(board_id);
+				for(int i=0;i<imglist.size();i++) {
+					String filename = imglist.get(i);
+					File file = new File(uploadPath, filename);
+					boolean a = file.delete();
+					if(a) {
+						logger.info("file delete ok ");
+					}else {
+						logger.info("file delete fail");
+					}
+				}
 				// board_has_favorite �궘�젣
 				fservice.boarddel_boardid(board_id);
 				// giver_board �궘�젣
@@ -564,7 +581,18 @@ public class BoardController {
 				likeservice.deletelike_boardid(board_id);
 				markservice.deletemark_boardid(board_id);
 				upservice.deleteupload_boardid(board_id);
+				for(int i=0;i<imglist.size();i++) {
+					String filename = imglist.get(i);
+					File file = new File(uploadPath, filename);
+					boolean a = file.delete();
+					if(a) {
+						logger.info("file delete ok ");
+					}else {
+						logger.info("file delete fail");
+					}
+				}
 				// board_has_favorite �궘�젣
+				fservice.boarddel_boardid(board_id);
 				// common_board �궘�젣
 				service.deletecommonboard_boardid(board_id);
 			}
