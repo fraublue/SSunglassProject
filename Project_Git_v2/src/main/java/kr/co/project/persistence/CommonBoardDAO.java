@@ -130,4 +130,8 @@ public class CommonBoardDAO {
 			  map.put("perPageNum", cri.getPerPageNum());
 				return session.selectList(namespace+".tsearch",map);
 			}
+		  
+		  public String searchthumb(int board_id) throws Exception{
+			  return session.selectOne(namespace+".searchthumb",board_id);
+		  }
 }

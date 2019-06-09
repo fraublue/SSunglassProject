@@ -202,6 +202,10 @@ public class BoardServiceImpl implements BoardService {
 	public List<CommonBoardVO> tsearch(String user_id, Criteria cri) throws Exception {
 		return dao.tsearch(user_id,cri);
 	}
+	@Override
+	public String searchthumb(int board_id) throws Exception {
+		return dao.searchthumb(board_id);
+	}
 
 	//
 //  @Override

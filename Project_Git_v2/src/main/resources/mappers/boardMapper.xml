@@ -331,6 +331,10 @@ where
 		where board_id = #{board_id}
    </select>
    
+   <select id="searchthumb" resultType="string">
+   select thumb_img from sns_prj.common_board where board_id = #{board_id};
+   </select>
+   
    
 	
 </mapper>
