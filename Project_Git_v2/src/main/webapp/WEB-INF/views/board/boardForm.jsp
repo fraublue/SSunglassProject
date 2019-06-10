@@ -87,14 +87,8 @@
 
 	<!-- Header================================================== -->
 	<%@include file="../include/header.jsp"%>
-	<section id="search_container">
-		<section class="parallax-window" data-parallax="scroll"
-			data-image-src="/img/bg_blog.jpg" data-natural-width="1400"
-			data-natural-height="470">
-			<div class="parallax-content-1">
-				<div class="animated fadeInDown"></div>
-			</div>
-		</section>
+	<section id="search_container" class="social">
+		
 	</section>
 	<!-- End section -->
 
