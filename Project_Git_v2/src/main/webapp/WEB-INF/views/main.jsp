@@ -250,27 +250,17 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Things to do</label> <select class="ddslick"
-									name="category">
-									<option value="0"
-										data-imagesrc="/img/icons_search/all_tours.png" selected>All
-										tours</option>
-									<option value="1"
-										data-imagesrc="/img/icons_search/sightseeing.png">City
-										sightseeing</option>
-									<option value="2" data-imagesrc="/img/icons_search/museums.png">Museum
-										tours</option>
-									<option value="3"
-										data-imagesrc="/img/icons_search/historic.png">Historic
-										Buildings</option>
-									<option value="4" data-imagesrc="/img/icons_search/walking.png">Walking
-										tours</option>
-									<option value="5" data-imagesrc="/img/icons_search/eat.png">Eat
-										& Drink</option>
-									<option value="6"
-										data-imagesrc="/img/icons_search/churches.png">Churces</option>
-									<option value="7" data-imagesrc="/img/icons_search/skyline.png">Skyline
-										tours</option>
+								<label>Things to do</label>
+								<select id="favorite" class="ddslick" name="favorite">
+									<option value="0" data-imagesrc="/img/icons_search/all_tours.png" selected>ALL TOURS</option>
+									<option value="1" data-imagesrc="/img/icons_search/sightseeing.png">COMMERCIAL</option>
+									<option value="2" data-imagesrc="/img/icons_search/museums.png">FLEA MARKET</option>
+									<option value="3" data-imagesrc="/img/icons_search/historic.png">EXHIBITION</option>
+									<option value="4" data-imagesrc="/img/icons_search/walking.png">POP - UP STORE</option>
+									<option value="5" data-imagesrc="/img/icons_search/eat.png">NEW CITY TOURS</option>
+									<option value="6" data-imagesrc="/img/icons_search/churches.png">STUDY</option>
+									<option value="7" data-imagesrc="/img/icons_search/skyline.png">SMALL GROUP</option>
+									<option value="8" data-imagesrc="/img/icons_search/skyline.png">SMALL WEDDING</option>
 								</select>
 							</div>
 						</div>
@@ -279,23 +269,27 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
-								<label><i class="icon-calendar-7"></i> Date</label> <input
-									class="date-pick form-control" data-date-format="M d, D"
+								<label><i class="icon-calendar-7"></i>Start Date</label> <input
+									class="date-pick form-control" name="booking_startdate" data-date-format="yyyy-mm-dd"
 									type="text">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<label><i class=" icon-clock"></i> Time</label> <input
-									class="time-pick form-control" value="12:00 AM" type="text">
+								<label><i class="icon-calendar-7"></i>End Date</label> <input
+									class="date-pick form-control" name="booking_enddate" data-date-format="yyyy-mm-dd"
+									type="text">
 							</div>
 						</div>
+
 						<div class="col-md-2 col-sm-3 col-xs-6">
 							<div class="form-group">
 								<label>GUESTS</label>
 								<div class="numbers-row">
-									<input type="text" value="1" id="adults"
+									<input id="people" type="text" value="1"
 										class="qty2 form-control" name="adults">
+										<div class="inc button_inc">+</div>
+										<div class="dec button_inc">-</div>
 								</div>
 							</div>
 						</div>
@@ -312,7 +306,7 @@
 					</div>
 					<!-- End row -->
 					<hr>
-					<button class="btn_1 green">
+					<button class="btn_1 green searchnow">
 						<i class="icon-search"></i>Search now
 					</button>
 				</div>
