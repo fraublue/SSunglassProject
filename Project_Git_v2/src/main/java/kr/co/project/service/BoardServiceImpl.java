@@ -17,6 +17,7 @@ import kr.co.project.domain.FavoriteType;
 import kr.co.project.domain.GiverBoardVO;
 import kr.co.project.domain.PageMaker;
 import kr.co.project.domain.SearchCriteria;
+import kr.co.project.domain.SearchVO;
 import kr.co.project.persistence.CommonBoardDAO;
 import kr.co.project.persistence.GiverBoardDAO;
 
@@ -207,8 +208,8 @@ public class BoardServiceImpl implements BoardService {
 		return dao.searchthumb(board_id);
 	}
 	@Override
-	public List<CommonBoardVO> psearch(int people, int favorite_id, Criteria cri) throws Exception {
-		return dao.psearch(people,favorite_id,cri);
+	public List<SearchVO> psearch(SearchVO svo) throws Exception {
+		return dao.psearch(svo);
 	}
 
 	//

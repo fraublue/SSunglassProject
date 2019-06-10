@@ -1,5 +1,7 @@
 package kr.co.project.domain;
 
+import java.util.Date;
+
 public class GiverBoardVO {
 	private int board_id;	
 	private String addr;
@@ -9,8 +11,8 @@ public class GiverBoardVO {
 	private String amenities4;
 	//private String amenities5;	
 	private String amenities_etc;
-	private String booking_startdate;
-	private String booking_enddate;
+	private Date booking_startdate;
+	private Date booking_enddate;
 	private int people;
 	
 	public int getBoard_id() {
@@ -62,16 +64,16 @@ public class GiverBoardVO {
 	public void setAmenities_etc(String amenities_etc) {
 		this.amenities_etc = amenities_etc;
 	}
-	public String getBooking_startdate() {
+	public Date getBooking_startdate() {
 		return booking_startdate;
 	}
-	public void setBooking_startdate(String booking_startdate) {
+	public void setBooking_startdate(Date booking_startdate) {
 		this.booking_startdate = booking_startdate;
 	}
-	public String getBooking_enddate() {
+	public Date getBooking_enddate() {
 		return booking_enddate;
 	}
-	public void setBooking_enddate(String booking_enddate) {
+	public void setBooking_enddate(Date booking_enddate) {
 		this.booking_enddate = booking_enddate;
 	}
 	public int getPeople() {

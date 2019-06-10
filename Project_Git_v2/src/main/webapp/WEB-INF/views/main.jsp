@@ -110,7 +110,7 @@
 						url : "/board/psearch",
 						data : {
 							people : people,
-							favorite : favorite,
+							favorite_id : favorite,
 							page : currentPage
 						},
 						error : function(err){

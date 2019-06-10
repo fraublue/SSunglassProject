@@ -17,6 +17,7 @@ import kr.co.project.domain.Criteria;
 import kr.co.project.domain.FavoriteType;
 import kr.co.project.domain.GiverBoardVO;
 import kr.co.project.domain.SearchCriteria;
+import kr.co.project.domain.SearchVO;
 
 @Repository
 public class CommonBoardDAO {
@@ -131,13 +132,8 @@ public class CommonBoardDAO {
 				return session.selectList(namespace+".tsearch",map);
 			}
 		  
-			public List<CommonBoardVO> psearch(int people, int favorite_id, Criteria cri) throws Exception {
-				  Map<String, Object> map = new HashMap<String, Object>();
-				  map.put("people",people);
-				  map.put("favorite",favorite_id);
-				  map.put("pageStart", cri.getStartpage());
-				  map.put("perPageNum", cri.getPerPageNum());
-					return session.selectList(namespace+".psearch",map);
+			public List<SearchVO> psearch(SearchVO svo) throws Exception {
+				return session.selectList(namespace+".psearch",svo);
 			}
 		  
 		  public String searchthumb(int board_id) throws Exception{

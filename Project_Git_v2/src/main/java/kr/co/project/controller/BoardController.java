@@ -32,7 +32,7 @@ import kr.co.project.domain.Criteria;
 import kr.co.project.domain.FavoriteType;
 import kr.co.project.domain.GiverBoardVO;
 import kr.co.project.domain.PageMaker;
-
+import kr.co.project.domain.SearchVO;
 import kr.co.project.domain.Test;
 import kr.co.project.domain.UserHasFavoriteVO;
 import kr.co.project.service.BoardService;
@@ -673,14 +673,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/psearch", method=RequestMethod.GET)
-	public ModelAndView searchpeople(@RequestParam("people") int people, @RequestParam("favorite") int favorite_id, @RequestParam("page") int page) throws Exception {
-		logger.info("search people" + people);
-		logger.info("search favorite" + favorite_id);
+	public ModelAndView searchpeople(@ModelAttribute SearchVO svo, @RequestParam("page") int page) throws Exception {
+		logger.info("search people" + svo.getPeople());
+		logger.info("search favorite" + svo.getFavorite_id());
 		
-		Criteria cri = new Criteria();
-		cri.setPage(page);
+		svo.setPage(page);
 		ModelAndView mav = new ModelAndView();
-		List<CommonBoardVO> list = service.psearch(people, favorite_id, cri);
+		List<SearchVO> list = service.psearch(svo);
 		
 		logger.info("list" + list);
 		
