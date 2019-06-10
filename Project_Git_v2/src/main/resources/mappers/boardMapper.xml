@@ -326,6 +326,18 @@ where
    select thumb_img from sns_prj.common_board where board_id = #{board_id};
    </select>
    
+     <select id="psearch" parameterType="hashmap" resultType="kr.co.project.domain.CommonBoardVO">
+	<![CDATA[
+		select `c`.board_id, `c`.board_content, `c`.like_cnt, `c`.reg_date, `c`.user_id, `c`.thumb_img
+		from common_board as `c`, giver_board as `g`, board_has_favorite as `f`
+		where `c`.board_id = `g`.board_id
+		and `c`.board_id = `f`.board_id
+		and `g`.people >= #{people} and `f`.favorite_id = #{favorite}
+		order by like_cnt desc, reg_date desc
+		limit #{pageStart},#{perPageNum}
+	]]>
+	<!-- 나중에)) 동적 쿼리문으로 if) 0을 선택했을때 쿼리문으로 안오게 -->
+	</select>
    
 	
 </mapper>

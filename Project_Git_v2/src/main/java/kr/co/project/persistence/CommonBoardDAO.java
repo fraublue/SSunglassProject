@@ -131,7 +131,18 @@ public class CommonBoardDAO {
 				return session.selectList(namespace+".tsearch",map);
 			}
 		  
+			public List<CommonBoardVO> psearch(int people, int favorite_id, Criteria cri) throws Exception {
+				  Map<String, Object> map = new HashMap<String, Object>();
+				  map.put("people",people);
+				  map.put("favorite",favorite_id);
+				  map.put("pageStart", cri.getStartpage());
+				  map.put("perPageNum", cri.getPerPageNum());
+					return session.selectList(namespace+".psearch",map);
+			}
+		  
 		  public String searchthumb(int board_id) throws Exception{
 			  return session.selectOne(namespace+".searchthumb",board_id);
 		  }
+		  
+		  
 }

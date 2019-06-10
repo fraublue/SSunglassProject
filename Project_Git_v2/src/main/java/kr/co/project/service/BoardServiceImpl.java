@@ -206,6 +206,10 @@ public class BoardServiceImpl implements BoardService {
 	public String searchthumb(int board_id) throws Exception {
 		return dao.searchthumb(board_id);
 	}
+	@Override
+	public List<CommonBoardVO> psearch(int people, int favorite_id, Criteria cri) throws Exception {
+		return dao.psearch(people,favorite_id,cri);
+	}
 
 	//
 //  @Override

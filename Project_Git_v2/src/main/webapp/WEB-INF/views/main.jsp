@@ -87,16 +87,10 @@
 						console.log(err);
 					},
 					success : function(data){
-						//$("listWrap").html(data);
 						addData(html,data,"listWrap");
 					}
 				});
 			}
-			
-			/* $(".btn-default").click(function(){
-				var user_id = $(".form-control" ).val();
-				tsearch(1,user_id);
-			}) */
 			
 			$("#keyword").on('keydown', function(e){
                      if(e.keyCode ==13){
@@ -109,6 +103,30 @@
                      var user_id = $("#keyword").val();
                      tsearch(1,user_id);
                   })
+                  
+                 function psearch(currentPage,people,favorite){
+				 $.ajax({
+						type : "GET",
+						url : "/board/psearch",
+						data : {
+							people : people,
+							favorite : favorite,
+							page : currentPage
+						},
+						error : function(err){
+							console.log(err);
+						},
+						success : function(data){
+							addData(html,data,"listWrap");
+						}
+					});
+				}
+
+				$(".searchnow").click(function(){
+					var people = $("#people").val();
+					var favorite = $("input[name='favorite']").val();
+					psearch(1,people,favorite);
+				})
 			
 		//favoriteList(1,"상가");
 		function favoriteList(currentPage,fname,predi) {
@@ -124,8 +142,6 @@
 				},
 				success : function(data) {
 					addData(predi,data,"listWrap");
-					//$("#listWrap").append(data);
-
 				}
 			});
 		}

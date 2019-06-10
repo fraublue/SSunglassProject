@@ -83,6 +83,8 @@ public interface BoardService {
 	
 	//20190607 seol
 	public List<CommonBoardVO> tsearch(String user_id,Criteria cri) throws Exception; 
+	public List<CommonBoardVO> psearch(int people, int favorite_id, Criteria cri) throws Exception;
+	
 	public String searchthumb(int board_id) throws Exception;
 
 }

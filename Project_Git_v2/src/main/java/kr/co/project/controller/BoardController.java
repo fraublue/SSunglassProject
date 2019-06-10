@@ -658,5 +658,22 @@ public class BoardController {
 		mav.addObject("list", list);//list.jsp까지 들어간 값이 main.jsp의 ajax의 success(data)입니다
 		return mav;
 	}
+	
+	@RequestMapping(value = "/psearch", method=RequestMethod.GET)
+	public ModelAndView searchpeople(@RequestParam("people") int people, @RequestParam("favorite") int favorite_id, @RequestParam("page") int page) throws Exception {
+		logger.info("search people" + people);
+		logger.info("search favorite" + favorite_id);
+		
+		Criteria cri = new Criteria();
+		cri.setPage(page);
+		ModelAndView mav = new ModelAndView();
+		List<CommonBoardVO> list = service.psearch(people, favorite_id, cri);
+		
+		logger.info("list" + list);
+		
+		mav.setViewName("board/list");
+		mav.addObject("list", list);
+		return mav;
+	}
 
 }
