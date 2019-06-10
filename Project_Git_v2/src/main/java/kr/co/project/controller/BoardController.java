@@ -100,7 +100,20 @@ public class BoardController {
 		model.addAttribute("addr", addr);
 
 	}
+	//cart
+		@RequestMapping(value = "/cart.do")
+		public String cart() throws Exception {
 
+			return "cart";
+		}
+		
+	//confirm
+		@RequestMapping(value = "/confirm.do")
+		public String confirm() throws Exception {
+
+			return "confirmation";
+		}
+		
 	@RequestMapping(value = "/social.do")
 	public String social() throws Exception {
 

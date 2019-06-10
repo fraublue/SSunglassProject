@@ -157,7 +157,7 @@
 								</div>
 							</div>
 						</div>
-						<br> <a class="btn_full" href="cart_hotel.html">Check now</a>
+						<br> <a class="btn_full" href="<%=request.getContextPath()%>/board/cart.do">Check now</a>
 						<!-- 						<a class="btn_full_outline" href="#"><i class=" icon-heart"></i>
 							Add to whislist</a> -->
 					</div>
