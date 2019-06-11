@@ -785,7 +785,7 @@
                                         $(this).addClass("bigWidth");
                                         var imgW = $(this).width();
                                         $(this).css({"margin-left":-imgW/2});
-                                        
+                                     } 
                                   });                        
                               },20);                     
                            };
