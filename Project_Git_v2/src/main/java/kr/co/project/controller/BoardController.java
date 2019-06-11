@@ -676,6 +676,9 @@ public class BoardController {
 	public ModelAndView searchpeople(@ModelAttribute SearchVO svo, @RequestParam("page") int page) throws Exception {
 		logger.info("search people" + svo.getPeople());
 		logger.info("search favorite" + svo.getFavorite_id());
+		logger.info("search startdate" + svo.getBooking_startdate());
+		logger.info("search enddate" + svo.getBooking_enddate());
+		logger.info("search addr" + svo.getAddr());
 		
 		svo.setPage(page);
 		ModelAndView mav = new ModelAndView();
