@@ -333,18 +333,43 @@ where
 	      where `c`.board_id = `g`.board_id
 	      and `c`.board_id = `f`.board_id
 	      and `g`.people >= #{people} 
-	      <include refid="test"></include>
-	      
+	      <include refid="favorite_id"></include>
+	      <include refid="booking_startdate"></include>
+	      <include refid="booking_enddate"></include>
+	      <include refid="addr"></include>
 	      order by like_cnt desc, reg_date desc
 	      limit #{pageStart},#{perPageNum}
 	
-	   <!-- 나중에)) 동적 쿼리문으로 if) 0을 선택했을때 쿼리문으로 안오게 -->
 	   </select>
 	   
-	   <sql id="test">
-	      <if test="favorite_id != 0">
+	   <sql id="favorite_id">
+	    <if test="favorite_id != 0">
 	      and `f`.favorite_id = #{favorite_id}
-	   </if>
+	   	</if>
+	   </sql>
+	   
+	   <sql id="booking_startdate">
+ 	    <if test= "booking_startdate != null">
+ 	    <![CDATA[
+	      and `g`.booking_startdate <= #{booking_startdate}
+	    ]]> 
+	   	</if>
+	   </sql>
+	   
+	   <sql id="booking_enddate">
+	    <if test="booking_enddate != null">
+	    <![CDATA[
+	      and `g`.booking_enddate >= #{booking_enddate}
+	    ]]>
+	   	</if>
+	   </sql>
+	   
+	   <sql id="addr">
+	    <if test="addr != null">
+	    <![CDATA[
+	      and `g`.addr like concat ('%',#{addr},'%')
+	    ]]>
+	   	</if>
 	   </sql>
    
 	

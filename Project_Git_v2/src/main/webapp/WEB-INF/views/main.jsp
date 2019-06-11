@@ -103,13 +103,16 @@
                      tsearch(1,user_id);
                   })
                   
-                 function psearch(currentPage,people,favorite){
+                 function psearch(currentPage,people,favorite,booking_startdate,booking_enddate,addr){
 				 $.ajax({
 						type : "GET",
 						url : "/board/psearch",
 						data : {
 							people : people,
 							favorite_id : favorite,
+							booking_startdate : booking_startdate,
+							booking_enddate : booking_enddate,
+							addr : addr,
 							page : currentPage
 						},
 						error : function(err){
@@ -120,12 +123,15 @@
 						}
 					});
 				}
-
-				$(".searchnow").click(function(){
-					var people = $("#people").val();
-					var favorite = $("input[name='favorite']").val();
-					psearch(1,people,favorite);
-				})
+			
+			$(".searchnow").click(function(){
+				var people = $("#people").val();
+				var favorite = $("input[name='favorite']").val();
+				var booking_startdate = $("input[name='booking_startdate']").val();
+				var booking_enddate = $("input[name='booking_enddate']").val();
+				var addr = $("input[name='addr']").val();
+				psearch(1,people,favorite,booking_startdate,booking_enddate,addr);
+			})
 			
 		//favoriteList(1,"상가");
 		function favoriteList(currentPage,fname,predi) {
