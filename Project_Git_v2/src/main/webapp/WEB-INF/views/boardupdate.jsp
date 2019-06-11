@@ -853,9 +853,6 @@
 		                                        var imgW = $(this).width();
 		                                        $(this).css({"margin-left":-imgW/2});
 		                                        
-		                                     }else{
-		                                        $(this).css({"width":"100%","height":"auto"});
-		                                     }                           
 		                                  });                        
 		                              },20);                     
 		                           };
