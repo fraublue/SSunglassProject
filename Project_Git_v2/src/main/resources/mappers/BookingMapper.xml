@@ -11,5 +11,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	VALUES (#{board_id}, #{booking_startdate}, #{booking_enddate}, #{people}, #{user_id},#{option1},#{option2},#{option3},#{option4});
 	</insert>
 	
-	
+	<select id="bookingList" parameterType="hashmap" resultType="kr.co.project.domain.CommonBoardVO">
+		select *
+		from sns_prj.`common_board`
+		where board_id in(
+			select board_id from sns_prj.`booking` where user_id = #{user_id}
+		)
+		order by reg_date desc
+		limit #{pageStart} , #{perPageNum}
+	</select>
 </mapper>

@@ -149,6 +149,7 @@
 					<li><a href="#section-1" class="icon-profile"><span>Profile</span></a></li>
 					<li><a href="#section-2"><img src="img/star1.png"
 							width="20px" height="20px"><span>Bookmark</span></a></li>
+					<li><a href="#section-3"><img src="img/calendar.png" width="20px" height="20px"><span>Booking</span></a></li>
 				</ul>
 			</nav>
 
@@ -566,6 +567,21 @@
 					<div class="row">
 
 						<div name="bookmark" id="bookmarklist"></div>
+
+
+					</div>
+					<!-- End row -->
+					<button class="btn_1 btn_moreView2" style="color: white">
+						<i class="icon-up-hand"></i>SHOW MORE
+					</button>
+
+				</section>
+
+
+				<section id="section-2">
+					<div class="row">
+
+						<div name="booking" id="bookinglist"></div>
 
 
 					</div>

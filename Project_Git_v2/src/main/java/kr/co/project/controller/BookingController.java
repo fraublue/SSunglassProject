@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.project.domain.BookingVO;
+import kr.co.project.domain.Criteria;
 import kr.co.project.service.BookingService;
 
 
@@ -60,5 +61,20 @@ public class BookingController {
 			
 			return "confirmation";
 			
+		}
+		
+		@RequestMapping(value="bookinglist")
+		public String list(@RequestParam("user_id")String user_id, Model model, @RequestParam("page")int page) {
+			logger.info("::: go to booking");
+			Criteria cri = new Criteria();
+			cri.setPage(page);
+			
+			try {
+				model.addAttribute("list", service.bookingList(user_id, cri));
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "board/list";
 		}
 }
