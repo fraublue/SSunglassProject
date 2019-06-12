@@ -152,7 +152,7 @@
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option1" id="option1" value="34">
+                    <input type="checkbox" name="option1" id="option1" value="34" data-option-name="빔 프로젝터">
                     <span>
                     <span>No</span>
                     <span>Yes</span>
@@ -170,7 +170,7 @@
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option2" id="option2" value="24" >
+                    <input type="checkbox" name="option2" id="option2" value="24"  data-option-name="플라워 장식">
                     <span>
                     <span>No</span>
                     <span>Yes</span>
@@ -188,7 +188,7 @@
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option3" id="option3" value="26" >
+                    <input type="checkbox" name="option3" id="option3" value="26"  data-option-name="테이블">
                     <span>
                     <span>No</span>
                     <span>Yes</span>
@@ -206,7 +206,7 @@
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option4" id="option4" value="12">
+                    <input type="checkbox" name="option4" id="option4" value="12" data-option-name="의자">
                     <span>
                     <span>No</span>
                     <span>Yes</span>
@@ -249,10 +249,15 @@
         
         <tr>
             <td>
-                Welcome bottle
+            	<ul id="option_name_list">
+           
+                </ul>
             </td>
             <td class="text-right">
-                $34
+            <ul id="option_price_list">
+           
+            </ul>
+                
             </td>
         </tr>
         <tr class="total">
@@ -452,5 +457,43 @@
  */
 
 </script>
+<script>
+           
+           $(".options_cart tbody tr input").click(function(){
+           	var chk =$(this).is(":checked");
+           		
+           		if(chk){
+           			var optionName = $(this).attr("data-option-name");
+           			var price = $(this).val();
+           			$("#option_name_list").append("<li>"+optionName+"</li>");
+           			$("#option_price_list").append("<li>"+price+"</li>");
+           			totalPrice();
+           		}else{
+           			var name =$(this).attr("data-option-name");
+           			var price = $(this).val();
+           			$("#option_name_list > li").each(function(){
+           				var text = $(this).text();
+           				if(name === text){           					
+           					$(this).remove();
+           				}
+           			})
+           			$("#option_price_list > li").each(function(){
+           				var text = $(this).text();
+           				if(price === text){           					
+           					$(this).remove();
+           				}
+           			})
+           			totalPrice();		
+           		}
+           });
+           
+           function totalPrice(){
+        	    var total=0;
+        	   $('#option_price_list > li').each(function(){
+        		    total += parseInt($(this).text());
+        	   })
+        	   $(".total > td:eq(1)").text(total);
+           }
+           </script>
   </body>
 </html>
