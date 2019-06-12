@@ -102,16 +102,17 @@
     <div class="col-md-8">
     <div class="alert alert-info" role="alert"><strong>Rooms available</strong> for the selected dates.<br>PLEASE SELECT YOUR QUANTITY.</div>
     	<table class="table table-striped cart-list add_bottom_30">
+    	 <form action="<%=request.getContextPath()%>/confirm.do" method="post"> 
             <thead>
             <tr>
                 <th>
-                    Room Type
+                    SPACE Type
                 </th>
                 <th>
                 	people
                 </th>
                 <th>
-                    Per night
+                    Per DAY
                 </th>
               </tr>
             </thead>
@@ -127,7 +128,7 @@
                 		${people}
                 </td>
                 <td>
-                    <strong>€80</strong>
+                    <strong>$80</strong>
                 </td>
               </tr>
             
@@ -151,7 +152,7 @@
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option_2" id="option_2" value="">
+                    <input type="checkbox" name="option1" id="option1" value="34">
                     <span>
                     <span>No</span>
                     <span>Yes</span>
@@ -169,7 +170,7 @@
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option_4" id="option_4" value="" checked>
+                    <input type="checkbox" name="option2" id="option2" value="24" >
                     <span>
                     <span>No</span>
                     <span>Yes</span>
@@ -183,11 +184,11 @@
                     <i class="icon_set_1_icon-59"></i>
                 </td>
                 <td>
-                   테이블 <strong>+$12*</strong>
+                   테이블 <strong>+$26*</strong>
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option_5" id="option_5" value="" checked>
+                    <input type="checkbox" name="option3" id="option3" value="26" >
                     <span>
                     <span>No</span>
                     <span>Yes</span>
@@ -201,11 +202,11 @@
                     <i class="icon_set_1_icon-58"></i>
                 </td>
                 <td>
-                    의자 <strong>+$26*</strong>
+                    의자 <strong>+$12*</strong>
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option_6" id="option_6" value="">
+                    <input type="checkbox" name="option4" id="option4" value="12">
                     <span>
                     <span>No</span>
                     <span>Yes</span>
@@ -214,24 +215,7 @@
                     </label>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <i class="icon_set_1_icon-40"></i>
-                </td>
-                <td>
-                    Bike rent <strong>+$26*</strong>
-                </td>
-                <td>
-                    <label class="switch-light switch-ios pull-right">
-                    <input type="checkbox" name="option_7" id="option_7" value="">
-                    <span>
-                    <span>No</span>
-                    <span>Yes</span>
-                    </span>
-                    <a></a>
-                    </label>
-                </td>
-            </tr>
+           
             </tbody>
             </table>
            
@@ -240,7 +224,7 @@
     <aside class="col-md-4">
     <div class="box_style_1">
         <h3 class="inner">- Summary -</h3>
-        <form action="<%=request.getContextPath()%>/confirm.do" method="post">
+       
         <table class="table table_summary">
         <tbody>
             <tr>
@@ -248,7 +232,7 @@
                     Check in
                 </td>
                 <td class="text-right">
-                <input name="booking_startdate"
+                <input name="booking_startdate" id="booking_startdate"
                     value="${checkin}">
                 </td>
             </tr>
@@ -257,7 +241,7 @@
                     Check out
                 </td>
                 <td class="text-right">
-                <input name="booking_enddate"
+                <input name="booking_enddate" id="booking_enddate"
                      value="${checkout}">
                 </td>
             </tr>
@@ -281,14 +265,13 @@
         </tr>
         </tbody>
         </table>
-        <input type="hidden" name="user_id" value="${sessionScope.user_id}">
-        <input type="hidden" name="board_id" value="${board_id}">
-        <input type="hidden" name="people" value="${people}">
-        <input type="hidden" name="booking_memo" value="없음">
-        <input type="hidden" name="addr" value="${addr}">
+        <input type="hidden" name="user_id" id="user_id" value="${sessionScope.user_id}">
+        <input type="hidden" name="board_id" id ="board_id" value="${board_id}">
+        <input type="hidden" name="people" id = "people" value="${people}">
+        <input type="hidden" name="addr" id = "addr" value="${addr}">
         
-        <button class="btn_full" type="submit">Book now</button>
-        <a class="btn_full_outline" href="single_hotel.html"><i class="icon-right"></i> Modify your search</a>
+        <button class="btn_full" id="submitbooking" type="submit">Book now</button>
+        <a class="btn_full_outline" href="main.do"><i class="icon-right"></i> Modify your search</a>
         </form>
     </div>
     <div class="box_style_4">
@@ -432,13 +415,42 @@
  <!-- Carousel -->
 <script src="js/owl.carousel.min.js"></script>
 <script>
-$(document).ready(function(){   
-		$(".carousel").owlCarousel({
-		items : 4,
-		itemsDesktop : [1199,3],
-		itemsDesktopSmall : [979,3]
-		});
-    });
+/* $("#submitbooking").on("click", function() {
+	frmSubmit();
+
+}
+)
+
+	function frmSubmit(){
+   	 var bookingdata = {
+                   addr: $("#addr").val(),
+                   board_id: $("#board_id").val(),
+                   user_id: $("#user_id").val(),
+                   people: $("#people").val(),
+                   option1: $("#option1").is(":checked") ? $("#option1").val() : 0,
+                 option2: $("#option2").is(":checked") ? $("#option2").val() : 0,
+                	option3: $("#option3").is(":checked") ? $("#option3").val() : 0,
+                	option4: $("#option4").is(":checked") ? $("#option4").val() : 0,
+                			booking_startdate : $("#booking_startdate").val(),
+                	booking_enddate : $("#booking_enddate").val()
+               }
+       $.ajax({
+          url:"/confirm.do",
+          type:"post",
+          data: bookingdata,
+          dataType: "JSON",
+          err : function(err){
+             console.log(err);
+          },
+          success: function(data){
+             
+             //uploadFile()
+          }
+       });
+}
+
+ */
+
 </script>
   </body>
 </html>

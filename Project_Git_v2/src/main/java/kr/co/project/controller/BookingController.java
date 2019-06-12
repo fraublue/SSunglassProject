@@ -28,7 +28,7 @@ public class BookingController {
 	//cart
 		@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
 		public String cart(@RequestParam("checkin") String checkin, @RequestParam("checkout") String checkout,@RequestParam("addr") String addr,@RequestParam("board_id") int board_id, @RequestParam("people") String people,Model model ) throws Exception {
-	//userid, boardid, date, 받아와야한다
+	//userid, boardid, date, 諛쏆븘���빞�븳�떎
 			logger.info("cartpage");
 			System.out.println(checkin+"   "+checkout);
 			model.addAttribute("checkin", checkin);
@@ -46,7 +46,6 @@ public class BookingController {
 			logger.info("confirmpage");
 			
 			System.out.println(bkvo.toString());
-			
 			
 			try {
 				service.insertBooking(bkvo);	
