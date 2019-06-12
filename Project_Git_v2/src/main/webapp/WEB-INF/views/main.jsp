@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+
+<jsp:useBean id="toDay" class="java.util.Date" />
+
+<fmt:formatDate value="${toDay}" var="toDay" pattern="yyyy-MM-dd" />
+
+
+
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -52,6 +61,7 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <script>
+${toDay}
 	$(function() {
 		
 		addList(1,append);
@@ -276,6 +286,7 @@
 							<div class="form-group">
 								<label><i class="icon-calendar-7"></i>Start Date</label> <input
 									class="date-pick form-control" name="booking_startdate" data-date-format="yyyy-mm-dd"
+									data-date-start-date="${toDay}"
 									type="text">
 							</div>
 						</div>
@@ -283,6 +294,7 @@
 							<div class="form-group">
 								<label><i class="icon-calendar-7"></i>End Date</label> <input
 									class="date-pick form-control" name="booking_enddate" data-date-format="yyyy-mm-dd"
+									data-date-start-date="${toDay}"
 									type="text">
 							</div>
 						</div>

@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+
+<jsp:useBean id="toDay" class="java.util.Date" />
+
+<fmt:formatDate value="${toDay}" var="toDay" pattern="yyyy-MM-dd" />
+	
 <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -386,7 +393,8 @@
 									<div class="form-group cst-form-group-layout cst-form-group">
 										<label><i class="icon-calendar-7"></i> Start Date</label> <input
 											class="date-pick form-control" name="booking_startdate"
-											data-date-format="yyyy-mm-dd" type="text">
+											data-date-format="yyyy-mm-dd" type="text"
+											data-date-start-date="${toDay}">
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -394,7 +402,8 @@
 										<label><i class="icon-calendar-7"></i> End Date</label>
 										<!-- <input class="date-pick form-control" name="booking_enddate" data-date-format="M d, D" type="text"> -->
 										<input class="date-pick form-control" name="booking_enddate"
-											data-date-format="yyyy-mm-dd" type="text">
+											data-date-format="yyyy-mm-dd" type="text"
+											data-date-start-date="${toDay}">
 									</div>
 								</div>
 								<div class="col-md-12 col-sm-12 col-xs-12">
@@ -595,7 +604,7 @@
 
 
 	<script>
-   
+   	window.tewtwetwet= "asdfasdfasfd";
       function frmSubmit(){
          var type = document.writeForm.user_type.value;
          if(type==1){
