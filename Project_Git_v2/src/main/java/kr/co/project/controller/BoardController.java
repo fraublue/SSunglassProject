@@ -1,7 +1,9 @@
 package kr.co.project.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -338,6 +340,32 @@ public class BoardController {
 
 		ModelAndView mav = new ModelAndView();
 		// 醫뗭븘�슂 泥댄겕 濡쒖쭅
+		
+		GiverBoardVO gvo =service.giverboard(board_id);
+		gvo = service.giverboard(board_id);
+		String startdate= gvo.getBooking_startdate();
+
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		Date sd = transFormat.parse(startdate);
+		String sdate = transFormat.format(sd);
+		
+		System.out.println(sdate);
+		
+		Date tday =new Date();
+		String today = transFormat.format(tday);
+		System.out.println(today);
+		
+		int result = sd.compareTo(tday);
+		
+		if(result>0) {
+			mav.addObject("startdate", sdate);
+		}else if(result==0) {
+			mav.addObject("startdate", today);
+		}else {
+			mav.addObject("startdate",today);
+		}
+		
 		if (b) {
 			mav.addObject("like", "like1.png");
 		} else {

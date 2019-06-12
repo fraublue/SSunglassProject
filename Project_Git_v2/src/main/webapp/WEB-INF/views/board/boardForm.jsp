@@ -123,14 +123,18 @@
 							<div class="col-md-6 col-sm-6">
 								<div class="form-group">
 									<label><i class="icon-calendar-7"></i> Check in</label> <input
-										class="date-pick form-control" data-date-format="yyyy-mm-dd"
-										data-date-start-date="2019-06-15" name="checkin" type="text">
+										class="date-pick form-control" data-date-format="yyyy-mm-dd"										
+										data-date-start-date="${startdate}" 
+										data-date-end-date="${giver_board.booking_enddate}"
+										name="checkin" type="text">
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6">
 								<div class="form-group">
 									<label><i class="icon-calendar-7"></i> Check out</label> <input
 										class="date-pick form-control" data-date-format="yyyy-mm-dd"
+										data-date-start-date="${startdate}" 
+										data-date-end-date="${giver_board.booking_enddate}"
 										name="checkout"	type="text">
 								</div>
 							</div>							

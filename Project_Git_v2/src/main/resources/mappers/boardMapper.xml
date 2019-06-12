@@ -178,7 +178,7 @@ where
 	<insert id = "insertcomment" parameterType="kr.co.project.domain.CommentVO">
 	INSERT 
 	INTO `sns_prj`.`comment` ( `user_id`, `content`, `comment_star`, `board_id`) 
-	VALUES ('${user_id}', '${content}', '${comment_star}', '${board_id}');
+	VALUES ('#{user_id}', '#{content}', '#{comment_star}', '#{board_id}');
 	</insert>
 	
 		<select id="commentlistboardid" resultType="kr.co.project.domain.CommentVO">
