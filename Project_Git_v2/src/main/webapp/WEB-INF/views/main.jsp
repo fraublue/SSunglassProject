@@ -61,7 +61,7 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <script>
-${toDay}
+
 	$(function() {
 		
 		addList(1,append);
@@ -84,63 +84,75 @@ ${toDay}
 		
 		//seol//input박스에 class이름이 form-control의 value값을 user_id에 저장
 		
-		function tsearch(currentPage,user_id){
+		function tsearch(currentPage,predi){
+			var datas = {
+					user_id :  $("#keyword").val(),
+					page : currentPage
+			}
 			 $.ajax({
 					type : "GET",
 					url : "/board/tsearch",
-					data : {
-						user_id : user_id,
-						page : currentPage
-					},
+					data : datas,
 					error : function(err){
 						console.log(err);
 					},
 					success : function(data){
-						addData(html,data,"listWrap");
+						addData(predi,data,"listWrap");
 					}
 				});
 			}
 			
 			$("#keyword").on('keydown', function(e){
                      if(e.keyCode ==13){
-                        var user_id = $(this).val();
-                        tsearch(1, user_id);
+                        //var user_id = $(this).val();
+                        pageNum =1;
+                        $(".btn_moreView").hide();
+                		 $(".btn_moreView2").hide();
+                		 $(".btn_moreView3").show();
+                		 $(".btn_moreView4").hide();
+                        tsearch(1, html);
                      }
                      
                   })
                   $("#searchbtn").on('click',function(){
-                     var user_id = $("#keyword").val();
-                     tsearch(1,user_id);
+                	  //var user_id = $("#keyword").val();
+                	  pageNum = 1;
+                	  $(".btn_moreView").hide();
+             		 $(".btn_moreView2").hide();
+             		 $(".btn_moreView3").show();
+             		 $(".btn_moreView4").hide();
+                     tsearch(1,html);
                   })
                   
-                 function psearch(currentPage,people,favorite,booking_startdate,booking_enddate,addr){
+                 function psearch(currentPage,predi){
+				var datas = {
+						 people : $("#people").val(),
+						 favorite : $("input[name='favorite']").val(),
+						 booking_startdate : $("input[name='booking_startdate']").val(),
+						 booking_enddate : $("input[name='booking_enddate']").val(),
+						 addr : $("input[name='addr']").val(),
+						 page : currentPage
+					}
 				 $.ajax({
 						type : "GET",
 						url : "/board/psearch",
-						data : {
-							people : people,
-							favorite_id : favorite,
-							booking_startdate : booking_startdate,
-							booking_enddate : booking_enddate,
-							addr : addr,
-							page : currentPage
-						},
+						data : datas,
 						error : function(err){
 							console.log(err);
 						},
 						success : function(data){
-							addData(html,data,"listWrap");
+							addData(predi,data,"listWrap");
 						}
 					});
 				}
 			
 			$(".searchnow").click(function(){
-				var people = $("#people").val();
-				var favorite = $("input[name='favorite']").val();
-				var booking_startdate = $("input[name='booking_startdate']").val();
-				var booking_enddate = $("input[name='booking_enddate']").val();
-				var addr = $("input[name='addr']").val();
-				psearch(1,people,favorite,booking_startdate,booking_enddate,addr);
+				pageNum=1;
+				$(".btn_moreView").hide();
+        		 $(".btn_moreView2").hide();
+        		 $(".btn_moreView3").hide();
+        		 $(".btn_moreView4").show();
+				psearch(1,html);
 			})
 			
 		//favoriteList(1,"상가");
@@ -165,6 +177,8 @@ ${toDay}
 		var pageNum = 1;
 		 $(".btn_moreView").show();
 		 $(".btn_moreView2").hide();
+		 $(".btn_moreView3").hide();
+		 $(".btn_moreView4").hide();
 		$(".listType > li").on("click",function(){
 			 //var type = $(this).text();
 			type = $(this).attr("data-fname");
@@ -173,10 +187,14 @@ ${toDay}
 			 if(type == "Giver"){				 
 				 $(".btn_moreView").show();
 				 $(".btn_moreView2").hide();
+				 $(".btn_moreView3").hide();
+				 $(".btn_moreView4").hide();
 				 addList(pageNum,html);
 			 }else{
 				 $(".btn_moreView").hide();
 				 $(".btn_moreView2").show();
+				 $(".btn_moreView3").hide();
+				 $(".btn_moreView4").hide();
 				 favoriteList(pageNum,type,html);
 			 }
 			 
@@ -200,6 +218,22 @@ ${toDay}
 			console.log(type);
 			console.log(pageNum);
 			favoriteList(pageNum,type,append);
+			return false;
+		})
+		$(".btn_moreView3").click(function(){
+			console.log("view333");
+			++pageNum;
+			//console.log(type);
+			console.log(pageNum);
+			tsearch(pageNum,append);
+			return false;
+		})
+		$(".btn_moreView4").click(function(){
+			console.log("view444");
+			++pageNum;
+			console.log(type);
+			console.log(pageNum);
+			psearch(pageNum,append);
 			return false;
 		})
 		/**/

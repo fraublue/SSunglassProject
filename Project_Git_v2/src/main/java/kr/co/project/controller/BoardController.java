@@ -687,39 +687,73 @@ public class BoardController {
       return 1;
    }
    
-   ///////////////////////////////////////////////
-   //20190607 seol
-   ///////////////////////////////////////////////
-   @RequestMapping(value = "/tsearch", method=RequestMethod.GET)
-   public ModelAndView searchtaker(@RequestParam("user_id") String user_id, @RequestParam("page") int page) throws Exception {
-      logger.info("search taker"+ user_id);
-      
-      Criteria cri = new Criteria();
-      cri.setPage(page);
-      ModelAndView mav = new ModelAndView();
-      List<CommonBoardVO> list = service.tsearch(user_id, cri);
-      mav.setViewName("board/list");
-      mav.addObject("list", list);//list.jsp까지 들어간 값이 main.jsp의 ajax의 success(data)입니다
-      return mav;
-   }
-   
-   @RequestMapping(value = "/psearch", method=RequestMethod.GET)
-   public ModelAndView searchpeople(@ModelAttribute SearchVO svo, @RequestParam("page") int page) throws Exception {
-      logger.info("search people" + svo.getPeople());
-      logger.info("search favorite" + svo.getFavorite_id());
-      logger.info("search startdate" + svo.getBooking_startdate());
-      logger.info("search enddate" + svo.getBooking_enddate());
-      logger.info("search addr" + svo.getAddr());
-      
-      svo.setPage(page);
-      ModelAndView mav = new ModelAndView();
-      List<SearchVO> list = service.psearch(svo);
-      
-      logger.info("list" + list);
-      
-      mav.setViewName("board/list");
-      mav.addObject("list", list);
-      return mav;
-   }
+///////////////////////////////////////////////
+//20190607 seol
+///////////////////////////////////////////////
+@RequestMapping(value = "/tsearch", method=RequestMethod.GET)
+public ModelAndView searchtaker(@RequestParam("user_id") String user_id, @RequestParam("page") int page, HttpSession session) throws Exception {
+logger.info("search taker"+ user_id);
+
+Criteria cri = new Criteria();
+cri.setPage(page);
+ModelAndView mav = new ModelAndView();
+List<CommonBoardVO> list = service.tsearch(user_id, cri);
+List<String> like = new ArrayList<String>();
+List<String> addr = new ArrayList<String>();
+String user_id_session = (String)session.getAttribute("user_id");
+for(int i=0;i<list.size();i++) {
+int board_id = list.get(i).getBoard_id();
+
+boolean a = likeservice.checkLike(board_id, user_id_session);
+addr.add(service.getaddr(board_id));
+if(a) {
+like.add("like1.png");
+}else {
+like.add("like2.png");
+}
+}
+
+mav.setViewName("board/list");
+mav.addObject("list", list);//list.jsp까지 들어간 값이 main.jsp의 ajax의 success(data)입니다
+mav.addObject("like", like);
+mav.addObject("addr", addr);
+
+return mav;
+}
+
+@RequestMapping(value = "/psearch", method=RequestMethod.GET)
+public ModelAndView searchpeople(@ModelAttribute SearchVO svo, @RequestParam("page") int page,HttpSession session) throws Exception {
+logger.info("search people" + svo.getPeople());
+logger.info("search favorite" + svo.getFavorite_id());
+logger.info("search startdate" + svo.getBooking_startdate());
+logger.info("search enddate" + svo.getBooking_enddate());
+logger.info("search addr" + svo.getAddr());
+
+svo.setPage(page);
+ModelAndView mav = new ModelAndView();
+List<SearchVO> list = service.psearch(svo);
+List<String> like = new ArrayList<String>();
+List<String> addr = new ArrayList<String>();
+String user_id_session = (String)session.getAttribute("user_id");
+for(int i=0;i<list.size();i++) {
+int board_id = list.get(i).getBoard_id();
+String user_id = list.get(i).getUser_id();
+boolean a = likeservice.checkLike(board_id, user_id_session);
+addr.add(service.getaddr(board_id));
+if(a) {
+like.add("like1.png");
+}else {
+like.add("like2.png");
+}
+}
+
+logger.info("list" + list);
+
+mav.setViewName("board/list");
+mav.addObject("list", list);
+mav.addObject("like", like);
+mav.addObject("addr", addr);
+return mav;
+}
 
 }
