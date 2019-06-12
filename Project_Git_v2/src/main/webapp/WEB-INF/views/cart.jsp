@@ -118,7 +118,7 @@
             <tbody>
             <tr>
                 <td>
-                    <div>
+                    <div style="padding-top: 15px; padding-bottom: 15px;">
                         ${addr}
                     </div> 
                      <%-- <span class="item_cart">${addr}</span> --%>
