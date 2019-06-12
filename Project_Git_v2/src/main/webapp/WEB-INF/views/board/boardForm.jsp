@@ -114,45 +114,30 @@
 					</p> -->
 					<div class="box_style_1 expose">
 						<h3 class="inner">Check Availability</h3>
+						<form action="<%=request.getContextPath()%>/cart.do" method="post">
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
 								<div class="form-group">
 									<label><i class="icon-calendar-7"></i> Check in</label> <input
-										class="date-pick form-control" data-date-format="M d, D"
-										type="text">
+										class="date-pick form-control" data-date-format="yyyy-mm-dd"
+										name="checkin" type="text">
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6">
 								<div class="form-group">
 									<label><i class="icon-calendar-7"></i> Check out</label> <input
-										class="date-pick form-control" data-date-format="M d, D"
-										type="text">
+										class="date-pick form-control" data-date-format="yyyy-mm-dd"
+										name="checkout"	type="text">
 								</div>
-							</div>
+							</div>							
 						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-6">
-								<div class="form-group">
-									<label>Adults</label>
-									<div class="numbers-row">
-										<input type="text" value="1" id="adults"
-											class="qty2 form-control" name="quantity">
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6">
-								<div class="form-group">
-									<label>Children</label>
-									<div class="numbers-row">
-										<input type="text" value="0" id="children"
-											class="qty2 form-control" name="quantity">
-									</div>
-								</div>
-							</div>
-						</div>
-						<br> <a class="btn_full" href="<%=request.getContextPath()%>/board/cart.do">Check now</a>
+						<input type="hidden" name="addr" value="${giver_board.addr}">
+						<input type="hidden" name="people" value="${giver_board.people}">
+						<input type="hidden" name="board_id" value="${common_board.board_id}">
+						<br> <button class="btn_full" type="submit">Check now</button>
 						<!-- 						<a class="btn_full_outline" href="#"><i class=" icon-heart"></i>
 							Add to whislist</a> -->
+						</form>	
 					</div>
 					<!--/box_style_1 -->
 

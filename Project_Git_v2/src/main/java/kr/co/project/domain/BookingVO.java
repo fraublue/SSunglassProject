@@ -4,7 +4,7 @@ public class BookingVO {
 	private int board_id;
 	private String booking_startdate;
 	private String booking_enddate;
-	private int people;
+	private String people;
 	private String user_id;
 	private String booking_memo;
 	private String rsv_num;
@@ -26,10 +26,10 @@ public class BookingVO {
 	public void setBooking_enddate(String booking_enddate) {
 		this.booking_enddate = booking_enddate;
 	}
-	public int getPeople() {
+	public String getPeople() {
 		return people;
 	}
-	public void setPeople(int people) {
+	public void setPeople(String people) {
 		this.people = people;
 	}
 	public String getUser_id() {
@@ -52,6 +52,12 @@ public class BookingVO {
 	}
 	public BookingVO() {
 		super();
+	}
+	@Override
+	public String toString() {
+		return "BookingVO [board_id=" + board_id + ", booking_startdate=" + booking_startdate + ", booking_enddate="
+				+ booking_enddate + ", people=" + people + ", user_id=" + user_id + ", booking_memo=" + booking_memo
+				+ ", rsv_num=" + rsv_num + "]";
 	}
 	
 }

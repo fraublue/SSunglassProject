@@ -11,7 +11,7 @@
     <meta name="keywords" content="template, tour template, city tours, city tour, tours tickets, transfers, travel, travel template" />
     <meta name="description" content="Citytours - Premium site template for city tours agencies, transfers and tickets.">
     <meta name="author" content="Ansonika">
-    <title>SOCIAL N SPACE</title>
+    <title>CITY TOURS - City tours and travel site template by Ansonika</title>
     
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -108,7 +108,7 @@
                     Room Type
                 </th>
                 <th>
-                    Quantity
+                	people
                 </th>
                 <th>
                     Per night
@@ -118,15 +118,13 @@
             <tbody>
             <tr>
                 <td>
-                    <div class="thumb_cart">
-                        <a href="#" data-toggle="modal" data-target="#modal_single_room"><img src="img/thumb_cart_1.jpg" alt=""></a>
-                    </div>
-                     <span class="item_cart"><a href="#" data-toggle="modal" data-target="#modal_single_room">Single Room</a></span>
+                    <div>
+                        ${addr}
+                    </div> 
+                     <%-- <span class="item_cart">${addr}</span> --%>
                 </td>
                 <td>
-                    <div class="numbers-row">
-                        <input type="text" value="0" id="quantity_1" class="qty2 form-control" name="quantity_1">
-                    </div>
+                		${people}
                 </td>
                 <td>
                     <strong>€80</strong>
@@ -236,12 +234,13 @@
             </tr>
             </tbody>
             </table>
-           <div class="add_bottom_15"><small>* Prices for person.</small></div>
+           
     </div><!-- End col-md-8 -->
     
     <aside class="col-md-4">
     <div class="box_style_1">
         <h3 class="inner">- Summary -</h3>
+        <form action="<%=request.getContextPath()%>/confirm.do" method="post">
         <table class="table table_summary">
         <tbody>
             <tr>
@@ -249,7 +248,8 @@
                     Check in
                 </td>
                 <td class="text-right">
-                    10 April 2015
+                <input name="booking_startdate"
+                    value="${checkin}">
                 </td>
             </tr>
             <tr>
@@ -257,41 +257,12 @@
                     Check out
                 </td>
                 <td class="text-right">
-                    12 April 2015
+                <input name="booking_enddate"
+                     value="${checkout}">
                 </td>
             </tr>
-            <tr>
-                    <td>
-                        Rooms
-                    </td>
-                    <td class="text-right">
-                       1 double room
-                    </td>
-                </tr>
-        <tr>
-            <td>
-                Nights
-            </td>
-            <td class="text-right">
-                2
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Adults
-            </td>
-            <td class="text-right">
-                2
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Children
-            </td>
-            <td class="text-right">
-                0
-            </td>
-        </tr>
+            
+        
         <tr>
             <td>
                 Welcome bottle
@@ -310,8 +281,15 @@
         </tr>
         </tbody>
         </table>
-        <a class="btn_full" href="<%=request.getContextPath()%>/board/confirm.do">Book now</a>
+        <input type="hidden" name="user_id" value="${sessionScope.user_id}">
+        <input type="hidden" name="board_id" value="${board_id}">
+        <input type="hidden" name="people" value="${people}">
+        <input type="hidden" name="booking_memo" value="없음">
+        <input type="hidden" name="addr" value="${addr}">
+        
+        <button class="btn_full" type="submit">Book now</button>
         <a class="btn_full_outline" href="single_hotel.html"><i class="icon-right"></i> Modify your search</a>
+        </form>
     </div>
     <div class="box_style_4">
         <i class="icon_set_1_icon-57"></i>

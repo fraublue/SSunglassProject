@@ -11,7 +11,7 @@
     <meta name="keywords" content="template, tour template, city tours, city tour, tours tickets, transfers, travel, travel template" />
     <meta name="description" content="Citytours - Premium site template for city tours agencies, transfers and tickets.">
     <meta name="author" content="Ansonika">
-    <title>SOCIAL N SPACE</title>
+    <title>CITY TOURS - City tours and travel site template by Ansonika</title>
     
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -42,7 +42,7 @@
 <!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
-
+${bookingVO}
     <div id="preloader">
         <div class="sk-spinner sk-spinner-wave">
             <div class="sk-rect1"></div>
@@ -128,18 +128,10 @@
 				<tbody>
 				<tr>
 					<td>
-						<strong>Louvre musuem tickets</strong>
+						<strong>address</strong>
 					</td>
 					<td>
-						2x
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>Date</strong>
-					</td>
-					<td>
-						25 Febraury 2015
+						${addr}
 					</td>
 				</tr>
 				<tr>
@@ -147,48 +139,37 @@
 						<strong>To</strong>
 					</td>
 					<td>
-						Jhon Doe
+						${sessionScope.user_id}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>check in</strong>
+					</td>
+					<td>
+						${bookingVO.booking_startdate}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>check out</strong>
+					</td>
+					<td>
+						${bookingVO.booking_enddate}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>booking memo</strong>
+					</td>
+					<td>
+						${bookingVo.booking_memo}
 					</td>
 				</tr>
 				
 				</tbody>
 				</table>
-				<table class="table confirm">
-				<thead>
-				<tr>
-					<th colspan="2">
-						Item 2
-					</th>
-				</tr>
-				</thead>
-				<tbody>
-				<tr>
-					<td>
-						<strong>Senna river tour</strong>
-					</td>
-					<td>
-						2x
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>Date</strong>
-					</td>
-					<td>
-						27 Febraury 2015
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>To</strong>
-					</td>
-					<td>
-						Jhon Doe
-					</td>
-				</tr>
 				
-				</tbody>
-				</table>
 			</div><!--End step -->
 		</div><!--End col-md-8 -->
         
@@ -259,3 +240,5 @@ $('input').iCheck({
 
   </body>
 </html>
+
+
