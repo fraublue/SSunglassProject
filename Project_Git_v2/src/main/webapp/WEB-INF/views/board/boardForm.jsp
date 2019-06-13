@@ -620,12 +620,19 @@
    <!-- Date and time pickers -->
    <script src="/js/bootstrap-datepicker.js"></script>
    <script>
-	var arrNumber = ['2019-06-20', '2019-06-21']; 
-	var arrNumber2 = ['2019-06-25','2019-06-27']; 
-      $('input.date-pick').datepicker({
-         
-            datesDisabled: arrNumber.concat(arrNumber2)    
-      });
+	var data = [];
+	  
+	 <c:forEach items="${bookday}" var="bookday">
+	  data.push('${bookday}');
+	  </c:forEach>
+
+	  console.log(data);
+	  
+	  
+	  $('input.date-pick').datepicker({
+         // datesDisabled: arrNumber.concat(arrNumber2)    
+          datesDisabled: data    
+    });
       
       $('#sandbox-container .input-daterange').datepicker({
           keyboardNavigation: false,

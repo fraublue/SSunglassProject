@@ -64,4 +64,11 @@ public class GiverBoardDAO {
 	  public List<String> selectcommentthumb(int board_id) throws Exception{
 		  return session.selectList(namespace+".selectcommentthumb",board_id);
 	  }
+	  public List<String> booklikststart(int board_id) throws Exception{
+		  return session.selectList(namespace+".booklikststart",board_id);
+	  }
+	  
+	  public List<String> booklistend(int board_id) throws Exception{
+		  return session.selectList(namespace+".booklistend",board_id);
+	  }
 }

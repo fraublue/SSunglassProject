@@ -211,6 +211,14 @@ public class BoardServiceImpl implements BoardService {
 	public List<SearchVO> psearch(SearchVO svo) throws Exception {
 		return dao.psearch(svo);
 	}
+	@Override
+	public List<String> booklikststart(int board_id) throws Exception {
+		return gdao.booklikststart(board_id);
+	}
+	@Override
+	public List<String> booklistend(int board_id) throws Exception {
+		return gdao.booklistend(board_id);
+	}
 
 	//
 //  @Override

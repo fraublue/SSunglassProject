@@ -87,5 +87,7 @@ public interface BoardService {
 	public List<SearchVO> psearch(SearchVO svo) throws Exception;
 	
 	public String searchthumb(int board_id) throws Exception;
+	public List<String> booklikststart(int board_id) throws Exception;
+	public List<String> booklistend(int board_id) throws Exception;
 
 }

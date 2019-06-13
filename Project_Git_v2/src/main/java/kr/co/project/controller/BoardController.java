@@ -2,6 +2,7 @@ package kr.co.project.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -321,6 +322,25 @@ public class BoardController {
       logger.info("boardview session user_id  ::::" + loginUserId);
 
       boolean flag = serviceuser.userTypeCheck(user_id);
+      
+      List<String> booklistST = new ArrayList<String>();
+      List<String> booklistED = new ArrayList<String>();
+      booklistST = service.booklikststart(board_id);
+      booklistED = service.booklistend(board_id);
+      System.out.println(booklistST);
+      System.out.println(booklistED);
+      List<LocalDate> totalDates = new ArrayList<LocalDate>();
+      
+      for(int i=0;i<booklistST.size();i++) {
+	      LocalDate start = LocalDate.parse(booklistST.get(i));
+	      LocalDate end = LocalDate.parse(booklistED.get(i));
+	      while (!start.isAfter(end)) {
+	          totalDates.add(start);
+	          start = start.plusDays(1);
+	      }
+      }
+      
+      
 
       if (flag) {
          logger.info("boardview giver ::::::::::::::::");
@@ -394,6 +414,8 @@ public class BoardController {
          mav.addObject("img", upservice.getimgboardid(board_id));
          mav.addObject("user_type", flag);
       }
+      
+      mav.addObject("bookday",totalDates );
 
       
       

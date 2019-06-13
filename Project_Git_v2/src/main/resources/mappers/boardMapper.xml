@@ -371,6 +371,22 @@ where
 	    ]]>
 	   	</if>
 	   </sql>
+	   
+	   <select id="booklikststart" resultType="string">
+	   select booking_startdate 
+	   from `sns_prj`.`booking` 
+	   where board_id = #{board_id} 
+	   order by user_id ASC
+	   
+	   </select>
+	   
+	   <select id="booklistend" resultType="string">
+	   select booking_enddate 
+	   from `sns_prj`.`booking` 
+	   where board_id = #{board_id} 
+	   order by user_id ASC
+	   
+	   </select>
    
 	
 </mapper>
