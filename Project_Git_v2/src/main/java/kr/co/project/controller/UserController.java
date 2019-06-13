@@ -118,18 +118,21 @@ public class UserController {
 	  }
 	  
 	  @RequestMapping(value = "/searchuser.do")
-	  //�쉶�썝�젙蹂� 寃��깋
+
 	  public String searchuser(HttpServletRequest req, Model model) {
 		  
-		  //model�� vo�쓽 �긽�쐞媛앹껜�씠�떎
+		 		  //
 		  try {
 		  String user_id = req.getParameter("user_id");
 		  model.addAttribute("vo",service.usercheck(user_id));
-		  logger.info("�쉶�썝�젙蹂� 寃��깋 searchuser.do  :::::::: " + user_id);
+		 
+		  logger.info(">>>>>>>>>>>>>>>>>>>>>>searchuser.do  :::::::: " + user_id);
 		  model.addAttribute("fav",fservice.selectfavo_user(user_id));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		  
+		 
 		  return "ranking";
 	  }
 	  

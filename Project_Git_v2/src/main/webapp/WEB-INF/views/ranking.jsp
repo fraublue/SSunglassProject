@@ -148,8 +148,8 @@
 				<ul>
 					<li><a href="#section-1" class="icon-profile"><span>Profile</span></a></li>
 					<li><a href="#section-2"><img src="img/star1.png"
-							width="20px" height="20px"><span>Bookmark</span></a></li>
-					<li><a href="#section-3"><img src="img/calendar.png" width="20px" height="20px"><span>Booking</span></a></li>
+							width="20px" height="20px"style=" margin-right: 5px; margin-bottom: 5px;"><span>Bookmark</span></a></li>
+					<li><a href="#section-3"><img src="img/calendar.png" width="20px" height="20px" style="margin-right: 7px; margin-bottom: 2px;"><span>Booking</span></a></li>
 				</ul>
 			</nav>
 
@@ -578,12 +578,118 @@
 				</section>
 
 
-				<section id="section-2">
+				<section id="section-3">
 					<div class="row">
-
+					<c:if test="${vo.user_type == 0}">
 						<div name="booking" id="bookingList"></div>
-
-
+					</c:if>
+					<c:if test="${vo.user_type == 1}">
+					
+            
+			<div class="strip_booking">
+				<div class="row">
+					<div class="col-md-2 col-sm-2">
+						<div class="date">
+							<span class="month">Dec</span>
+							<span class="day"><strong>23</strong>Sat</span>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-5">
+						<h3 class="hotel_booking">Hotel Mariott Paris<span>2 Adults / 2 Nights</span></h3>
+					</div>
+					<div class="col-md-2 col-sm-3">
+						<ul class="info_booking">
+							<li><strong>Booking id</strong> 23442</li>
+							<li><strong>Booked on</strong> Sat. 23 Dec. 2015</li>
+						</ul>
+					</div>
+					<div class="col-md-2 col-sm-2">
+						<div class="booking_buttons">
+							<a href="#0" class="btn_2">Edit</a>
+							<a href="#0" class="btn_3">Cancel</a>
+						</div>
+					</div>
+				</div><!-- End row -->
+			</div><!-- End strip booking -->
+            
+			<div class="strip_booking">
+				<div class="row">
+					<div class="col-md-2 col-sm-2">
+						<div class="date">
+							<span class="month">Dec</span>
+							<span class="day"><strong>27</strong>Fri</span>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-5">
+						<h3 class="tours_booking">Louvre Museum<span>2 Adults / 2 Childs</span></h3>
+					</div>
+					<div class="col-md-2 col-sm-3">
+						<ul class="info_booking">
+							<li><strong>Booking id</strong> 23442</li>
+							<li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
+						</ul>
+					</div>
+					<div class="col-md-2 col-sm-2">
+						<div class="booking_buttons">
+							<a href="#0" class="btn_2">Edit</a>
+							<a href="#0" class="btn_3">Cancel</a>
+						</div>
+					</div>
+				</div><!-- End row -->
+			</div><!-- End strip booking -->
+			
+       			<div class="strip_booking">
+				<div class="row">
+					<div class="col-md-2 col-sm-2">
+						<div class="date">
+							<span class="month">Dec</span>
+							<span class="day"><strong>28</strong>Fri</span>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-5">
+						<h3 class="tours_booking">Tour Eiffel<span>2 Adults</span></h3>
+					</div>
+					<div class="col-md-2 col-sm-3">
+						<ul class="info_booking">
+							<li><strong>Booking id</strong> 23442</li>
+							<li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
+						</ul>
+					</div>
+					<div class="col-md-2 col-sm-2">
+						<div class="booking_buttons">
+							<a href="#0" class="btn_2">Edit</a>
+							<a href="#0" class="btn_3">Cancel</a>
+						</div>
+					</div>
+				</div><!-- End row -->
+			</div><!-- End strip booking -->
+            
+			<div class="strip_booking">
+				<div class="row">
+					<div class="col-md-2 col-sm-2">
+						<div class="date">
+							<span class="month">Dec</span>
+							<span class="day"><strong>30</strong>Fri</span>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-5">
+						<h3 class="transfers_booking">Orly Airport<span>2 Adults / 2Childs</span></h3>
+					</div>
+					<div class="col-md-2 col-sm-3">
+						<ul class="info_booking">
+							<li><strong>Booking id</strong> 23442</li>
+							<li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
+						</ul>
+					</div>
+					<div class="col-md-2 col-sm-2">
+						<div class="booking_buttons">
+							<a href="#0" class="btn_2">Edit</a>
+							<a href="#0" class="btn_3">Cancel</a>
+						</div>
+					</div>
+				</div><!-- End row -->
+			</div><!-- End strip booking -->
+					</c:if>
 					</div>
 					<!-- End row -->
 					<button class="btn_1 btn_moreView2" style="color: white">
