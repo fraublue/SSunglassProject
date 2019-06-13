@@ -164,7 +164,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
 								class="icon-search"></i></a>
 							<div class="dropdown-menu">
-								<form>
+								<!-- <form> -->
 									<div class="input-group" >
 										<input type="text" class="form-control"  id="keyword" placeholder="Search...">
 											 <span class="input-group-btn">
@@ -173,7 +173,7 @@
 											</button>
 										</span>
 									</div>
-								</form>
+								<!-- </form> -->
 							</div>
 						</div>
 					</li>

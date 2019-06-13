@@ -86,7 +86,7 @@
 		
 		function tsearch(currentPage,predi,user_id){
 			var datas = {
-					user_id :  user_id,
+					user_id : user_id,
 					page : currentPage
 			}
 			 $.ajax({
@@ -105,6 +105,7 @@
 			$("#keyword").on('keydown', function(e){
                      if(e.keyCode ==13){
                         var user_id = $(this).val();
+                        console.log(user_id);
                         pageNum =1;
                         $(".btn_moreView").hide();
                 		 $(".btn_moreView2").hide();
@@ -125,37 +126,39 @@
                      tsearch(1,html,user_id);
                   })
                   
+                  ///
+                  
                  function psearch(currentPage,predi){
-				var datas = {
-						 people : $("#people").val(),
-						 favorite : $("input[name='favorite']").val(),
-						 booking_startdate : $("input[name='booking_startdate']").val(),
-						 booking_enddate : $("input[name='booking_enddate']").val(),
-						 addr : $("input[name='addr']").val(),
-						 page : currentPage
-					}
-				 $.ajax({
-						type : "GET",
-						url : "/board/psearch",
-						data : datas,
-						error : function(err){
-							console.log(err);
-						},
-						success : function(data){
-							addData(predi,data,"listWrap");
+					var datas = {
+							 people : $("#people").val(),
+							 favorite : $("input[name='favorite']").val(),
+							 booking_startdate : $("input[name='booking_startdate']").val(),
+							 booking_enddate : $("input[name='booking_enddate']").val(),
+							 addr : $("input[name='addr']").val(),
+							 page : currentPage
 						}
-					});
-				}
+					 $.ajax({
+							type : "GET",
+							url : "/board/psearch",
+							data : datas,
+							error : function(err){
+								console.log(err);
+							},
+							success : function(data){
+								addData(predi,data,"listWrap");
+							}
+						});
+					}
 			
-			$(".searchnow").click(function(){
-				pageNum=1;
-				$(".btn_moreView").hide();
-        		 $(".btn_moreView2").hide();
-        		 $(".btn_moreView3").hide();
-        		 $(".btn_moreView4").show();
-				psearch(1,html);
-			})
-			
+					$(".searchnow").click(function(){
+						pageNum=1;
+						$(".btn_moreView").hide();
+		        		 $(".btn_moreView2").hide();
+		        		 $(".btn_moreView3").hide();
+		        		 $(".btn_moreView4").show();
+						psearch(1,html);
+					})
+					
 		//favoriteList(1,"상가");
 		function favoriteList(currentPage,fname,predi) {
 			$.ajax({
@@ -223,16 +226,17 @@
 		})
 		$(".btn_moreView3").click(function(){
 			console.log("view333");
+			var user_id = $("#keyword").val();
 			++pageNum;
 			//console.log(type);
 			console.log(pageNum);
-			tsearch(pageNum,append);
+			tsearch(pageNum,append,user_id);
 			return false;
 		})
 		$(".btn_moreView4").click(function(){
 			console.log("view444");
 			++pageNum;
-			console.log(type);
+//			console.log(type);
 			console.log(pageNum);
 			psearch(pageNum,append);
 			return false;
@@ -293,7 +297,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label>Address</label> <input type="text" class="form-control"
+								<label>Addr ess</label> <input type="text" class="form-control"
 									id="firstname_booking" name="addr"
 									placeholder="Type your search terms">
 							</div>
@@ -610,7 +614,15 @@
 			<button class="btn_1 btn_moreView2" style="color: white">
 				<i class="icon-up-hand">&nbsp;</i>SHOW MORE
 			</button>
-		</p>
+		
+			<button class="btn_1 btn_moreView3" style="color: white">
+				<i class="icon-up-hand">&nbsp;</i>SHOW MORE
+			</button>
+			<button class="btn_1 btn_moreView4" style="color: white">
+				<i class="icon-up-hand">&nbsp;</i>SHOW MORE
+			</button>
+			
+			</p>
 		<!-- End row -->
 
 		<!-- <p class="text-center nopadding">
