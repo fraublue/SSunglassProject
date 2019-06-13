@@ -110,8 +110,9 @@
 
    <div class="container margin_60">
       <div class="row">
-
+		
          <c:if test="${giver_board != null }">
+         <c:if test="${ sessionScope.user_type != 1 }">
             <aside class="col-md-3">
                <!--                <p class="hidden-sm hidden-xs">
                   <a class="btn_map" data-toggle="collapse" href="#collapseMap"
@@ -140,10 +141,12 @@
                         </div>
                      </div>                     
                   </div>
+                  
                   <input type="hidden" name="addr" value="${giver_board.addr}">
                   <input type="hidden" name="people" value="${giver_board.people}">
                   <input type="hidden" name="board_id" value="${common_board.board_id}">
                   <button class="btn_full" type="submit">Check now</button>
+                  
                   <!--                   <a class="btn_full_outline" href="#"><i class=" icon-heart"></i>
                      Add to whislist</a> -->
                   </form>   
@@ -160,7 +163,10 @@
                </div> -->
 
             </aside>
+            </c:if>
          </c:if>
+         
+         
 
          <c:if test="${giver_board == null }">
             <!-- <aside class="col-md-3">
@@ -169,9 +175,16 @@
                   Add to whislist</a>
             </aside> -->
          </c:if>
-
          <c:if test="${giver_board != null}">
-            <div class="col-md-9">
+         	<c:if test="${sessionScope.user_type == 1}">
+         	
+         	<div class="col-md-12">
+         	</c:if>
+         	<c:if test="${sessionScope.user_type != 1 }">
+        
+			<div class="col-md-9">
+			</c:if>
+			
          </c:if>
          <c:if test="${giver_board == null}">
             <div class="col-md-12">
