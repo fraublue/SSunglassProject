@@ -84,9 +84,9 @@
 		
 		//seol//input박스에 class이름이 form-control의 value값을 user_id에 저장
 		
-		function tsearch(currentPage,predi){
+		function tsearch(currentPage,predi,user_id){
 			var datas = {
-					user_id :  $("#keyword").val(),
+					user_id :  user_id,
 					page : currentPage
 			}
 			 $.ajax({
@@ -104,24 +104,25 @@
 			
 			$("#keyword").on('keydown', function(e){
                      if(e.keyCode ==13){
-                        //var user_id = $(this).val();
+                        var user_id = $(this).val();
                         pageNum =1;
                         $(".btn_moreView").hide();
                 		 $(".btn_moreView2").hide();
                 		 $(".btn_moreView3").show();
                 		 $(".btn_moreView4").hide();
-                        tsearch(1, html);
+                        tsearch(1, html,user_id);
                      }
                      
                   })
                   $("#searchbtn").on('click',function(){
-                	  //var user_id = $("#keyword").val();
+                	  var user_id = $("#keyword").val();
+                	  console.log(user_id);
                 	  pageNum = 1;
                 	  $(".btn_moreView").hide();
              		 $(".btn_moreView2").hide();
              		 $(".btn_moreView3").show();
              		 $(".btn_moreView4").hide();
-                     tsearch(1,html);
+                     tsearch(1,html,user_id);
                   })
                   
                  function psearch(currentPage,predi){

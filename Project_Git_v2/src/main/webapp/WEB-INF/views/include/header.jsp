@@ -165,10 +165,10 @@
 								class="icon-search"></i></a>
 							<div class="dropdown-menu">
 								<form>
-									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search...">
+									<div class="input-group" >
+										<input type="text" class="form-control"  id="keyword" placeholder="Search...">
 											 <span class="input-group-btn">
-											<button class="btn btn-default" type="button" style="margin-left: 0;">
+											<button class="btn btn-default"  id="searchbtn" type="button" style="margin-left: 0;">
 												<i class="icon-search"></i>
 											</button>
 										</span>
