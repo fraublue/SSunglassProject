@@ -180,7 +180,7 @@ ${bookingVO}
 				이제 giver와 이야기를 나누십시오
 			</p>
 			<hr>
-			<a class="btn_full_outline" href="invoice.html" target="_blank">message로 이동하기</a>
+			<a class="btn_full_outline" href="resources/html/index.html">message로 이동하기</a>
 		</div>
 		<div class="box_style_4">
 			<i class="icon_set_1_icon-89"></i>
