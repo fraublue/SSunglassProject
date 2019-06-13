@@ -581,7 +581,7 @@
 				<section id="section-2">
 					<div class="row">
 
-						<div name="booking" id="bookinglist"></div>
+						<div name="booking" id="bookingList"></div>
 
 
 					</div>
@@ -718,6 +718,7 @@
 	})
 	</script>
 	
+	
 	<script src="js/tabs.js"></script>
 	<script>
 		new CBPFWTabs(document.getElementById('tabs'));
@@ -763,6 +764,5 @@
 
 	})
 	</script>
-	
 </body>
 </html>
