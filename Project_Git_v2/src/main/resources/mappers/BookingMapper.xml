@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="bookingList" parameterType="hashmap" resultType="kr.co.project.domain.CommonBoardVO">
+	<![CDATA[
 		select *
 		from sns_prj.`common_board`
 		where board_id in(
@@ -19,5 +20,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 		order by reg_date desc
 		limit #{pageStart} , #{perPageNum}
+	]]>
 	</select>
 </mapper>

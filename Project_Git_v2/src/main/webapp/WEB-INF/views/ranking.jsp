@@ -718,5 +718,51 @@
 	})
 	</script>
 	
+	<script src="js/tabs.js"></script>
+	<script>
+		new CBPFWTabs(document.getElementById('tabs'));
+	</script>
+	<script>
+	
+	
+	$(document).on('click',"#section-2",function(){
+		bookingList(aa);
+	})
+
+	$(function() {
+		
+		var stpage = 1;
+		var user_id = $(".uid").text()
+		bookingList(user_id,stpage);
+		
+		function bookingList(user_id,page) {
+			$.ajax({
+				type : "GET",
+				url : "<%=request.getContextPath()%>/bookingList",
+				data : {
+					"user_id" : user_id,
+					"page" : page
+				},
+				error : function(err) {
+					console.log(err);
+				},
+				success : function(data) {
+					$("#bookingList").append(data);
+				}
+			});
+		}
+		
+		$(".btn_moreView2").click(function(){
+			++stpage;
+			console.log(user_id);
+			console.log(stpage);
+			bookmarkList(user_id, stpage);
+			return false;
+		})
+		
+
+	})
+	</script>
+	
 </body>
 </html>

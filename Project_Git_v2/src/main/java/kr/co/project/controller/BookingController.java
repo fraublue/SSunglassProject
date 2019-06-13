@@ -63,9 +63,9 @@ public class BookingController {
 			
 		}
 		
-		@RequestMapping(value="bookinglist")
+		@RequestMapping(value="bookingList")
 		public String list(@RequestParam("user_id")String user_id, Model model, @RequestParam("page")int page) {
-			logger.info("::: go to booking");
+			logger.info("::: go to bookingList");
 			Criteria cri = new Criteria();
 			cri.setPage(page);
 			

@@ -45,8 +45,11 @@ public class BookingDAOImpl implements BookingDAO{
 
 	@Override
 	public List<CommonBoardVO> bookingList(String user_id, Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("user_id", user_id);
+			map.put("pageStart", cri.getStartpage());
+			map.put("perPageNum", cri.getPerPageNum());
+		return session.selectList(namespace+ ".bookingList", map);
 	}
 
 	@Override

@@ -38,8 +38,7 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public List<CommonBoardVO> bookingList(String user_id, Criteria cri) {
-		dao.bookingList(user_id, cri);
-		return null;
+		return dao.bookingList(user_id, cri);
 	}
 
 	@Override
