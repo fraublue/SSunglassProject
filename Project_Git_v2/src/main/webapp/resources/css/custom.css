@@ -162,3 +162,6 @@ overflow: hidden;
 
 .fix-width{}
 .fix-width p{width:100%;box-sizing:border-box;padding-left:12px;}
+.flotingMenu{
+	position: absolute;
+}

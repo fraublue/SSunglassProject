@@ -118,7 +118,7 @@
                   <a class="btn_map" data-toggle="collapse" href="#collapseMap"
                      aria-expanded="false" aria-controls="collapseMap">View on map</a>
                </p> -->
-               <div class="box_style_1 expose">
+               <div class="box_style_1 expose flotingMenu">
                   <h3 class="inner">Check Availability</h3>
                   <form action="<%=request.getContextPath()%>/cart.do" method="post">
                   <div class="row">
@@ -634,7 +634,31 @@
    <script src="/js/bootstrap-datepicker.js"></script>
    <script>
 	var data = [];
-	  
+	
+	$(document).ready(function() {
+
+		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+		var floatPosition = parseInt($(".flotingMenu").css('top'));
+		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+		$(window).scroll(function() {
+			// 현재 스크롤 위치를 가져온다.
+			var scrollTop = $(window).scrollTop();
+			var newPosition = scrollTop + floatPosition + "px";
+
+			/* 애니메이션 없이 바로 따라감
+			 $("#floatMenu").css('top', newPosition);
+			 */
+
+			$(".flotingMenu").stop().animate({
+				"top" : newPosition
+			}, 500);
+
+		}).scroll();
+
+	});
+	
+	
 	 <c:forEach items="${bookday}" var="bookday">
 	  data.push('${bookday}');
 	  </c:forEach>
