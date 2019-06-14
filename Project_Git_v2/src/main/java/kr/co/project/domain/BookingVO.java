@@ -7,7 +7,7 @@ public class BookingVO {
 	private String people;
 	private String user_id;
 	private String booking_memo;
-	private String rsv_num;
+	private int rsv_num;
 	private int option1;
 	private int option2;
 	private int option3;
@@ -73,10 +73,10 @@ public class BookingVO {
 	public void setBooking_memo(String booking_memo) {
 		this.booking_memo = booking_memo;
 	}
-	public String getRsv_num() {
+	public int getRsv_num() {
 		return rsv_num;
 	}
-	public void setRsv_num(String rsv_num) {
+	public void setRsv_num(int rsv_num) {
 		this.rsv_num = rsv_num;
 	}
 	public BookingVO() {
