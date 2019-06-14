@@ -449,7 +449,7 @@
 								<table class="table table-striped options_cart">
 									<tbody>
 										<tr>
-											<td style="width: 10%"><i class="icon_set_1_icon-23"></i>
+											<td style="width: 10%"><i class="icon-money"></i>
 											</td>
 											<td style="width: 60%">COMMERCIAL</td>
 											<td style="width: 35%"><label
@@ -482,7 +482,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon_set_1_icon-26"></i></td>
+											<td><i class="icon-vector-pencil"></i></td>
 											<td>EXHIBITION</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_3" id="option_3"
@@ -498,7 +498,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon_set_1_icon-81"></i></td>
+											<td><i class="icon-gift"></i></td>
 											<td>POP - UP STORE</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_4" id="option_4"
@@ -526,7 +526,7 @@
 								<table class="table table-striped options_cart">
 									<tbody>
 										<tr>
-											<td style="width: 10%"><i class="icon_set_1_icon-33"></i>
+											<td style="width: 10%"><i class="icon-camera-2"></i>
 											</td>
 											<td style="width: 60%">PHOTO</td>
 											<td style="width: 35%"><label
@@ -543,7 +543,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon_set_1_icon-6"></i></td>
+											<td><i class="icon-pencil"></i></td>
 											<td>STUDY</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_6" id="option_6"
@@ -559,7 +559,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon_set_1_icon-26"></i></td>
+											<td><i class="icon-group"></i></td>
 											<td>SMALL GROUP</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_7" id="option_7"
@@ -575,7 +575,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon_set_1_icon-81"></i></td>
+											<td><i class="icon-heart"></i></td>
 											<td>SMALL WEDDING</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_8" id="option_8"
