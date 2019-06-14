@@ -6,7 +6,7 @@ public class BookingListVO {
 	private String amenities2;
 	private String amenities3;
 	private String amenities4;
-	private String amenities5;
+	
 	private int board_id;
 	private String booking_startdate;
 	private String booking_enddate;
@@ -63,12 +63,7 @@ public class BookingListVO {
 	public void setAmenities4(String amenities4) {
 		this.amenities4 = amenities4;
 	}
-	public String getAmenities5() {
-		return amenities5;
-	}
-	public void setAmenities5(String amenities5) {
-		this.amenities5 = amenities5;
-	}
+	
 	public int getOption1() {
 		return option1;
 	}
@@ -141,14 +136,14 @@ public class BookingListVO {
 	@Override
 	public String toString() {
 		return "BookingListVO [addr=" + addr + ", amenities1=" + amenities1 + ", amenities2=" + amenities2
-				+ ", amenities3=" + amenities3 + ", amenities4=" + amenities4 + ", amenities5=" + amenities5
-				+ ", board_id=" + board_id + ", booking_startdate=" + booking_startdate + ", booking_enddate="
+				+ ", amenities3=" + amenities3 + ", amenities4=" + amenities4 +  ", board_id=" + board_id 
+				+ ", booking_startdate=" + booking_startdate + ", booking_enddate="
 				+ booking_enddate + ", people=" + people + ", user_id=" + user_id + ", booking_memo=" + booking_memo
 				+ ", rsv_num=" + rsv_num + ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3
 				+ ", option4=" + option4 + ", giver_id=" + giver_id + ", taker_id=" + taker_id + ", getGiver_id()="
 				+ getGiver_id() + ", getTaker_id()=" + getTaker_id() + ", getAddr()=" + getAddr() + ", getAmenities1()="
 				+ getAmenities1() + ", getAmenities2()=" + getAmenities2() + ", getAmenities3()=" + getAmenities3()
-				+ ", getAmenities4()=" + getAmenities4() + ", getAmenities5()=" + getAmenities5() + ", getOption1()="
+				+ ", getAmenities4()=" + getAmenities4() +  ", getOption1()="
 				+ getOption1() + ", getOption2()=" + getOption2() + ", getOption3()=" + getOption3() + ", getOption4()="
 				+ getOption4() + ", getBoard_id()=" + getBoard_id() + ", getBooking_startdate()="
 				+ getBooking_startdate() + ", getBooking_enddate()=" + getBooking_enddate() + ", getPeople()="
