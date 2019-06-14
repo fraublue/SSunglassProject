@@ -108,6 +108,33 @@
    </div>
    <!-- End position -->
 
+   
+<script language="javascript">
+		
+		function validate() {
+			
+			var start = document.getElementById("start");
+			var end = document.getElementById("end");
+		    
+		    
+		       if(start.value=="") {
+		           alert("시작 날짜를 입력해 주세요");
+		           start.focus();
+		           return false;
+		       }
+
+		       if(end.value=="") {
+		           alert("마지막 날짜를 입력해 주세요 ");
+		           end.focus();
+		           return false;
+		       }
+		       
+		     
+		}
+		       
+ 		 
+		</script>
+		
    <div class="container margin_60">
       <div class="row">
 		
@@ -120,7 +147,7 @@
                </p> -->
                <div class="box_style_1 expose flotingMenu">
                   <h3 class="inner">Check Availability</h3>
-                  <form action="<%=request.getContextPath()%>/cart.do" method="post">
+                  <form action="<%=request.getContextPath()%>/cart.do" onsubmit="return validate();" method="post">
                   <div class="row">
                      <div class="col-md-6 col-sm-6">
                         <div class="form-group">
@@ -128,6 +155,7 @@
                               class="date-pick form-control today" data-date-format="yyyy-mm-dd"                              
                               data-date-start-date="${startdate}" 
                               data-date-end-date="${giver_board.booking_enddate}"
+                              id ="start"
                               name="checkin" type="text">
                         </div>
                      </div>
@@ -137,6 +165,7 @@
                               class="date-pick form-control" data-date-format="yyyy-mm-dd"
                               data-date-start-date="${startdate}" 
                               data-date-end-date="${giver_board.booking_enddate}"
+                              id = "end"
                               name="checkout"   type="text">
                         </div>
                      </div>                     
