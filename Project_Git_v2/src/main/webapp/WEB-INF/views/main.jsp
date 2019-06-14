@@ -131,7 +131,7 @@
                  function psearch(currentPage,predi){
 					var datas = {
 							 people : $("#people").val(),
-							 favorite : $("input[name='favorite']").val(),
+							 favorite_id : $("input[name='favorite']").val(),
 							 booking_startdate : $("input[name='booking_startdate']").val(),
 							 booking_enddate : $("input[name='booking_enddate']").val(),
 							 addr : $("input[name='addr']").val(),
