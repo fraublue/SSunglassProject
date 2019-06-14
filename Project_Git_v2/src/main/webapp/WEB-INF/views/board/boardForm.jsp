@@ -107,7 +107,6 @@
       </div>
    </div>
    <!-- End position -->
-
    
 <script language="javascript">
 		
@@ -151,7 +150,8 @@
                   <div class="row">
                      <div class="col-md-6 col-sm-6">
                         <div class="form-group">
-                           <label><i class="icon-calendar-7"></i> Check in</label> <input
+                           <label><i class="icon-calendar-7"></i> Check in</label> 
+                           <input
                               class="date-pick form-control today" data-date-format="yyyy-mm-dd"                              
                               data-date-start-date="${startdate}" 
                               data-date-end-date="${giver_board.booking_enddate}"

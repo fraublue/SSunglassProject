@@ -310,7 +310,7 @@
 									<option value="1" data-imagesrc="/img/icons_search/sightseeing.png">COMMERCIAL</option>
 									<option value="2" data-imagesrc="/img/icons_search/museums.png">FLEA MARKET</option>
 									<option value="3" data-imagesrc="/img/icons_search/historic.png">EXHIBITION</option>
-									<option value="4" data-imagesrc="/img/icons_search/walking.png">POP - UP STORE</option>
+									<option value="4" data-imagesrc="/img/icons_search/walking.png">PHOTO</option>
 									<option value="5" data-imagesrc="/img/icons_search/eat.png">NEW CITY TOURS</option>
 									<option value="6" data-imagesrc="/img/icons_search/churches.png">STUDY</option>
 									<option value="7" data-imagesrc="/img/icons_search/skyline.png">SMALL GROUP</option>

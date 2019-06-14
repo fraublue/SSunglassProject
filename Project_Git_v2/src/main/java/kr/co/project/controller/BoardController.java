@@ -88,6 +88,7 @@ public class BoardController {
 
       for (int i = 0; i < list2.size(); i++) {
          int board_id = list2.get(i).getBoard_id();
+         
          boolean a = likeservice.checkLike(board_id, user_id);
          addr.add(service.getaddr(board_id));
          if (a) {
@@ -103,19 +104,7 @@ public class BoardController {
       model.addAttribute("addr", addr);
 
    }
-   //cart
-      @RequestMapping(value = "/cart.do")
-      public String cart() throws Exception {
-
-         return "cart";
-      }
-      
-   //confirm
-      @RequestMapping(value = "/confirm.do")
-      public String confirm() throws Exception {
-
-         return "confirmation";
-      }
+  
       
    @RequestMapping(value = "/social.do")
    public String social() throws Exception {

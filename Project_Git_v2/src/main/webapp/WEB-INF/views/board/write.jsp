@@ -506,7 +506,7 @@
 										<tr>
 											<td style="width: 10%"><i class="icon_set_1_icon-33"></i>
 											</td>
-											<td style="width: 60%">NEW CITY TOURS</td>
+											<td style="width: 60%">PHOTO</td>
 											<td style="width: 35%"><label
 												class="switch-light switch-ios pull-right"> <input
 													type="checkbox" name="option_5" id="option_5" value="5">
