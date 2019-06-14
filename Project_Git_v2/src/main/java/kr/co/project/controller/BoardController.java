@@ -202,6 +202,7 @@ public class BoardController {
       }
       return board_id;
    }
+   //return type = json > javascript or ajax easy use lololololol
 
    @RequestMapping(value = "/writeg", method = RequestMethod.POST)
    public @ResponseBody int giverwriteBoard(@RequestParam("user_id") String user_id,
