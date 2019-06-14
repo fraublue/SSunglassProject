@@ -62,7 +62,7 @@
     <!-- Header================================================== -->
    
 	<%@include file="./include/header.jsp"%>
-	<input type="hidden" value="${sessionScope.user_id }" class="check">
+	<input type="hidden" value="${sessionScope.user_type }" class="check">
     <section id="search_container" class="social"> 
     <div class="intro_title animated fadeInDown">
            <h1 align="center">Place your order</h1>
@@ -483,7 +483,7 @@
 		function validate() {
 			var ck = $('.check').val(); 
 		    
-		       if(ck.value==null) {
+		       if(ck.value==0) {
 		           alert("로그인 후 이용해 주세요 ");
 		           location.href= 'loginForm.do';
 		           return false;
