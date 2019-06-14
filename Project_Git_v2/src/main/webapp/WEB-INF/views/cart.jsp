@@ -62,6 +62,7 @@
     <!-- Header================================================== -->
    
 	<%@include file="./include/header.jsp"%>
+	<input type="hidden" value="${sessionScope.user_id }" class="check">
     <section id="search_container" class="social"> 
     <div class="intro_title animated fadeInDown">
            <h1 align="center">Place your order</h1>
@@ -98,11 +99,12 @@
     </div><!-- End position -->
 
     <div class="container margin_60">
+    
     <div class="row">
     <div class="col-md-8">
     <div class="alert alert-info" role="alert"><strong>Rooms available</strong> for the selected dates.<br>PLEASE SELECT YOUR QUANTITY.</div>
     	<table class="table table-striped cart-list add_bottom_30">
-    	 <form action="<%=request.getContextPath()%>/confirm.do" method="post"> 
+    	 <form action="<%=request.getContextPath()%>/confirm.do" method="post"  onsubmit="return validate();"> 
             <thead>
             <tr>
                 <th>
@@ -228,7 +230,7 @@
         <table class="table table_summary">
         <tbody>
             <tr>
-                <td>
+               <td colspan="2">
                     Check in
                 </td>
                 <td class="text-right">
@@ -237,7 +239,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+               <td colspan="2">
                     Check out
                 </td>
                 <td class="text-right">
@@ -248,7 +250,7 @@
             
         
         <tr>
-            <td>
+            <td colspan="2">
             	<ul id="option_name_list">
            			<li>PER DAY</li>
                 </ul>
@@ -265,9 +267,13 @@
           <td>
             Total cost
             </td>
-          <td class="text-right">
-            80
+            <td class="text-right">
+            $
             </td>
+          <td class="text-right">
+            <span>80</span>
+            </td>
+            
         </tr>
         </tbody>
         </table>
@@ -275,6 +281,7 @@
         <input type="hidden" name="board_id" id ="board_id" value="${board_id}">
         <input type="hidden" name="people" id = "people" value="${people}">
         <input type="hidden" name="addr" id = "addr" value="${addr}">
+        
         
         <button class="btn_full" id="submitbooking" type="submit">Book now</button>
         <a class="btn_full_outline" href="main.do"><i class="icon-right"></i> Modify your search</a>
@@ -290,32 +297,7 @@
 
 </div><!--End row -->
 </div><!--End container -->
-
-<footer>
-      <div class="container">
-         <div class="row">
-            <div class="col-md-4 col-sm-3">
-               <h3>Need help?</h3>
-               <a href="tel://004542344599" id="phone">010 2733 5696</a> <a
-                  href="mailto:help@citytours.com" id="email_footer">kyungohhelp@gmail.com</a>
-            </div>
-            <div class="col-md-3 col-sm-3">
-               <h3>About</h3>
-               <ul>
-                  <li><a href="#">About us</a></li>
-                  <li><a href="#">경오</a></li>
-                  <li><a href="#">설아</a></li>
-                  <li><a href="#">태성</a></li>
-                  <li><a href="#">푸름</a></li>
-               </ul>
-            </div>
-          
-         </div>
-        
-      </div>
-      <!-- End container -->
-   </footer>
-   <!-- End footer -->
+<%@include file="./include/footer.jsp"%>
 
 <div id="toTop"></div><!-- Back to top button -->
 
@@ -493,8 +475,26 @@
         	   $('#option_price_list > li').each(function(){
         		    total += parseInt($(this).text());
         	   })
-        	   $(".total > td:eq(1)").text(total);
+        	   $(".total > td:eq(2)").text(total);
            }
            </script>
+           <script language="javascript">
+		
+		function validate() {
+			var ck = $('.check').val(); 
+		    
+		       if(ck.value==null) {
+		           alert("로그인 후 이용해 주세요 ");
+		           location.href= 'loginForm.do';
+		           return false;
+		       }
+
+		      
+		       
+		     
+		}
+		       
+ 		   
+		</script>	
   </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -117,7 +118,7 @@ ${bookingVO}
 				</p>
 			</div>
 			<div class="step">
-				<table class="table confirm">
+				<table class="table confirm" id="countit">
 				<thead>
 				<tr>
 					<th colspan="2">
@@ -159,13 +160,64 @@ ${bookingVO}
 					</td>
 				</tr>
 				<tr>
+					<td colspan="2">
+						<strong>booking option</strong>
+					</td>
+					
+				</tr>
+				
+				<tr>
 					<td>
-						<strong>booking memo</strong>
+						<strong>Per day</strong>
 					</td>
 					<td>
-						${bookingVo.booking_memo}
+						$<span class="count-me">80</span>
 					</td>
 				</tr>
+				
+				<c:if test="${bookingVO.option1 != 0 }">
+				<tr>
+					<td>
+						<strong>빔프로젝터</strong>
+					</td>
+					<td>
+						$<span class="count-me">34</span>
+					</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${bookingVO.option2 != 0 }">
+				<tr>
+					<td>
+						<strong>플라워 장식</strong>
+					</td>
+					<td>
+						$<span class="count-me">24</span>
+					</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${bookingVO.option3 != 0 }">
+				<tr>
+					<td>
+						<strong>테이블</strong>
+					</td>
+					<td>
+						$<span class="count-me">26</span>
+					</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${bookingVO.option4 != 0 }">
+				<tr>
+					<td>
+						<strong>의자</strong>
+					</td>
+					<td>
+						$<span class="count-me">12</span>
+					</td>
+				</tr>
+				</c:if>
 				
 				</tbody>
 				</table>
@@ -192,32 +244,7 @@ ${bookingVO}
         
 	</div><!--End row -->
 </div><!--End container -->
-
-<footer>
-      <div class="container">
-         <div class="row">
-            <div class="col-md-4 col-sm-3">
-               <h3>Need help?</h3>
-               <a href="tel://004542344599" id="phone">010 2733 5696</a> <a
-                  href="mailto:help@citytours.com" id="email_footer">kyungohhelp@gmail.com</a>
-            </div>
-            <div class="col-md-3 col-sm-3">
-               <h3>About</h3>
-               <ul>
-                  <li><a href="#">About us</a></li>
-                  <li><a href="#">경오</a></li>
-                  <li><a href="#">설아</a></li>
-                  <li><a href="#">태성</a></li>
-                  <li><a href="#">푸름</a></li>
-               </ul>
-            </div>
-         
-         </div>
-      
-      </div>
-      <!-- End container -->
-   </footer>
-   <!-- End footer -->
+<%@include file="./include/footer.jsp"%>
 <div id="toTop"></div><!-- Back to top button -->
 
 <div id="toTop"></div>
@@ -233,7 +260,19 @@ $('input').iCheck({
    radioClass: 'iradio_square-grey'
  });
  </script>
-
+ 
+ <script language="javascript" type="text/javascript">
+            var tds = document.getElementById('countit').getElementsByTagName('span');
+            var sum = 0;
+            for(var i = 0; i < tds.length; i ++) {
+                if(tds[i].className == 'count-me') {
+                    sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                }
+            }
+            document.getElementById('countit').innerHTML += 
+            	'<tr><td><strong>total</strong></td><td>$'+sum+'</td></tr>' ;
+            	
+        </script>
 
 
 
