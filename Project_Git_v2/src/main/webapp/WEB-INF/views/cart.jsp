@@ -250,12 +250,13 @@
         <tr>
             <td>
             	<ul id="option_name_list">
-           
+           			<li>PER DAY</li>
                 </ul>
             </td>
             <td class="text-right">
-            <ul id="option_price_list">
            
+            <ul id="option_price_list">
+           		<li>80</li>
             </ul>
                 
             </td>
@@ -265,7 +266,7 @@
             Total cost
             </td>
           <td class="text-right">
-            $154
+            80
             </td>
         </tr>
         </tbody>
