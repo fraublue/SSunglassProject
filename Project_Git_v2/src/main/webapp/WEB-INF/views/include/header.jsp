@@ -139,9 +139,12 @@
 									<li><a href="cart.html">Single tour cart</a></li>
 									<li><a href="payment.html">Single tour booking</a></li>
 								</ul> --></li>
+						<c:if test="${sessionScope.user_id != null }">
 						<li class="submenu"><a href="${pageContext.request.contextPath}/board/writePage" style="padding-left:30px; padding-top:1px;"
 							class="show-submenu">Write <!-- <i class="icon-down-open-mini"></i> -->
-						</a> <!-- <ul>
+						</a>
+						</c:if>
+						<!-- <ul>
 									<li><a href="all_hotels_list.html">All hotels list</a></li>
 									<li><a href="all_hotels_grid.html">All hotels grid</a></li>
 									<li><a href="single_hotel.html">Single hotel page</a></li>
