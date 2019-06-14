@@ -427,7 +427,7 @@
 								</div>
 							</div>
 						</div>
-					</c:if>
+					
 					<div class="row">
 						<div class="col-md-6">
 							<c:if test='${sessionScope.user_type == 1 }'>
@@ -554,6 +554,7 @@
 							</div>
 							 
 						</div>
+						</c:if>
 						<input type="hidden" name="user_type"
 								value="${sessionScope.user_type}"> <input type="submit"
 								value="UPLOAD" class="btn_1" id="submit-contact">

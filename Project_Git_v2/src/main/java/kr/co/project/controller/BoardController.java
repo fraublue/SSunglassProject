@@ -361,30 +361,9 @@ public class BoardController {
       ModelAndView mav = new ModelAndView();
       // 醫뗭븘�슂 泥댄겕 濡쒖쭅
       
-      GiverBoardVO gvo =service.giverboard(board_id);
-      gvo = service.giverboard(board_id);
-      String startdate= gvo.getBooking_startdate();
-
-      SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-      Date sd = transFormat.parse(startdate);
-      String sdate = transFormat.format(sd);
       
-      System.out.println(sdate);
       
-      Date tday =new Date();
-      String today = transFormat.format(tday);
-      System.out.println(today);
-      
-      int result = sd.compareTo(tday);
-      
-      if(result>0) {
-         mav.addObject("startdate", sdate);
-      }else if(result==0) {
-         mav.addObject("startdate", today);
-      }else {
-         mav.addObject("startdate",today);
-      }
+     
       
       if (b) {
          mav.addObject("like", "like1.png");
@@ -395,6 +374,23 @@ public class BoardController {
       mav.addObject("likecnt", c);
 
       if (flag) {
+    	  GiverBoardVO gvo =service.giverboard(board_id);
+          gvo = service.giverboard(board_id);
+          String startdate= gvo.getBooking_startdate();
+
+          SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+          Date sd = transFormat.parse(startdate);
+          String sdate = transFormat.format(sd);
+          
+          System.out.println(sdate);
+          
+          Date tday =new Date();
+          String today = transFormat.format(tday);
+          System.out.println(today);
+          
+          int result = sd.compareTo(tday);
+          
          mav.setViewName("board/boardForm");
          mav.addObject("common_board", service.commmonboard(board_id));
          mav.addObject("user_type", flag);
@@ -407,6 +403,14 @@ public class BoardController {
          } else {
             mav.addObject("star", "star1.png");
          }
+         
+         if(result>0) {
+             mav.addObject("startdate", sdate);
+          }else if(result==0) {
+             mav.addObject("startdate", today);
+          }else {
+             mav.addObject("startdate",today);
+          }
 
       } else {
          mav.setViewName("board/boardForm");
