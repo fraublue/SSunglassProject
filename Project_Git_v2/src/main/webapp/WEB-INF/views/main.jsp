@@ -307,11 +307,11 @@
 								<label>Things to do</label>
 								<select id="favorite" class="ddslick" name="favorite">
 									<option value="0" selected>ALL TOURS</option>
-									<option value="1" class="icon-money">COMMERCIAL</option>
+									<option value="1" >COMMERCIAL</option>
 									<option value="2" >FLEA MARKET</option>
 									<option value="3" >EXHIBITION</option>
 									<option value="4" >POP - UP STORE</option>
-									<option value="5" >SHOOTING</option>
+									<option value="5" >PHOTO</option>
 									<option value="6" >STUDY</option>
 									<option value="7" >SMALL GROUP</option>
 									<option value="8" >SMALL WEDDING</option>
