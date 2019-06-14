@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.project.domain.BookingListVO;
 import kr.co.project.domain.BookingVO;
 import kr.co.project.domain.CommonBoardVO;
 import kr.co.project.domain.Criteria;
@@ -44,12 +45,24 @@ public class BookingDAOImpl implements BookingDAO{
 	}
 
 	@Override
-	public List<CommonBoardVO> bookingList(String user_id, Criteria cri) {
+	public List<BookingListVO> tbookingList(String user_id, Criteria cri) {
+		System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;tbookinglistDAO");
+
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("user_id", user_id);
 			map.put("pageStart", cri.getStartpage());
 			map.put("perPageNum", cri.getPerPageNum());
-		return session.selectList(namespace+ ".bookingList", map);
+		return session.selectList(namespace+ ".tbookingList", map);
+	}
+	@Override
+	public List<BookingListVO> gbookingList(String user_id, Criteria cri) {
+		System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;tbookinglistDAO");
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_id", user_id);
+		map.put("pageStart", cri.getStartpage());
+		map.put("perPageNum", cri.getPerPageNum());
+		return session.selectList(namespace+ ".gbookingList", map);
 	}
 
 	@Override

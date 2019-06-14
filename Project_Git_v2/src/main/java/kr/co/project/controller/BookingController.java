@@ -63,18 +63,35 @@ public class BookingController {
 			
 		}
 		
-		@RequestMapping(value="bookingList")
-		public String list(@RequestParam("user_id")String user_id, Model model, @RequestParam("page")int page) {
-			logger.info("::: go to bookingList");
+		@RequestMapping(value="/tbookingList")
+		public String tbookingList(@RequestParam("user_id")String user_id, Model model, @RequestParam("page")int page) {
+			logger.info(":::::::::::::::::::: go to tbookingList");
 			Criteria cri = new Criteria();
 			cri.setPage(page);
 			
 			try {
-				model.addAttribute("list", service.bookingList(user_id, cri));
+				
+				model.addAttribute("list", service.tbookingList(user_id, cri));
+					
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
 			
-			return "board/list";
+			return "board/tbookinglist";
+		}
+		@RequestMapping(value="/gbookingList")
+		public String gbookingList(@RequestParam("user_id")String user_id, Model model, @RequestParam("page")int page) {
+			logger.info("::::::::::::::::::::::: go to gbookingList");
+			Criteria cri = new Criteria();
+			cri.setPage(page);
+			
+			try {
+					model.addAttribute("list", service.gbookingList(user_id, cri));
+					
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "board/gbookinglist";
 		}
 }

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.project.domain.BookingListVO;
 import kr.co.project.domain.BookingVO;
 import kr.co.project.domain.CommonBoardVO;
 import kr.co.project.domain.Criteria;
@@ -37,8 +38,13 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public List<CommonBoardVO> bookingList(String user_id, Criteria cri) {
-		return dao.bookingList(user_id, cri);
+	public List<BookingListVO> tbookingList(String user_id, Criteria cri) {
+		System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;tbookinglistService");
+		return dao.tbookingList(user_id, cri);
+	}
+	@Override
+	public List<BookingListVO> gbookingList(String user_id, Criteria cri) {
+		return dao.gbookingList(user_id, cri);
 	}
 
 	@Override

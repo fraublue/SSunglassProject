@@ -208,7 +208,7 @@
 								<table class="table table-striped options_cart">
 									<tbody>
 										<tr>
-											<td style="width: 10%"><i class="icon-money"></i>
+											<td style="width: 10%"><i class="icon_set_1_icon-23"></i>
 											</td>
 											<td style="width: 60%">COMMERCIAL</td>
 											<td style="width: 35%"><label
@@ -239,7 +239,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon-vector-pencil"></i></td>
+											<td><i class="icon_set_1_icon-26"></i></td>
 											<td>EXHIBITION</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_3" id="option_3"
@@ -254,7 +254,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon-gift"></i></td>
+											<td><i class="icon_set_1_icon-81"></i></td>
 											<td>POP - UP STORE</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_4" id="option_4"
@@ -283,7 +283,7 @@
 								<table class="table table-striped options_cart">
 									<tbody>
 										<tr>
-											<td style="width: 10%"><i class="icon-camera-2"></i>
+											<td style="width: 10%"><i class="icon_set_1_icon-33"></i>
 											</td>
 											<td style="width: 60%">PHOTO</td>
 											<td style="width: 35%"><label
@@ -299,7 +299,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon-pencil"></i></td>
+											<td><i class="icon_set_1_icon-6"></i></td>
 											<td>STUDY</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_6" id="option_6"
@@ -314,7 +314,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon-group"></i></td>
+											<td><i class="icon_set_1_icon-26"></i></td>
 											<td>SMALL GROUP</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_7" id="option_7"
@@ -329,7 +329,7 @@
 											</label></td>
 										</tr>
 										<tr>
-											<td><i class="icon-heart"></i></td>
+											<td><i class="icon_set_1_icon-81"></i></td>
 											<td>SMALL WEDDING</td>
 											<td><label class="switch-light switch-ios pull-right">
 													<input type="checkbox" name="option_8" id="option_8"
@@ -577,118 +577,30 @@
 
 				</section>
 
-
 				<section id="section-3">
 					<div class="row">
+					 <c:if test="${vo.user_type == 0}"> 
+						<div name="booking" id="tbookingList"></div>
+					 </c:if>
+					<c:if test="${vo.user_type == 1}">
+						<div name="booking" id="gbookingList"></div>
+					</c:if> 
+					</div>
+					<!-- End row -->
+					<button class="btn_1 btn_moreView2" style="color: white">
+						<i class="icon-up-hand"></i>SHOW MORE
+					</button>
+
+				</section>
+				<!-- End section 3 -->
+
+				<%-- <section id="section-4">
+					<div class="row">
 					<c:if test="${vo.user_type == 0}">
-						<div name="booking" id="bookingList"></div>
+						<div name="booking" id="tbookingList"></div>
 					</c:if>
 					<c:if test="${vo.user_type == 1}">
-					
-            
-			<div class="strip_booking">
-				<div class="row">
-					<div class="col-md-2 col-sm-2">
-						<div class="date">
-							<span class="month">Dec</span>
-							<span class="day"><strong>23</strong>Sat</span>
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-5">
-						<h3 class="hotel_booking">Hotel Mariott Paris<span>2 Adults / 2 Nights</span></h3>
-					</div>
-					<div class="col-md-2 col-sm-3">
-						<ul class="info_booking">
-							<li><strong>Booking id</strong> 23442</li>
-							<li><strong>Booked on</strong> Sat. 23 Dec. 2015</li>
-						</ul>
-					</div>
-					<div class="col-md-2 col-sm-2">
-						<div class="booking_buttons">
-							<a href="#0" class="btn_2">Edit</a>
-							<a href="#0" class="btn_3">Cancel</a>
-						</div>
-					</div>
-				</div><!-- End row -->
-			</div><!-- End strip booking -->
-            
-			<div class="strip_booking">
-				<div class="row">
-					<div class="col-md-2 col-sm-2">
-						<div class="date">
-							<span class="month">Dec</span>
-							<span class="day"><strong>27</strong>Fri</span>
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-5">
-						<h3 class="tours_booking">Louvre Museum<span>2 Adults / 2 Childs</span></h3>
-					</div>
-					<div class="col-md-2 col-sm-3">
-						<ul class="info_booking">
-							<li><strong>Booking id</strong> 23442</li>
-							<li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
-						</ul>
-					</div>
-					<div class="col-md-2 col-sm-2">
-						<div class="booking_buttons">
-							<a href="#0" class="btn_2">Edit</a>
-							<a href="#0" class="btn_3">Cancel</a>
-						</div>
-					</div>
-				</div><!-- End row -->
-			</div><!-- End strip booking -->
-			
-       			<div class="strip_booking">
-				<div class="row">
-					<div class="col-md-2 col-sm-2">
-						<div class="date">
-							<span class="month">Dec</span>
-							<span class="day"><strong>28</strong>Fri</span>
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-5">
-						<h3 class="tours_booking">Tour Eiffel<span>2 Adults</span></h3>
-					</div>
-					<div class="col-md-2 col-sm-3">
-						<ul class="info_booking">
-							<li><strong>Booking id</strong> 23442</li>
-							<li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
-						</ul>
-					</div>
-					<div class="col-md-2 col-sm-2">
-						<div class="booking_buttons">
-							<a href="#0" class="btn_2">Edit</a>
-							<a href="#0" class="btn_3">Cancel</a>
-						</div>
-					</div>
-				</div><!-- End row -->
-			</div><!-- End strip booking -->
-            
-			<div class="strip_booking">
-				<div class="row">
-					<div class="col-md-2 col-sm-2">
-						<div class="date">
-							<span class="month">Dec</span>
-							<span class="day"><strong>30</strong>Fri</span>
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-5">
-						<h3 class="transfers_booking">Orly Airport<span>2 Adults / 2Childs</span></h3>
-					</div>
-					<div class="col-md-2 col-sm-3">
-						<ul class="info_booking">
-							<li><strong>Booking id</strong> 23442</li>
-							<li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
-						</ul>
-					</div>
-					<div class="col-md-2 col-sm-2">
-						<div class="booking_buttons">
-							<a href="#0" class="btn_2">Edit</a>
-							<a href="#0" class="btn_3">Cancel</a>
-						</div>
-					</div>
-				</div><!-- End row -->
-			</div><!-- End strip booking -->
+						<div name="booking" id="gbookingList"></div>
 					</c:if>
 					</div>
 					<!-- End row -->
@@ -697,7 +609,7 @@
 					</button>
 
 				</section>
-				<!-- End section 2 -->
+ --%>				<!-- End section 4 -->
 
 			</div>
 			<!-- End content -->
@@ -768,26 +680,7 @@
 	$(document).on('click',"#section-2",function(){
 		bookmarkList(aa);
 	})
-		<%-- $(function() {
-			function bookmarkList(user_id) {
-				var user_id = ${sessionScope.user_id};
-				
-				$.ajax({
-					type : "GET",
-					url : "<%=request.getContextPath()%>/bookmarklist.nn",
-					data : {
-						"user_id" : user_id,
-
-					},
-					error : function(err) {
-						console.log(err);
-					},
-					success : function(data) {
-						$("#bookmarklist").html(data);
-					}
-				});
-			}
-		}) --%>
+		
 	$(function() {
 		
 		var stpage = 1;
@@ -832,43 +725,111 @@
 	<script>
 	
 	
+
+<%-- //var user_type= ${vo.user_type}
+
 	$(document).on('click',"#section-2",function(){
 		bookingList(aa);
 	})
-
-	$(function() {
+	$(function() {  
 		
-		var stpage = 1;
-		var user_id = $(".uid").text()
-		bookingList(user_id,stpage);
-		
-		function bookingList(user_id,page) {
+		bookingList(1,append);
+		function bookingList(currentPage,predi) {
+			var user_id = ${sessionScope.user_id};
 			$.ajax({
 				type : "GET",
-				url : "<%=request.getContextPath()%>/bookingList",
+				url : "<%=request.getContextPath()%>/tbookingList",
 				data : {
-					"user_id" : user_id,
-					"page" : page
+					page : currentPage,
+					"user_id" : user_id
 				},
 				error : function(err) {
 					console.log(err);
 				},
 				success : function(data) {
-					$("#bookingList").append(data);
+					addData(predi,data,"tbookingList");
+					
 				}
 			});
 		}
-		
-		$(".btn_moreView2").click(function(){
-			++stpage;
-			console.log(user_id);
-			console.log(stpage);
-			bookmarkList(user_id, stpage);
-			return false;
-		})
-		
+		} --%>
 
-	})
+
+	 $(document).on('click',"#section-3",function(){
+	      tbookingList(aa);
+	   })
+	 $(document).on('click',"#section-3",function(){
+	      gbookingList(aa);
+	   })
+
+	   $(function() {
+	      
+	      var stpage = 1;
+	      var user_id = $(".uid").text()
+	      tbookingList(user_id,stpage);
+	      
+	      function tbookingList(user_id,page) {
+	         $.ajax({
+	            type : "GET",
+	            url : "<%=request.getContextPath()%>/tbookingList",
+	            data : {
+	               "user_id" : user_id,
+	               "page" : page
+	            },
+	            error : function(err) {
+	               console.log(err);
+	            },
+	            success : function(data) {
+	               $("#tbookingList").append(data);
+	            }
+	         });
+	      }
+	      
+	      $(".btn_moreView2").click(function(){
+	         ++stpage;
+	         console.log(user_id);
+	         console.log(stpage);
+	         bookmarkList(user_id, stpage);
+	         return false;
+	      })
+	      
+
+	   })
+
+	   $(function() {
+	      
+	      var stpage = 1;
+	      var user_id = $(".uid").text()
+	      gbookingList(user_id,stpage);
+	      
+	      function gbookingList(user_id,page) {
+	         $.ajax({
+	            type : "GET",
+	            url : "<%=request.getContextPath()%>/gbookingList",
+	            data : {
+	               "user_id" : user_id,
+	               "page" : page
+	            },
+	            error : function(err) {
+	               console.log(err);
+	            },
+	            success : function(data) {
+	               $("#gbookingList").append(data);
+	            }
+	         });
+	      }
+	      
+	      $(".btn_moreView2").click(function(){
+	         ++stpage;
+	         console.log(user_id);
+	         console.log(stpage);
+	         bookmarkList(user_id, stpage);
+	         return false;
+	      })
+	      
+
+	   })
+
 	</script>
 </body>
 </html>
