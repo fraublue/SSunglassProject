@@ -12,23 +12,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="tbookingList" parameterType="hashmap" resultType="kr.co.project.domain.BookingListVO">
-	select addr, amenities1, amenities2, amenities3, amenities4, amenities5, 
+	select addr, amenities1, amenities2, amenities3, amenities4, 
 	b.booking_startdate, b.booking_enddate, g.people, g.board_id, c.user_id as "giver_id", b.user_id as "taker_id", 
 	option1, option2, option3, option4 
 	from giver_board as `g`, booking as `b`, common_board as `c`
 	where `g`.board_id=`b`.board_id
 	and `c`.board_id=`g`.board_id
-	and `b`.user_id= #{user_id};
+	and `b`.user_id= #{user_id}
+	order by b.booking_enddate desc;
 	</select>
 	
 	<select id="gbookingList" parameterType="hashmap" resultType="kr.co.project.domain.BookingListVO">
-	select addr, amenities1, amenities2, amenities3, amenities4, amenities5, 
+	select addr, amenities1, amenities2, amenities3, amenities4,
 	b.booking_startdate, b.booking_enddate, g.people, g.board_id, c.user_id as "giver_id", b.user_id as "taker_id", 
 	option1, option2, option3, option4 
 	from giver_board g, booking b, common_board c
 	where g.board_id=b.board_id
 	and c.board_id=g.board_id
-	and c.user_id= #{user_id};
+	and c.user_id= #{user_id}
+	order by b.booking_enddate desc;
 
 
 	</select>
