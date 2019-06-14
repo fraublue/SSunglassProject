@@ -104,7 +104,14 @@
     <div class="col-md-8">
     <div class="alert alert-info" role="alert"><strong>Rooms available</strong> for the selected dates.<br>PLEASE SELECT YOUR QUANTITY.</div>
     	<table class="table table-striped cart-list add_bottom_30">
-    	 <form action="<%=request.getContextPath()%>/confirm.do" method="post"  onsubmit="return validate();"> 
+    	
+    	<c:if test="${sessionScope.user_id != null }">
+    	 <form action="<%=request.getContextPath()%>/confirm.do" method="post"  ">
+    	 </c:if> 
+    	 
+    	 <c:if test="${sessionScope.user_id == null }">
+    	 <form action="<%=request.getContextPath()%>/loginForm.do" method="post"  ">
+    	 </c:if> 
             <thead>
             <tr>
                 <th>
@@ -282,9 +289,15 @@
         <input type="hidden" name="people" id = "people" value="${people}">
         <input type="hidden" name="addr" id = "addr" value="${addr}">
         
-        
+        <c:if test="${sessionScope.user_id != null }">
         <button class="btn_full" id="submitbooking" type="submit">Book now</button>
         <a class="btn_full_outline" href="main.do"><i class="icon-right"></i> Modify your search</a>
+        </c:if>
+        
+        <c:if test="${sessionScope.user_id == null }">
+        <button class="btn_full" id="submitbooking" type="submit">need a Sign in</button>
+        </c:if>
+        
         </form>
     </div>
     <div class="box_style_4">
@@ -478,23 +491,6 @@
         	   $(".total > td:eq(2)").text(total);
            }
            </script>
-           <script language="javascript">
-		
-		function validate() {
-			var ck = $('.check').val(); 
-		    
-		       if(ck.value==0) {
-		           alert("로그인 후 이용해 주세요 ");
-		           location.href= 'loginForm.do';
-		           return false;
-		       }
-
-		      
-		       
-		     
-		}
-		       
- 		   
-		</script>	
+          
   </body>
 </html>
