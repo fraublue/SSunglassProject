@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.project.domain.BookingListVO;
 import kr.co.project.domain.BookingVO;
@@ -26,15 +27,14 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public void deleteBooking(BookingVO vo) {
-		dao.deleteBooking(vo);
+	public void deleteBooking(int rsv_num) {
+		dao.deleteBooking(rsv_num);
 		
 	}
 
 	@Override
-	public boolean checkExistBooking(int board_id, String user_id) {
-		dao.checkExistBooking(board_id, user_id);
-		return false;
+	public BookingListVO checkBooking(int rsv_num) {
+		return dao.checkBooking(rsv_num);
 	}
 
 	@Override
@@ -57,6 +57,11 @@ public class BookingServiceImpl implements BookingService {
 	public void deletebooking_userid(String user_id) {
 		dao.deletebooking_userid(user_id);
 		
+	}
+
+	@Override
+	public String bookingAddr(int rsv_num) {
+		return dao.bookingAddr(rsv_num);
 	}
 
 }

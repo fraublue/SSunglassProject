@@ -2,14 +2,17 @@ package kr.co.project.persistence;
 
 import java.util.List;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import kr.co.project.domain.BookingListVO;
 import kr.co.project.domain.BookingVO;
 import kr.co.project.domain.Criteria;
 
 public interface BookingDAO {
 	public void insertBooking(BookingVO vo)throws Exception;
-	public void deleteBooking(BookingVO vo);
-	public boolean checkExistBooking(int board_id, String user_id);
+	public void deleteBooking(int rsv_num);
+	public BookingListVO checkBooking(int rsv_num);
+	public String bookingAddr(int rsv_num);
 	public List<BookingListVO> tbookingList(String user_id,Criteria cri);
 	public List<BookingListVO> gbookingList(String user_id,Criteria cri);
 	public void deletebooking_boardid(int board_id);

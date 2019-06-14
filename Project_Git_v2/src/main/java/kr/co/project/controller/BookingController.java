@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.project.domain.BookingListVO;
 import kr.co.project.domain.BookingVO;
 import kr.co.project.domain.Criteria;
 import kr.co.project.service.BookingService;
@@ -63,6 +64,23 @@ public class BookingController {
 			
 		}
 		
+	      //check booking
+	      @RequestMapping(value = "/checkbooking.do", method = RequestMethod.POST )
+	      public String checkbooking(@ModelAttribute BookingListVO bkvo, @RequestParam("rsv_num") int rsv_num, Model  model) throws Exception {
+	         logger.info("::::::::::::::::checkbooking.do");
+	         
+	         System.out.println(rsv_num);
+
+	            bkvo = service.checkBooking(rsv_num);   
+	            String addr = service.bookingAddr(rsv_num);
+	            model.addAttribute("bookingListVO", bkvo);
+	            model.addAttribute("addr", addr);
+	            System.out.println(addr);
+	         
+	         return "checkBooking";
+	         
+	      }
+		
 		@RequestMapping(value="/tbookingList")
 		public String tbookingList(@RequestParam("user_id")String user_id, Model model, @RequestParam("page")int page) {
 			logger.info(":::::::::::::::::::: go to tbookingList");
@@ -94,4 +112,11 @@ public class BookingController {
 			
 			return "board/gbookinglist";
 		}
+		
+	      @RequestMapping(value="/deleteBooking")
+	      public String deleteBooking(@RequestParam("rsv_num") int rsv_num) {
+	    	  logger.info(">>>>>>>>>>deleteBooking");
+	    	  service.deleteBooking(rsv_num);
+	    	  return "main";
+	      }
 }

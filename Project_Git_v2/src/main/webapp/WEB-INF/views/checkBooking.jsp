@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
@@ -43,7 +42,7 @@
 <!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
-
+${bookingListVO}
     <div id="preloader">
         <div class="sk-spinner sk-spinner-wave">
             <div class="sk-rect1"></div>
@@ -100,25 +99,13 @@
 		<div class="col-md-8 add_bottom_15">
         
 			<div class="form_title">
-				<h3><strong><i class="icon-ok"></i></strong>Thank you!</h3>
-				<p>
-					예약이 완료되었습니다.
-				</p>
-			</div>
-			<div class="step">
-				<p>
-				
-				</p>
-			</div><!--End step -->
-            
-			<div class="form_title">
 				<h3><strong><i class="icon-tag-1"></i></strong>Booking summary</h3>
 				<p>
 					Mussum ipsum cacilds, vidis litro abertis.
 				</p>
 			</div>
 			<div class="step">
-				<table class="table confirm" id="countit">
+				<table class="table confirm">
 				<thead>
 				<tr>
 					<th colspan="2">
@@ -132,7 +119,7 @@
 						<strong>address</strong>
 					</td>
 					<td>
-						${addr}
+						${bookingListVO.addr}
 					</td>
 				</tr>
 				<tr>
@@ -148,7 +135,7 @@
 						<strong>check in</strong>
 					</td>
 					<td>
-						${bookingVO.booking_startdate}
+						${bookingListVO.booking_startdate}
 					</td>
 				</tr>
 				<tr>
@@ -156,68 +143,49 @@
 						<strong>check out</strong>
 					</td>
 					<td>
-						${bookingVO.booking_enddate}
+						${bookingListVO.booking_enddate}
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<strong>booking option</strong>
+					<td>
+						<strong>booking memo</strong>
 					</td>
-					
+					<td>
+						${bookingListVO.booking_memo}
+					</td>
 				</tr>
-				
 				<tr>
 					<td>
-						<strong>Per day</strong>
+						<strong>Option1</strong>
 					</td>
 					<td>
-						$<span class="count-me">80</span>
+						${bookingListVO.option1}
 					</td>
 				</tr>
-				
-				<c:if test="${bookingVO.option1 != 0 }">
 				<tr>
 					<td>
-						<strong>빔프로젝터</strong>
+						<strong>Option2</strong>
 					</td>
 					<td>
-						$<span class="count-me">34</span>
+						${bookingListVO.option2}
 					</td>
 				</tr>
-				</c:if>
-				
-				<c:if test="${bookingVO.option2 != 0 }">
 				<tr>
 					<td>
-						<strong>플라워 장식</strong>
+						<strong>Option3</strong>
 					</td>
 					<td>
-						$<span class="count-me">24</span>
+						${bookingListVO.option3}
 					</td>
 				</tr>
-				</c:if>
-				
-				<c:if test="${bookingVO.option3 != 0 }">
 				<tr>
 					<td>
-						<strong>테이블</strong>
+						<strong>Option4</strong>
 					</td>
 					<td>
-						$<span class="count-me">26</span>
+						${bookingListVO.option4}
 					</td>
 				</tr>
-				</c:if>
-				
-				<c:if test="${bookingVO.option4 != 0 }">
-				<tr>
-					<td>
-						<strong>의자</strong>
-					</td>
-					<td>
-						$<span class="count-me">12</span>
-					</td>
-				</tr>
-				</c:if>
 				
 				</tbody>
 				</table>
@@ -244,7 +212,32 @@
         
 	</div><!--End row -->
 </div><!--End container -->
-<%@include file="./include/footer.jsp"%>
+
+<footer>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-4 col-sm-3">
+               <h3>Need help?</h3>
+               <a href="tel://004542344599" id="phone">010 2733 5696</a> <a
+                  href="mailto:help@citytours.com" id="email_footer">kyungohhelp@gmail.com</a>
+            </div>
+            <div class="col-md-3 col-sm-3">
+               <h3>About</h3>
+               <ul>
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">경오</a></li>
+                  <li><a href="#">설아</a></li>
+                  <li><a href="#">태성</a></li>
+                  <li><a href="#">푸름</a></li>
+               </ul>
+            </div>
+         
+         </div>
+      
+      </div>
+      <!-- End container -->
+   </footer>
+   <!-- End footer -->
 <div id="toTop"></div><!-- Back to top button -->
 
 <div id="toTop"></div>
@@ -260,19 +253,7 @@ $('input').iCheck({
    radioClass: 'iradio_square-grey'
  });
  </script>
- 
- <script language="javascript" type="text/javascript">
-            var tds = document.getElementById('countit').getElementsByTagName('span');
-            var sum = 0;
-            for(var i = 0; i < tds.length; i ++) {
-                if(tds[i].className == 'count-me') {
-                    sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
-                }
-            }
-            document.getElementById('countit').innerHTML += 
-            	'<tr><td><strong>total</strong></td><td>$'+sum+'</td></tr>' ;
-            	
-        </script>
+
 
 
 

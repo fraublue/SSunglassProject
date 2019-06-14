@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.project.domain.BookingListVO;
 import kr.co.project.domain.BookingVO;
@@ -33,15 +34,8 @@ public class BookingDAOImpl implements BookingDAO{
 	}
 
 	@Override
-	public void deleteBooking(BookingVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean checkExistBooking(int board_id, String user_id) {
-		// TODO Auto-generated method stub
-		return false;
+	public void deleteBooking(int rsv_num) {
+		session.delete(namespace+".deleteBooking",rsv_num);
 	}
 
 	@Override
@@ -75,6 +69,16 @@ public class BookingDAOImpl implements BookingDAO{
 	public void deletebooking_userid(String user_id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public BookingListVO checkBooking(int rsv_num) {
+		return session.selectOne(namespace+ ".checkBooking", rsv_num);
+	}
+
+	@Override
+	public String bookingAddr(int rsv_num) {
+		return session.selectOne(namespace+ ".bookingAddr", rsv_num);
 	}
 
 }
