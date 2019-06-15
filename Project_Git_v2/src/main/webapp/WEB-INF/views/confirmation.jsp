@@ -261,7 +261,7 @@ $('input').iCheck({
  });
  </script>
  
- <script language="javascript" type="text/javascript">
+ <script>
             var tds = document.getElementById('countit').getElementsByTagName('span');
             var sum = 0;
             for(var i = 0; i < tds.length; i ++) {

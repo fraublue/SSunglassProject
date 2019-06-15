@@ -42,7 +42,7 @@
 <!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
-${bookingListVO}
+
     <div id="preloader">
         <div class="sk-spinner sk-spinner-wave">
             <div class="sk-rect1"></div>
@@ -105,7 +105,7 @@ ${bookingListVO}
 				</p>
 			</div>
 			<div class="step">
-				<table class="table confirm">
+				<table class="table confirm"  id="countit">
 				<thead>
 				<tr>
 					<th colspan="2">
@@ -147,46 +147,66 @@ ${bookingListVO}
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<strong>booking memo</strong>
+					<td colspan="2">
+						<strong>booking option</strong>
 					</td>
-					<td>
-						${bookingListVO.booking_memo}
-					</td>
+					
 				</tr>
+				
 				<tr>
 					<td>
-						<strong>Option1</strong>
+						<strong>Per day</strong>
 					</td>
 					<td>
-						${bookingListVO.option1}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>Option2</strong>
-					</td>
-					<td>
-						${bookingListVO.option2}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>Option3</strong>
-					</td>
-					<td>
-						${bookingListVO.option3}
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>Option4</strong>
-					</td>
-					<td>
-						${bookingListVO.option4}
+						$<span class="count-me">80</span>
 					</td>
 				</tr>
 				
+				<c:if test="${bookingVO.option1 != 0 }">
+				<tr>
+					<td>
+						<strong>빔프로젝터</strong>
+					</td>
+					<td>
+						$<span class="count-me">34</span>
+					</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${bookingVO.option2 != 0 }">
+				<tr>
+					<td>
+						<strong>플라워 장식</strong>
+					</td>
+					<td>
+						$<span class="count-me">24</span>
+					</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${bookingVO.option3 != 0 }">
+				<tr>
+					<td>
+						<strong>테이블</strong>
+					</td>
+					<td>
+						$<span class="count-me">26</span>
+					</td>
+				</tr>
+				</c:if>
+				
+				<c:if test="${bookingVO.option4 != 0 }">
+				<tr>
+					<td>
+						<strong>의자</strong>
+					</td>
+					<td>
+						$<span class="count-me">12</span>
+					</td>
+				</tr>
+				</c:if>
+				
+				</tbody>
 				</tbody>
 				</table>
 				
@@ -253,6 +273,18 @@ $('input').iCheck({
    radioClass: 'iradio_square-grey'
  });
  </script>
+ <script>
+            var tds = document.getElementById('countit').getElementsByTagName('span');
+            var sum = 0;
+            for(var i = 0; i < tds.length; i ++) {
+                if(tds[i].className == 'count-me') {
+                    sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                }
+            }
+            document.getElementById('countit').innerHTML += 
+            	'<tr><td><strong>total</strong></td><td>$'+sum+'</td></tr>' ;
+            	
+        </script>
 
 
 
