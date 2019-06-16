@@ -111,7 +111,7 @@
 						<li class="submenu"><a href="/board/social.do" style="padding-left:15px; padding-top:1px;"
                      class="show-submenu">Social</a></li>
                      
-						<li class="submenu"><a href="javascript:void(0);" style="padding-left:30px; padding-top:1px;"
+						<li class="submenu"><a href="/" style="padding-left:30px; padding-top:1px;"
 							class="show-submenu">Space <!-- <i class="icon-down-open-mini"></i> --></a>
 							<!-- <ul>
 									<li><a href="all_tours_list.html">All tours list</a></li>

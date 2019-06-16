@@ -113,16 +113,14 @@
             
 			<div class="form_title">
 				<h3><strong><i class="icon-tag-1"></i></strong>Booking summary</h3>
-				<p>
-					Mussum ipsum cacilds, vidis litro abertis.
-				</p>
+				
 			</div>
 			<div class="step">
 				<table class="table confirm" id="countit">
 				<thead>
 				<tr>
 					<th colspan="2">
-						Item 1
+						
 					</th>
 				</tr>
 				</thead>
@@ -159,12 +157,7 @@
 						${bookingVO.booking_enddate}
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2">
-						<strong>booking option</strong>
-					</td>
-					
-				</tr>
+				
 				
 				<tr>
 					<td>

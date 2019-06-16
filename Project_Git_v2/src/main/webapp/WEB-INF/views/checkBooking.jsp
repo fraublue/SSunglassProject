@@ -100,16 +100,14 @@
         
 			<div class="form_title">
 				<h3><strong><i class="icon-tag-1"></i></strong>Booking summary</h3>
-				<p>
-					Mussum ipsum cacilds, vidis litro abertis.
-				</p>
+				
 			</div>
 			<div class="step">
 				<table class="table confirm"  id="countit">
 				<thead>
 				<tr>
 					<th colspan="2">
-						Item 1
+						
 					</th>
 				</tr>
 				</thead>
@@ -146,12 +144,7 @@
 						${bookingListVO.booking_enddate}
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2">
-						<strong>booking option</strong>
-					</td>
-					
-				</tr>
+				
 				
 				<tr>
 					<td>
@@ -162,7 +155,7 @@
 					</td>
 				</tr>
 				
-				<c:if test="${bookingVO.option1 != 0 }">
+				<c:if test="${bookingListVO.option1 != 0 }">
 				<tr>
 					<td>
 						<strong>빔프로젝터</strong>
@@ -173,7 +166,7 @@
 				</tr>
 				</c:if>
 				
-				<c:if test="${bookingVO.option2 != 0 }">
+				<c:if test="${bookingListVO.option2 != 0 }">
 				<tr>
 					<td>
 						<strong>플라워 장식</strong>
@@ -184,7 +177,7 @@
 				</tr>
 				</c:if>
 				
-				<c:if test="${bookingVO.option3 != 0 }">
+				<c:if test="${bookingListVO.option3 != 0 }">
 				<tr>
 					<td>
 						<strong>테이블</strong>
@@ -195,7 +188,7 @@
 				</tr>
 				</c:if>
 				
-				<c:if test="${bookingVO.option4 != 0 }">
+				<c:if test="${bookingListVO.option4 != 0 }">
 				<tr>
 					<td>
 						<strong>의자</strong>
