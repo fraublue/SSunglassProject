@@ -109,6 +109,7 @@
    <div class="layer"></div>
    <!-- Mobile menu overlay mask -->
    <%@include file="include/header.jsp"%>
+   
 
    <!-- end header -------------------- -->
    <section id="search_container">
@@ -790,7 +791,7 @@
                      </script>
                      <div></div>
 
-
+					<c:if test="${bookuser == null }">
                      <form action="/deleteuser.do" method="post">
                         <input type="hidden" name="user_id" value="${vo.user_id }">
                         <div class="row">
@@ -799,6 +800,22 @@
                            </div>
                         </div>
                      </form>
+                     </c:if>
+                     
+                     <c:if test="${bookuser != null }">
+                     <form action="" method="post">
+                        <input type="hidden" name="user_id" value="${vo.user_id }">
+                        <div class="row">
+                           <div class="col-md-12 col-sm-12 align-fix">
+                              <button type="submit" class="btn_1 green" disabled="disabled">예약이 있습니다 !</button>
+                           </div>
+                        </div>
+                     </form>
+                     </c:if>
+                     
+                       
+                     
+                    
 
                   </div>
                   <br>

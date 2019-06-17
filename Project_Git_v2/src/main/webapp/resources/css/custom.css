@@ -130,3 +130,4 @@ overflow: hidden;
 .align-fix{text-align:right;}
 .align-fix.cnt{text-align:center;}
 .dd-select{line-height:40px;}
+.btn_delete:hover{color : red;cursor:pointer;}
