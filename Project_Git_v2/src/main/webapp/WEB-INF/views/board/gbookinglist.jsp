@@ -34,7 +34,7 @@
                 <div class="col-md-2 col-sm-2">
                     <div class="booking_buttons">
                   <input type="hidden" name ="rsv_num" value="${bvo.rsv_num}">
-                        <button  class="btn_2"type="submit">Detail</button>
+                        <button  class="btn_2 fix-width"type="submit">Detail</button>
                     </div>
                 </div>
             </div><!-- End row -->

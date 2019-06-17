@@ -155,3 +155,5 @@ overflow: hidden;
 .align-fix.cnt{text-align:center;}
 .dd-select{line-height:40px;}
 .btn_delete:hover{color : red;cursor:pointer;}
+.btn_3.fix-width{font-size:13px;padding:9px 8px; width:100%;background : #83c99f}
+.btn_2.fix-width{font-size:13px;padding:9px 8px;width:100%;}
