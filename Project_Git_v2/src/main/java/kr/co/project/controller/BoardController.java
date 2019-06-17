@@ -48,7 +48,7 @@ import kr.co.project.service.UserService;
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
-
+//gkdgldkl
    private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
    @Inject
