@@ -800,10 +800,10 @@
       }
    </script>
    
-   <!-- <script type="text/javascript"
-      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=b71c545210111992d3f4b64ae0245b27&libraries=services"></script> -->
-      <script type="text/javascript"
-      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=2b83f513db866294e637be33235d3d0d&libraries=services"></script>
+   <script type="text/javascript"
+      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=b71c545210111992d3f4b64ae0245b27&libraries=services"></script> 
+      <!-- <script type="text/javascript"
+      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=2b83f513db866294e637be33235d3d0d&libraries=services"></script> -->
    <script>
       var address = $(".selectAddr").text();
 

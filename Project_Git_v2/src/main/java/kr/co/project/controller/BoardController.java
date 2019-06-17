@@ -79,8 +79,10 @@ public class BoardController {
       cri.setPage(page);
       logger.info("몇번째" + cri.getPage());
       logger.info(cri.toString());
-      List<String> like = new ArrayList<String>();
+      List<String> like = new ArrayList<String>();      
+      List<Integer> likecnt = new ArrayList<Integer>();      
       List<String> addr = new ArrayList<String>();
+      
 
       List<CommonBoardVO> list2 = service.selectgiverList(cri);
 
@@ -90,7 +92,11 @@ public class BoardController {
          int board_id = list2.get(i).getBoard_id();
          
          boolean a = likeservice.checkLike(board_id, user_id);
+         int c = likeservice.selectLikecnt(board_id);
+        
          addr.add(service.getaddr(board_id));
+         likecnt.add(likeservice.selectLikecnt(board_id));
+         
          if (a) {
             like.add("like1.png");
          } else {
@@ -101,6 +107,7 @@ public class BoardController {
 
       model.addAttribute("list", list2);
       model.addAttribute("like", like);
+      model.addAttribute("likecnt", likecnt);
       model.addAttribute("addr", addr);
 
    }

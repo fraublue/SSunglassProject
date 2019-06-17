@@ -151,9 +151,12 @@
                <li><a href="#section-2"><img src="img/star1.png"
                      width="20px" height="20px"
                      style="margin-right: 5px; margin-bottom: 5px;"><span>Bookmark</span></a></li>
+                     
+               <c:if test="${sessionScope.user_id eq vo.user_id}">
                <li><a href="#section-3"><img src="img/calendar.png"
                      width="20px" height="20px"
                      style="margin-right: 7px; margin-bottom: 2px;"><span>Booking</span></a></li>
+               </c:if>      
             </ul>
          </nav>
 

@@ -34,8 +34,8 @@
                 <div class="col-md-2 col-sm-2">
                     <div class="booking_buttons">
 						<input type="hidden" name ="rsv_num" value="${bvo.rsv_num}">
-                     	<button  class="btn_2"type="submit">Detail</button>
-                     	<a href="deleteBooking?rsv_num=${bvo.rsv_num}" class="btn_3">Cancel</a>
+                     	<button  class="btn_2 fix-width"type="submit">Detail</button>
+                     	<a href="deleteBooking?rsv_num=${bvo.rsv_num}" class="btn_3 fix-width">Cancel</a>
                     </div>
                 </div>
             </div><!-- End row -->
