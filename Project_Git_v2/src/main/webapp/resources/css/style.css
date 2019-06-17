@@ -178,7 +178,10 @@ a.btn_1, .btn_1{
 	font-family: inherit;
 	font-size: inherit;
 	color:#fff;
-	background: #51bce6;
+	/* 20190617 btn color change*/
+	/*background: #51bce6;*/
+	background:#83c99f;
+	
 	cursor: pointer;
 	padding: 7px 20px;
 	display: inline-block;
@@ -227,7 +230,9 @@ a.btn_1:hover, .btn_1:hover {
 
 a.bt_facebook { 	
 		color: #fff !important;
-	    background:#337ab7;
+		/*20190617 btncolor change*/
+	    /*background:#337ab7;*/
+	    background:#69a07f;
 		font-weight:bold;
 		font-size:12px;
 		text-decoration:none;
@@ -242,7 +247,9 @@ a.bt_facebook {
 a.bt_paypal { 	
 		color: #fff !important;
 		padding:10px 8px;
-	    background:#5bc0de;
+		/*20190617 btncolor change*/
+	    /*background:#5bc0de;*/
+	     background:#83c99f;
 		font-weight:bold;
 		font-size:12px;
 		text-decoration:none;
@@ -612,8 +619,12 @@ a#forgot_pw{
 	margin-top:15px;
 	right:-25px;
 }
-.input-group button { background-color:#333; color:#fff; border-color:#333}
-.input-group button:hover, .input-group button:focus { background-color:#e04f67; color:#fff; border-color:#e04f67}
+
+/*20190617 btn color change*/
+/*.input-group button { background-color:#333; color:#fff; border-color:#333}*/
+.input-group button { background-color:#83c99f; color:#fff; border-color:#83c99f; transition:.8s;}
+/*.input-group button:hover, .input-group button:focus { background-color:#e04f67; color:#fff; border-color:#e04f67}*/
+.input-group button:hover, .input-group button:focus { background-color:#333; color:#fff; border-color:#333}
 
 /* Footer  */
 footer {
@@ -2956,7 +2967,9 @@ blockquote.styled{
 #search .nav-tabs > li.active > a:hover,
 #search .nav-tabs > li.active > a:focus {
   color: #fff;
-  background-color: #e14d67;
+  /* 20190617 btn color change*/
+  /*background-color: #e14d67;*/
+  background-color:#83c99f;
  }
  .tab-pane h3{
 	 color:#999;
@@ -2979,7 +2992,7 @@ blockquote.styled{
 .dd-option-selected { background:#f9f9f9 !important; color:#444 !important;}
 .dd-option-image, .dd-selected-image { vertical-align:middle; float:left; margin-right:10px !important; max-width:64px;}
 .dd-image-right { float:right; margin-right:15px; margin-left:5px;}
-.dd-container{ position:relative;}​ 
+.dd-container{ position:relative;}�� 
 label.dd-selected-text { font-weight:normal !important;}
 .dd-option-text{ line-height:14px !important;}
 .dd-selected-image{ margin-top:7px;}

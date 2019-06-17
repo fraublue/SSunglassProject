@@ -109,34 +109,34 @@
    <!-- End position -->
    
 <script language="javascript">
-		
-		function validate() {
-			
-			var start = document.getElementById("start");
-			var end = document.getElementById("end");
-		    
-		    
-		       if(start.value=="") {
-		           alert("시작 날짜를 입력해 주세요");
-		           start.focus();
-		           return false;
-		       }
+      
+      function validate() {
+         
+         var start = document.getElementById("start");
+         var end = document.getElementById("end");
+          
+          
+             if(start.value=="") {
+                 alert("시작 날짜를 입력해 주세요");
+                 start.focus();
+                 return false;
+             }
 
-		       if(end.value=="") {
-		           alert("마지막 날짜를 입력해 주세요 ");
-		           end.focus();
-		           return false;
-		       }
-		       
-		     
-		}
-		       
- 		 
-		</script>
-		
+             if(end.value=="") {
+                 alert("마지막 날짜를 입력해 주세요 ");
+                 end.focus();
+                 return false;
+             }
+             
+           
+      }
+             
+        
+      </script>
+      
    <div class="container margin_60">
       <div class="row">
-		
+      
          <c:if test="${giver_board != null }">
          <c:if test="${ sessionScope.user_type != 1 }">
             <aside class="col-md-3">
@@ -155,6 +155,7 @@
                               class="date-pick form-control today" data-date-format="yyyy-mm-dd"                              
                               data-date-start-date="${startdate}" 
                               data-date-end-date="${giver_board.booking_enddate}"
+                              value="${startdate}"
                               id ="start"
                               name="checkin" type="text">
                         </div>
@@ -166,6 +167,7 @@
                               data-date-start-date="${startdate}" 
                               data-date-end-date="${giver_board.booking_enddate}"
                               id = "end"
+                              value="${giver_board.booking_enddate}"
                               name="checkout"   type="text">
                         </div>
                      </div>                     
@@ -175,21 +177,9 @@
                   <input type="hidden" name="people" value="${giver_board.people}">
                   <input type="hidden" name="board_id" value="${common_board.board_id}">
                   <button class="btn_full" type="submit">Check now</button>
-                  
-                  <!--                   <a class="btn_full_outline" href="#"><i class=" icon-heart"></i>
-                     Add to whislist</a> -->
+         
                   </form>   
                </div>
-               <!--/box_style_1 -->
-
-               <!-- <div class="box_style_4">
-                  <i class="icon_set_1_icon-90"></i>
-                  <h4>
-                     <span>Book</span> by phone
-                  </h4>
-                  <a href="tel://004542344599" class="phone">+45 423 445 99</a> <small>Monday
-                     to Friday 9.00am - 7.30pm</small>
-               </div> -->
 
             </aside>
             </c:if>
@@ -205,15 +195,15 @@
             </aside> -->
          </c:if>
          <c:if test="${giver_board != null}">
-         	<c:if test="${sessionScope.user_type == 1}">
-         	
-         	<div class="col-md-12">
-         	</c:if>
-         	<c:if test="${sessionScope.user_type != 1 }">
+            <c:if test="${sessionScope.user_type == 1}">
+            
+            <div class="col-md-12">
+            </c:if>
+            <c:if test="${sessionScope.user_type != 1 }">
         
-			<div class="col-md-9">
-			</c:if>
-			
+         <div class="col-md-9">
+         </c:if>
+         
          </c:if>
          <c:if test="${giver_board == null}">
             <div class="col-md-12">
@@ -662,42 +652,43 @@
    <!-- Date and time pickers -->
    <script src="/js/bootstrap-datepicker.js"></script>
    <script>
-	var data = [];
-	
-	$(document).ready(function() {
+   var data = [];
+   
+   $(document).ready(function() {
 
-		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-		var floatPosition = parseInt($(".flotingMenu").css('top'));
-		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+      // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+      var floatPosition = parseInt($(".flotingMenu").css('top'));
+      // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
 
-		$(window).scroll(function() {
-			// 현재 스크롤 위치를 가져온다.
-			var scrollTop = $(window).scrollTop();
-			var newPosition = scrollTop + floatPosition + "px";
+      $(window).scroll(function() {
+         // 현재 스크롤 위치를 가져온다.
+         var scrollTop = $(window).scrollTop();
+         var newPosition = scrollTop + floatPosition + "px";
 
-			/* 애니메이션 없이 바로 따라감
-			 $("#floatMenu").css('top', newPosition);
-			 */
+         /* 애니메이션 없이 바로 따라감
+          $("#floatMenu").css('top', newPosition);
+          */
 
-			$(".flotingMenu").stop().animate({
-				"top" : newPosition
-			}, 500);
+         $(".flotingMenu").stop().animate({
+            "top" : newPosition
+         }, 500);
 
-		}).scroll();
+      }).scroll();
 
-	});
-	
-	
-	 <c:forEach items="${bookday}" var="bookday">
-	  data.push('${bookday}');
-	  </c:forEach>
+   });
+   
+   
+    <c:forEach items="${bookday}" var="bookday">
+     data.push('${bookday}');
+     </c:forEach>
 
-	  console.log(data);
-	  
-	  
-	  $('input.date-pick').datepicker({
+     console.log(data);
+     
+     
+     $('input.date-pick').datepicker({
          // datesDisabled: arrNumber.concat(arrNumber2)    
-          datesDisabled: data    
+          datesDisabled: data,
+          zIndexOffset : 100
     });
       
       $('#sandbox-container .input-daterange').datepicker({
@@ -724,7 +715,7 @@
    </script> -->
 
    <!--Review modal validation -->
-   <script src="/assets/validate.js"></script>
+   <!-- <script src="/assets/validate.js"></script> -->
    <script>
       window.onload = function() {
          $(document).on('click', ".btn_delete", function() {
@@ -808,8 +799,11 @@
 
       }
    </script>
-   <script type="text/javascript"
-      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=b71c545210111992d3f4b64ae0245b27&libraries=services"></script>
+   
+   <!-- <script type="text/javascript"
+      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=b71c545210111992d3f4b64ae0245b27&libraries=services"></script> -->
+      <script type="text/javascript"
+      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=2b83f513db866294e637be33235d3d0d&libraries=services"></script>
    <script>
       var address = $(".selectAddr").text();
 

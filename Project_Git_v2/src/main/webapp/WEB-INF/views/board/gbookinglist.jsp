@@ -7,8 +7,8 @@
     <c:forEach var="bvo" items="${list}" >
     <form action="<%=request.getContextPath()%>/checkbooking.do" method="post">
         <div class="strip_booking">
-            <span class="startDate">${bvo.booking_startdate}</span>
-            <span class="endDate">${bvo.booking_enddate}</span>
+            <span class="startDate hidden">${bvo.booking_startdate}</span>
+            <span class="endDate hidden">${bvo.booking_enddate}</span>
             <div class="row">
                 <div class="col-md-2 col-sm-2">
                     <div class="date">
@@ -33,13 +33,13 @@
                 </div>
                 <div class="col-md-2 col-sm-2">
                     <div class="booking_buttons">
-						<input type="hidden" name ="rsv_num" value="${bvo.rsv_num}">
-                     	<button  class="btn_2"type="submit">Detail</button>
+                  <input type="hidden" name ="rsv_num" value="${bvo.rsv_num}">
+                        <button  class="btn_2"type="submit">Detail</button>
                     </div>
                 </div>
             </div><!-- End row -->
         </div><!-- End strip booking -->
-	</form>
+   </form>
     </c:forEach>
 </c:if>
 

@@ -1,46 +1,5 @@
 @charset "utf-8";
-/* 
-.filebox input[type="file"] {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
 
-.filebox label {
-	display: inline-block;
-	padding: .5em .75em;
-	color: #999;
-	font-size: inherit;
-	line-height: normal;
-	vertical-align: middle;
-	background-color: #fdfdfd;
-	cursor: pointer;
-	border: 1px solid #ebebeb;
-	border-bottom-color: #e2e2e2;
-	border-radius: .25em;
-	vertical-align: top;
-} named upload
-.filebox .upload-name {
-	display: inline-block;
-	padding: .5em .75em; label의 패딩값과 일치
-	font-size: inherit;
-	font-family: inherit;
-	line-height: normal;
-	vertical-align: middle;
-	background-color: #f5f5f5;
-	border: 1px solid #ebebeb;
-	border-bottom-color: #e2e2e2;
-	border-radius: .25em;
-	-webkit-appearance: none; 네이티브 외형 감추기
-	-moz-appearance: none;
-	appearance: none;
-}
- */
  
  .wishlist::before{
  	font-size:29px;
@@ -155,7 +114,10 @@ overflow: hidden;
 .dropzone.upload-drop-zone{line-height:initial;height:inherit;min-height:200px;transition:1s;position: relative;}
 .dropzone.upload-drop-zone ul{margin:0;padding:0;min-height:200px;}
 .dropzone.upload-drop-zone .imgs_wrap ul li{overflow:hidden;/*height:180px;*/padding:0; margin:5px 0.5%;width:24%;}
-
+.dropzone.upload-drop-zone.user_profile{min-height:0; height:305px;margin-bottom:16px;}
+.dropzone.upload-drop-zone.user_profile .imgs_wrap{height:100%;}
+.dropzone.upload-drop-zone.user_profile .imgs_wrap ul{height:100%;}
+.dropzone.upload-drop-zone.user_profile .imgs_wrap ul li{width:100%;margin:0;height:100%;}
 .post-left.board_view{float:none;width:100%;}
 .post-left.board_view ul li{float:none;margin-bottom:25px;margin-right:0;}
 .post-left.board_view ul li img{width:100%; height:auto;}
@@ -165,6 +127,6 @@ overflow: hidden;
 .flotingMenu{
 	position: absolute;
 }
-
-.btn_delete{cursor : pointer;transition:.8s;}
-.btn_delete:hover{color:#51bce6;}
+.align-fix{text-align:right;}
+.align-fix.cnt{text-align:center;}
+.dd-select{line-height:40px;}

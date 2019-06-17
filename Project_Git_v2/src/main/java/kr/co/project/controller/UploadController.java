@@ -1,6 +1,7 @@
 package kr.co.project.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -84,26 +85,28 @@ public class UploadController {
 	}
 	
 	@RequestMapping(value = "/uploaduser", method = RequestMethod.POST)
-	public String userimgupload(@RequestParam("files") MultipartFile file, @RequestParam("user_id")String user_id) throws Exception{
-		logger.info("파일이름 : " + file.getOriginalFilename());
-		logger.info("파일 크기 : " + file.getSize());
-		logger.info("content type : " + file.getContentType());
-		logger.info("user_id : " + user_id );
-		
-		//기존 파일 삭제 ( DB + 파일 ) 
-		String filename = uservice.getthumb(user_id);
-		//uservice.deletethumb(user_id);
-		File fileuplo = new File(uploadPath,filename);
-		fileuplo.delete();
-		
-		//새로운 파일 업로드 		
-		String savedname =uploadFile(file.getOriginalFilename(), file.getBytes());
-//		File target = new File(uploadPath,savedname);
-//		FileCopyUtils.copy(file.getBytes(), target);
-		uservice.updatethumb(savedname,user_id);
-		
-		return "forward:/searchuser.do?user_id="+user_id;
-	}
+	   public @ResponseBody HashMap<String,Object> userimgupload(@RequestParam("files") MultipartFile file, @RequestParam("user_id")String user_id,Model model) throws Exception{
+	      logger.info("파일이름 : " + file.getOriginalFilename());
+	      logger.info("파일 크기 : " + file.getSize());
+	      logger.info("content type : " + file.getContentType());
+	      logger.info("user_id : " + user_id );
+	      
+	      //기존 파일 삭제 ( DB + 파일 ) 
+	      String filename = uservice.getthumb(user_id);
+	      //uservice.deletethumb(user_id);
+	      File fileuplo = new File(uploadPath,filename);
+	      fileuplo.delete();
+	      
+	      //새로운 파일 업로드       
+	      String savedname =uploadFile(file.getOriginalFilename(), file.getBytes());
+//	      File target = new File(uploadPath,savedname);
+//	      FileCopyUtils.copy(file.getBytes(), target);
+	      uservice.updatethumb(savedname,user_id);
+	      //model.addAttribute("savedname",savedname);
+	      HashMap<String, Object> map = new HashMap<String,Object>();
+	      map.put("savedname",savedname);
+	      return map;
+	   }
 	
 	@RequestMapping(value = "/uploadboard", method = RequestMethod.POST)
 	public @ResponseBody int boardimg(@RequestParam("files") MultipartFile[] file, @RequestParam("board_id")int board_id) throws Exception{

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<!DOCTYPE html>
+   pageEncoding="UTF-8"%>
+   <!DOCTYPE html>
 <!--[if IE 8]><html class="ie ie8"> <![endif]-->
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<!--[if gt IE 9]><!-->   <html> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,8 +26,8 @@
     <!-- CSS -->
     <link href="css/jquery.switch.css" rel="stylesheet">
     <link href="css/owl.carousel.css" rel="stylesheet">
-	<link href="css/owl.theme.css" rel="stylesheet">
-	
+   <link href="css/owl.theme.css" rel="stylesheet">
+   
     <!-- Google web fonts -->
    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
    <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
@@ -61,13 +61,13 @@
 
     <!-- Header================================================== -->
    
-	<%@include file="./include/header.jsp"%>
-	<input type="hidden" value="${sessionScope.user_type }" class="check">
+   <%@include file="./include/header.jsp"%>
+   <input type="hidden" value="${sessionScope.user_type }" class="check">
     <section id="search_container" class="social"> 
     <div class="intro_title animated fadeInDown">
            <h1 align="center">Place your order</h1>
             <div class="bs-wizard">
-  			
+           
                 <div class="col-xs-6 bs-wizard-step active">
                   <div class="text-center bs-wizard-stepnum">Your cart</div>
                   <div class="progress"><div class="progress-bar"></div></div>
@@ -82,15 +82,15 @@
                   <a href="confirmation_hotel.html" class="bs-wizard-dot"></a>
                 </div>  
                    
-		</div>  <!-- End bs-wizard --> 
+      </div>  <!-- End bs-wizard --> 
     </div>   <!-- End intro-title --> 
     </section>
 
 
     
     <div id="position">
-    	<div class="container">
-                	<ul>
+       <div class="container">
+                   <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Category</a></li>
                     <li>Page active</li>
@@ -103,22 +103,22 @@
     <div class="row">
     <div class="col-md-8">
     <div class="alert alert-info" role="alert"><strong>Rooms available</strong> for the selected dates.<br>PLEASE SELECT YOUR QUANTITY.</div>
-    	<table class="table table-striped cart-list add_bottom_30">
-    	
-    	<c:if test="${sessionScope.user_id != null }">
-    	 <form action="<%=request.getContextPath()%>/confirm.do" method="post"  ">
-    	 </c:if> 
-    	 
-    	 <c:if test="${sessionScope.user_id == null }">
-    	 <form action="<%=request.getContextPath()%>/loginForm.do" method="post"  ">
-    	 </c:if> 
+       <table class="table table-striped cart-list add_bottom_30">
+       
+       <c:if test="${sessionScope.user_id != null }">
+        <form action="<%=request.getContextPath()%>/confirm.do" method="post"  ">
+        </c:if> 
+        
+        <c:if test="${sessionScope.user_id == null }">
+        <form action="<%=request.getContextPath()%>/loginForm.do" method="post"  ">
+        </c:if> 
             <thead>
             <tr>
                 <th>
                     SPACE Type
                 </th>
                 <th>
-                	people
+                   people
                 </th>
                 <th>
                     Per DAY
@@ -134,7 +134,7 @@
                      <%-- <span class="item_cart">${addr}</span> --%>
                 </td>
                 <td>
-                		${people}
+                      ${people}
                 </td>
                 <td>
                     <strong>$80</strong>
@@ -242,7 +242,7 @@
                 </td>
                 <td class="text-right">
                 <input name="booking_startdate" id="booking_startdate"
-                    value="${checkin}">
+                    value="${checkin}" readonly>
                 </td>
             </tr>
             <tr>
@@ -251,21 +251,21 @@
                 </td>
                 <td class="text-right">
                 <input name="booking_enddate" id="booking_enddate"
-                     value="${checkout}">
+                     value="${checkout}" readonly>
                 </td>
             </tr>
             
         
         <tr>
             <td colspan="2">
-            	<ul id="option_name_list">
-           			<li>PER DAY</li>
+               <ul id="option_name_list">
+                    <li>PER DAY</li>
                 </ul>
             </td>
             <td class="text-right">
            
             <ul id="option_price_list">
-           		<li>80</li>
+                 <li>80</li>
             </ul>
                 
             </td>
@@ -324,7 +324,7 @@
       </div>
       <div class="modal-body">
         <p>
-        	Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi. Mea liber ridens inermis ei, mei legendos vulputate an, labitur tibique te qui.
+           Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi. Mea liber ridens inermis ei, mei legendos vulputate an, labitur tibique te qui.
         </p>
         <div class="row">
                         <div class="col-md-6 col-sm-6">
@@ -343,17 +343,17 @@
                         </div>
                     </div><!-- End row  -->
                      <div class="carousel magnific-gallery">
-                     	<div class="item">
-                        	<a href="img/carousel/1.jpg"><img src="img/carousel/1.jpg" alt="Image"></a>
+                        <div class="item">
+                           <a href="img/carousel/1.jpg"><img src="img/carousel/1.jpg" alt="Image"></a>
                         </div>
                         <div class="item">
-                        	<a href="img/carousel/2.jpg"><img src="img/carousel/2.jpg" alt="Image"></a>
+                           <a href="img/carousel/2.jpg"><img src="img/carousel/2.jpg" alt="Image"></a>
                         </div>
                         <div class="item">
-                        	<a href="img/carousel/3.jpg"><img src="img/carousel/3.jpg" alt="Image"></a>
+                           <a href="img/carousel/3.jpg"><img src="img/carousel/3.jpg" alt="Image"></a>
                         </div>
                         <div class="item">
-                        	<a href="img/carousel/4.jpg"><img src="img/carousel/4.jpg" alt="Image"></a>
+                           <a href="img/carousel/4.jpg"><img src="img/carousel/4.jpg" alt="Image"></a>
                         </div>
                      </div><!-- End photo carousel  -->
       </div>
@@ -371,7 +371,7 @@
       </div>
       <div class="modal-body">
         <p>
-        	Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi. Mea liber ridens inermis ei, mei legendos vulputate an, labitur tibique te qui.
+           Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi. Mea liber ridens inermis ei, mei legendos vulputate an, labitur tibique te qui.
         </p>
         <div class="row">
                         <div class="col-md-6 col-sm-6">
@@ -390,17 +390,17 @@
                         </div>
                     </div><!-- End row  -->
                      <div class="carousel magnific-gallery">
-                     	<div class="item">
-                        	<a href="img/carousel/1.jpg"><img src="img/carousel/1.jpg" alt="Image"></a>
+                        <div class="item">
+                           <a href="img/carousel/1.jpg"><img src="img/carousel/1.jpg" alt="Image"></a>
                         </div>
                         <div class="item">
-                        	<a href="img/carousel/2.jpg"><img src="img/carousel/2.jpg" alt="Image"></a>
+                           <a href="img/carousel/2.jpg"><img src="img/carousel/2.jpg" alt="Image"></a>
                         </div>
                         <div class="item">
-                        	<a href="img/carousel/3.jpg"><img src="img/carousel/3.jpg" alt="Image"></a>
+                           <a href="img/carousel/3.jpg"><img src="img/carousel/3.jpg" alt="Image"></a>
                         </div>
                         <div class="item">
-                        	<a href="img/carousel/4.jpg"><img src="img/carousel/4.jpg" alt="Image"></a>
+                           <a href="img/carousel/4.jpg"><img src="img/carousel/4.jpg" alt="Image"></a>
                         </div>
                      </div><!-- End photo carousel  -->
       </div>
@@ -417,23 +417,23 @@
 <script src="js/owl.carousel.min.js"></script>
 <script>
 /* $("#submitbooking").on("click", function() {
-	frmSubmit();
+   frmSubmit();
 
 }
 )
 
-	function frmSubmit(){
-   	 var bookingdata = {
+   function frmSubmit(){
+       var bookingdata = {
                    addr: $("#addr").val(),
                    board_id: $("#board_id").val(),
                    user_id: $("#user_id").val(),
                    people: $("#people").val(),
                    option1: $("#option1").is(":checked") ? $("#option1").val() : 0,
                  option2: $("#option2").is(":checked") ? $("#option2").val() : 0,
-                	option3: $("#option3").is(":checked") ? $("#option3").val() : 0,
-                	option4: $("#option4").is(":checked") ? $("#option4").val() : 0,
-                			booking_startdate : $("#booking_startdate").val(),
-                	booking_enddate : $("#booking_enddate").val()
+                   option3: $("#option3").is(":checked") ? $("#option3").val() : 0,
+                   option4: $("#option4").is(":checked") ? $("#option4").val() : 0,
+                         booking_startdate : $("#booking_startdate").val(),
+                   booking_enddate : $("#booking_enddate").val()
                }
        $.ajax({
           url:"/confirm.do",
@@ -456,39 +456,39 @@
 <script>
            
            $(".options_cart tbody tr input").click(function(){
-           	var chk =$(this).is(":checked");
-           		
-           		if(chk){
-           			var optionName = $(this).attr("data-option-name");
-           			var price = $(this).val();
-           			$("#option_name_list").append("<li>"+optionName+"</li>");
-           			$("#option_price_list").append("<li>"+price+"</li>");
-           			totalPrice();
-           		}else{
-           			var name =$(this).attr("data-option-name");
-           			var price = $(this).val();
-           			$("#option_name_list > li").each(function(){
-           				var text = $(this).text();
-           				if(name === text){           					
-           					$(this).remove();
-           				}
-           			})
-           			$("#option_price_list > li").each(function(){
-           				var text = $(this).text();
-           				if(price === text){           					
-           					$(this).remove();
-           				}
-           			})
-           			totalPrice();		
-           		}
+              var chk =$(this).is(":checked");
+                 
+                 if(chk){
+                    var optionName = $(this).attr("data-option-name");
+                    var price = $(this).val();
+                    $("#option_name_list").append("<li>"+optionName+"</li>");
+                    $("#option_price_list").append("<li>"+price+"</li>");
+                    totalPrice();
+                 }else{
+                    var name =$(this).attr("data-option-name");
+                    var price = $(this).val();
+                    $("#option_name_list > li").each(function(){
+                       var text = $(this).text();
+                       if(name === text){                          
+                          $(this).remove();
+                       }
+                    })
+                    $("#option_price_list > li").each(function(){
+                       var text = $(this).text();
+                       if(price === text){                          
+                          $(this).remove();
+                       }
+                    })
+                    totalPrice();      
+                 }
            });
            
            function totalPrice(){
-        	    var total=0;
-        	   $('#option_price_list > li').each(function(){
-        		    total += parseInt($(this).text());
-        	   })
-        	   $(".total > td:eq(2)").text(total);
+               var total=0;
+              $('#option_price_list > li').each(function(){
+                  total += parseInt($(this).text());
+              })
+              $(".total > td:eq(2)").text(total);
            }
            </script>
           
