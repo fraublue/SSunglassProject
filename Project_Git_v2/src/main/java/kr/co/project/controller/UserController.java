@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.project.domain.UserHasFavoriteVO;
 import kr.co.project.domain.UserVO;
 import kr.co.project.service.BoardService;
+import kr.co.project.service.BookingService;
 import kr.co.project.service.BookmarkService;
 import kr.co.project.service.FavoriteService;
 import kr.co.project.service.LikeService;
@@ -46,6 +47,8 @@ public class UserController {
 	  private LikeService lservice;
 	  @Inject
 	  private BookmarkService mservice;	
+	  @Inject
+	  private BookingService bkservice;
 	 
 	  
 	  @RequestMapping(value = "/main.do")
@@ -124,7 +127,9 @@ public class UserController {
 		 		  //
 		  try {
 		  String user_id = req.getParameter("user_id");
+		  String user_idbook =  bkservice.checkbook(user_id);
 		  model.addAttribute("vo",service.usercheck(user_id));
+		  model.addAttribute("bookuser",user_idbook);
 		 
 		  logger.info(">>>>>>>>>>>>>>>>>>>>>>searchuser.do  :::::::: " + user_id);
 		  model.addAttribute("fav",fservice.selectfavo_user(user_id));

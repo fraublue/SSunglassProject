@@ -64,4 +64,10 @@ public class BookingServiceImpl implements BookingService {
 		return dao.bookingAddr(rsv_num);
 	}
 
+	@Override
+	public String checkbook(String user_id) throws Exception {
+		
+		return dao.checkbook(user_id);
+	}
+
 }

@@ -551,10 +551,18 @@
 
 
 							<br> <br>
-							<form action="/deleteuser.do" method="post">
+							<c:if test="${bookuser == null }">
+							<form action="/deleteuser.do" method="post" onsubmit="return validatebook();">
 								<input type="hidden" name="user_id" value="${vo.user_id }">
-								<button type="submit" class="btn_1 green">User Leave</button>
+								<button type="submit" class="btn_1 green leave">User Leave</button>
 							</form>
+							</c:if>
+							<c:if test="${bookuser != null }">
+							<form action="/deleteuser.do" method="post" onsubmit="return validatebook();">
+								
+								<button type="submit" class="btn_1 green leave" disabled="disabled">예약 삭제 후 탈퇴해 주세요 </button>
+							</form>
+							</c:if>
 
 						</div>
 						<br>
@@ -827,8 +835,14 @@
 	         return false;
 	      })
 	      
+	      
+	      
+			
+			
 
 	   })
+	   
+	 
 
 	</script>
 </body>

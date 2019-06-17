@@ -17,6 +17,7 @@ public interface BookingService {
 	public List<BookingListVO> gbookingList(String user_id,Criteria cri);
 	public void deletebooking_boardid(int board_id);
 	public void deletebooking_userid(String user_id);
+	public String checkbook(String user_id) throws Exception;
 }
 
 

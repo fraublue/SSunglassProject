@@ -81,4 +81,9 @@ public class BookingDAOImpl implements BookingDAO{
 		return session.selectOne(namespace+ ".bookingAddr", rsv_num);
 	}
 
+	@Override
+	public String checkbook(String user_id) throws Exception {
+		return session.selectOne(namespace+".checkbook", user_id);
+	}
+
 }
