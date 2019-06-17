@@ -165,3 +165,6 @@ overflow: hidden;
 .flotingMenu{
 	position: absolute;
 }
+
+.btn_delete{cursor : pointer;transition:.8s;}
+.btn_delete:hover{color:#51bce6;}

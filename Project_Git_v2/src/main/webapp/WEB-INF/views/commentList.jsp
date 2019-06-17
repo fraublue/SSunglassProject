@@ -12,7 +12,6 @@
 	%>
 	
 
-
 <c:forEach items="${commentList}" var="list" varStatus="status">
 				<div class="commentlist">
 					<ol>
