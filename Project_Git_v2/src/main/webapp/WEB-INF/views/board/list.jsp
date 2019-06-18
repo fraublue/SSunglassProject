@@ -45,6 +45,16 @@
                   </c:forEach>
                </c:if>
                
+               <c:if test="${sessionScope.user_id == null }">
+               
+                  <img class="likee2" src="img/like2.png" align="right">                     
+                  
+                  <c:forEach begin="${status.index}" end="${status.index}" var="lvoc"
+                     items="${likecnt}">
+                  <span id="likecntt">${lvoc}</span>
+                  </c:forEach>
+               </c:if>
+               
                <!-- End wish list-->
             </div>
          </div>

@@ -80,7 +80,8 @@ public class BoardController {
       logger.info("몇번째" + cri.getPage());
       logger.info(cri.toString());
       List<String> like = new ArrayList<String>();      
-      List<Integer> likecnt = new ArrayList<Integer>();      
+      List<Integer> likecnt = new ArrayList<Integer>();   
+      
       List<String> addr = new ArrayList<String>();
       
 
@@ -125,8 +126,13 @@ public class BoardController {
       logger.info("takerlistpage");
       Criteria cri = new Criteria();
       cri.setPage(page);
-
+      /*
+       * List<Integer> likecnt = new ArrayList<Integer>();
+       * int c = likeservice.selectLikecnt(board_id);
+       * model.addAttribute("likecnt", likecnt);
+       */
 // model.addAttribute("list", service.listCriteria(cri));
+      List<Integer> likecnt = new ArrayList<Integer>();
 
       List<CommonBoardVO> list = service.takerlistAll(cri);
       List<String> like = new ArrayList<String>();
@@ -137,7 +143,8 @@ public class BoardController {
       for (int i = 0; i < list.size(); i++) {
          int board_id = list.get(i).getBoard_id();
          boolean a = likeservice.checkLike(board_id, user_id);
-         
+         int c = likeservice.selectLikecnt(board_id);
+         likecnt.add(c);
          if (a) {
             like.add("like1.png");
          } else {
@@ -149,17 +156,26 @@ public class BoardController {
 
       model.addAttribute("list", list);
       model.addAttribute("like", like);
+      model.addAttribute("likecnt", likecnt);
       return "board/list";
    }
 
    @RequestMapping(value = "/flist", method = RequestMethod.GET)
    public String favoritelistpage(@ModelAttribute("ftype") FavoriteType ftype, Model model,
          @RequestParam("page") int page, HttpSession session) throws Exception {
-
+	   
+	   /*
+	    * 
+	       * List<Integer> likecnt = new ArrayList<Integer>();
+	       * int c = likeservice.selectLikecnt(board_id);
+	       * model.addAttribute("likecnt", likecnt);
+	       */
+	   
       // logger.info(service.favoriteTypeList(ftype).toString());
       ftype.setPage(page);
       List<CommonBoardVO> list = service.favoriteTypeList(ftype);
       List<String> like = new ArrayList<String>();
+      List<Integer> likecnt = new ArrayList<Integer>();
       model.addAttribute("list", list);
       String user_id = (String)session.getAttribute("user_id");
       List<String> addr = new ArrayList<String>();
@@ -168,6 +184,8 @@ public class BoardController {
          int board_id = list.get(i).getBoard_id();
          boolean a = likeservice.checkLike(board_id, user_id);
          addr.add(service.getaddr(board_id));
+         int c = likeservice.selectLikecnt(board_id);
+         likecnt.add(c);
          if (a) {
             like.add("like1.png");
          } else {
@@ -177,6 +195,7 @@ public class BoardController {
       }
       model.addAttribute("like", like);
       model.addAttribute("addr", addr);
+      model.addAttribute("likecnt", likecnt);
 
 //     PageMaker pageMaker = new PageMaker();
 //     Criteria cri = new Criteria();
@@ -716,6 +735,12 @@ public class BoardController {
 @RequestMapping(value = "/tsearch", method=RequestMethod.GET)
 public ModelAndView searchtaker(@RequestParam("user_id") String user_id, @RequestParam("page") int page, HttpSession session) throws Exception {
 logger.info("search taker"+ user_id);
+/*
+ * 
+    * List<Integer> likecnt = new ArrayList<Integer>();
+    * int c = likeservice.selectLikecnt(board_id);
+    * model.addAttribute("likecnt", likecnt);
+    */
 
 Criteria cri = new Criteria();
 cri.setPage(page);
@@ -723,10 +748,12 @@ ModelAndView mav = new ModelAndView();
 List<CommonBoardVO> list = service.tsearch(user_id, cri);
 List<String> like = new ArrayList<String>();
 List<String> addr = new ArrayList<String>();
+List<Integer> likecnt = new ArrayList<Integer>();
 String user_id_session = (String)session.getAttribute("user_id");
 for(int i=0;i<list.size();i++) {
 int board_id = list.get(i).getBoard_id();
-
+int c = likeservice.selectLikecnt(board_id);
+likecnt.add(c);
 boolean a = likeservice.checkLike(board_id, user_id_session);
 addr.add(service.getaddr(board_id));
 if(a) {
@@ -740,6 +767,7 @@ mav.setViewName("board/list");
 mav.addObject("list", list);//list.jsp까지 들어간 값이 main.jsp의 ajax의 success(data)입니다
 mav.addObject("like", like);
 mav.addObject("addr", addr);
+mav.addObject("likecnt", likecnt);
 
 return mav;
 }
@@ -751,16 +779,24 @@ logger.info("search favorite" + svo.getFavorite_id());
 logger.info("search startdate" + svo.getBooking_startdate());
 logger.info("search enddate" + svo.getBooking_enddate());
 logger.info("search addr" + svo.getAddr());
-
+/*
+ * 
+    * List<Integer> likecnt = new ArrayList<Integer>();
+    * int c = likeservice.selectLikecnt(board_id);
+    * model.addAttribute("likecnt", likecnt);
+    */
 svo.setPage(page);
 ModelAndView mav = new ModelAndView();
 List<SearchVO> list = service.psearch(svo);
 List<String> like = new ArrayList<String>();
 List<String> addr = new ArrayList<String>();
+List<Integer> likecnt = new ArrayList<Integer>();
 String user_id_session = (String)session.getAttribute("user_id");
 for(int i=0;i<list.size();i++) {
 int board_id = list.get(i).getBoard_id();
 String user_id = list.get(i).getUser_id();
+int c = likeservice.selectLikecnt(board_id);
+likecnt.add(c);
 boolean a = likeservice.checkLike(board_id, user_id_session);
 addr.add(service.getaddr(board_id));
 if(a) {
@@ -776,6 +812,7 @@ mav.setViewName("board/list");
 mav.addObject("list", list);
 mav.addObject("like", like);
 mav.addObject("addr", addr);
+mav.addObject("likecnt", likecnt);
 return mav;
 }
 

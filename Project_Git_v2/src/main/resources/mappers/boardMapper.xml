@@ -76,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and `b`.favorite_id = `f`.favorite_id 
 		and `f`.favorite_name = #{favorite_name} 
 		and `u`.user_type='1' 
-		order by reg_date desc, like_cnt desc
+		order by like_cnt desc, reg_date desc
 		 limit #{startPage}, #{perPageNum}
 	]]>
 	</select>
