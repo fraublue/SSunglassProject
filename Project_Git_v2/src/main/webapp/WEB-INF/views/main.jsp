@@ -422,63 +422,64 @@
    </div>
    <!-- End container -->
    <script>
-   
    $(function(){
-       $(document).on("click",'.likee',function(){
-          var imgsrc = $(this).attr("src");
-          var board_id = $(this).next(".board_id").val();
-          console.log(board_id);
-          console.log(imgsrc);
-          if(imgsrc == "img/like1.png"){//1이 비어있는거            
-             $(this).attr("src","img/like2.png");
-             
-             like("board/insertLike.do",imgsrc,board_id);
-             likecnt("board/selectLikecnt.do",board_id);
-                   
-          }else{
-             $(this).attr("src","img/like1.png");
-             
-             like("board/removeLike.do",imgsrc,board_id);
-             likecnt("board/selectLikecnt.do",board_id);      
-          }
-       })
-             
-       function like(act,src,board_id){
-          var board_id = board_id;
-          var user_id = $(".user_id").val();
-          console.log(act);
-          var sendData = {'board_id' : board_id, 'user_id' : user_id };
-          $.ajax({
-             url:act,
-             type :'post',
-             data: sendData,
-             success : function(data){
-            	 likecnt("board/selectLikecnt.do",board_id);      
+          $(document).on("click",'.likee',function(){
+             var that = $(this).siblings("#likecntt");
+             var imgsrc = $(this).attr("src");
+             var board_id = $(this).next(".board_id").val();
+             console.log(board_id);
+             console.log(imgsrc);
+             if(imgsrc == "img/like1.png"){//1이 비어있는거            
+                $(this).attr("src","img/like2.png");
+                
+                like("board/insertLike.do",imgsrc,board_id,that);
+                //likecnt("board/selectLikecnt.do",board_id,that);
+                      
+             }else{
+                $(this).attr("src","img/like1.png");
+                
+                like("board/removeLike.do",imgsrc,board_id,that);
+                //likecnt("board/selectLikecnt.do",board_id,that);      
              }
           })
-       }   
-       
-       
-       function likecnt(act, board_id) {
-           //var board_id = $(".board_id").val();
-           var user_id = $(".user_id").val();
+                
+          function like(act,src,board_id,that){
+             
+             var user_id = $(".user_id").val();
+             console.log(act);
+             var sendData = {'board_id' : board_id, 'user_id' : user_id };
+             $.ajax({
+                url:act,
+                type :'post',
+                data: sendData,
+                success : function(data){
+                   likecnt("board/selectLikecnt.do",board_id,that);
+                }
+             })
+          }   
+          
+          
+          function likecnt(act, board_id,that) {
+              //var board_id = $(".board_id").val();
+              var user_id = $(".user_id").val();
 
-           var sendData = {'board_id' : board_id, 'user_id' : user_id };
-           $.ajax({
-              url : act,
-              type : 'post',
-              data : sendData,
-              success : function(data) {
-                 //console.log("쿼리문 실행해서 값이 있으면 false, 없으면 true 입니다 : " + data);               
-                 //changeImg(src);
-                 console.log(data);
-                 $("#likecntt").text(data);
-                 
+              var sendData = {'board_id' : board_id, 'user_id' : user_id };
+              $.ajax({
+                 url : act,
+                 type : 'post',
+                 data : sendData,
+                 success : function(data) {
+                    //console.log("쿼리문 실행해서 값이 있으면 false, 없으면 true 입니다 : " + data);               
+                    //changeImg(src);
+                    console.log(data);
+                    that.text(data);
 
-              }
-           })
-        }
-    })
+                 }
+              })
+           }
+       })
+
+
    </script>
 
    <footer>

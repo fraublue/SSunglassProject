@@ -149,7 +149,7 @@
                            <li><img src="<%=request.getContextPath()%>/uploads/${vo}"></li>
                         </c:forEach> --%>
 
-                        <div id="imglistWrap"></div>
+                        <div id="imglistWrap" class="row"></div>
                      </ul>
 
                   </div>

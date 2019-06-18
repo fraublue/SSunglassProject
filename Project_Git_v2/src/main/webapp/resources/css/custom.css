@@ -157,3 +157,30 @@ overflow: hidden;
 .btn_delete:hover{color : red;cursor:pointer;}
 .btn_3.fix-width{font-size:13px;padding:9px 8px; width:100%;background : #83c99f}
 .btn_2.fix-width{font-size:13px;padding:9px 8px;width:100%;}
+
+
+.post-left.board_view ul{padding:0;}
+
+
+/*cart.jsp*/
+.table.table_summary td{vertical-align:middle;}
+.table.table_summary .total td:first-child{font-size:15px;    width: inherit;}
+.table.table_summary td.option_list.text-right{padding-right:8px;}
+.table.table_summary td.option_list{padding-right:0; padding-left:0;}
+.option_list ul{
+    padding: 0;
+    list-style: none;
+    font-weight: bold;
+    color: #888;
+} 
+.option_list ul li{border-bottom:1px solid #ebebeb;padding: 9px 0 4px;}
+.option_list ul#option_name_list li{text-align:right;font-weight:lighter;}
+.option_list ul li:last-child{border-bottom:none;}
+.option_list #option_price_list{
+    padding: 0;
+    list-style: none;
+    font-weight: bold;
+    color: #e04f67;
+} 
+
+.table.options_cart td strong{float:right;}

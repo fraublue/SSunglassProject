@@ -651,6 +651,7 @@
 
    <!-- Date and time pickers -->
    <script src="/js/bootstrap-datepicker.js"></script>
+
    <script>
    var data = [];
    
@@ -660,20 +661,39 @@
       var floatPosition = parseInt($(".flotingMenu").css('top'));
       // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
 
-      $(window).scroll(function() {
+    /*   $(window).scroll(function() {
          // 현재 스크롤 위치를 가져온다.
          var scrollTop = $(window).scrollTop();
          var newPosition = scrollTop + floatPosition + "px";
 
-         /* 애니메이션 없이 바로 따라감
-          $("#floatMenu").css('top', newPosition);
-          */
+        //애니메이션 없이 바로 따라감
+         // $("#floatMenu").css('top', newPosition);
+        
 
          $(".flotingMenu").stop().animate({
             "top" : newPosition
          }, 500);
 
-      }).scroll();
+      }).scroll(); */
+      $(window).scroll(function() {
+          // 현재 스크롤 위치를 가져온다.
+          var scrollTop = $(window).scrollTop();
+          if(scrollTop >= 300){
+             var floatPosition = parseInt($(".flotingMenu").css('top'));
+             $(".flotingMenu").stop().animate({"top":scrollTop-200+"px"},650);            
+          }else{
+             $(".flotingMenu").stop().animate({"top":"0"},650);
+             //$(".flotingMenu").css({"position":"absolute","top":"0"});
+          }
+          /* 애니메이션 없이 바로 따라감
+           $("#floatMenu").css('top', newPosition);
+           */
+
+          /* $(".flotingMenu").stop().animate({
+             "top" : newPosition
+          }, 500); */
+
+       });
 
    });
    

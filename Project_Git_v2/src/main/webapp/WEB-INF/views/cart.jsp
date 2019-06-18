@@ -27,7 +27,7 @@
     <link href="css/jquery.switch.css" rel="stylesheet">
     <link href="css/owl.carousel.css" rel="stylesheet">
    <link href="css/owl.theme.css" rel="stylesheet">
-   
+    <link href="css/custom.css" rel="stylesheet">
     <!-- Google web fonts -->
    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
    <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
@@ -117,10 +117,10 @@
                 <th>
                     SPACE Type
                 </th>
-                <th>
+                <th class="align-fix cnt">
                    people
                 </th>
-                <th>
+                <th class="align-fix cnt">
                     Per DAY
                 </th>
               </tr>
@@ -133,10 +133,10 @@
                     </div> 
                      <%-- <span class="item_cart">${addr}</span> --%>
                 </td>
-                <td>
+                <td class="align-fix cnt">
                       ${people}
                 </td>
-                <td>
+                <td class="align-fix cnt">
                     <strong>$80</strong>
                 </td>
               </tr>
@@ -157,7 +157,7 @@
                     <i class="icon_set_1_icon-26"></i>
                 </td>
                 <td>
-                    빔 프로젝터 <strong>+$34*</strong>
+                    빔 프로젝터 <strong>+ $34</strong>
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
@@ -193,7 +193,7 @@
                     <i class="icon_set_1_icon-59"></i>
                 </td>
                 <td>
-                   테이블 <strong>+$26*</strong>
+                   테이블 <strong>+$26</strong>
                 </td>
                 <td>
                     <label class="switch-light switch-ios pull-right">
@@ -257,12 +257,12 @@
             
         
         <tr>
-            <td colspan="2">
+            <td colspan="2" class="option_list">
                <ul id="option_name_list">
                     <li>PER DAY</li>
                 </ul>
             </td>
-            <td class="text-right">
+            <td class="text-right option_list">
            
             <ul id="option_price_list">
                  <li>80</li>
@@ -271,14 +271,12 @@
             </td>
         </tr>
         <tr class="total">
-          <td>
+          <td colspan="2">
             Total cost
             </td>
-            <td class="text-right">
-            $
-            </td>
+           
           <td class="text-right">
-            <span>80</span>
+            $<span>80</span>
             </td>
             
         </tr>
@@ -488,7 +486,7 @@
               $('#option_price_list > li').each(function(){
                   total += parseInt($(this).text());
               })
-              $(".total > td:eq(2)").text(total);
+              $(".total > td:eq(1)>span").text(total);
            }
            </script>
           

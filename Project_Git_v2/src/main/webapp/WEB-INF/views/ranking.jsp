@@ -196,6 +196,7 @@
 
 
                <!-- End row -->
+              <c:if test="${sessionScope.user_id eq vo.user_id}">
                <hr>
                <div class="row">
                   <div class="col-md-6 col-sm-6">
@@ -277,7 +278,7 @@
                         <div class="row">
                            <div class="col-md-12 col-sm-12 align-fix">
 
-                              <button type="submit" class="btn_1 green">Update
+                                          <button type="submit" class="btn_1 green">Update
                                  Profile</button>
                            </div>
                         </div>
@@ -285,6 +286,7 @@
                   </div>
                </div>
                <!-- End row -->
+               </c:if>
                <hr>
 
                <div>
